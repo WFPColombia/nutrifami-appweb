@@ -1,0 +1,78 @@
+.menu-left {
+    background-color: #00c97e;
+}
+
+.menu-left .item {
+    border: none;
+}
+
+.menu-left .bar.bar-stable {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: none;
+    padding-top: 16px;
+    padding-left: 16px;
+    height: 57px;
+}
+
+.menu-left .item-content {
+    background-color: #00c97e;
+    border: none;
+    font-size: 14pt;
+    line-height: 35px;
+    margin-bottom: 0;
+    color: #ffffff;
+}
+
+.menu-left .item-content.activated {
+    background-color: #2f6551;
+}
+
+.menu-left .item-content img {
+    position: relative;
+    top: 10px;
+}
+
+.item-complex .item-content,
+.item-radio .item-content {
+    padding: 3px 0 0 16px;
+    height: 57px;
+}
+
+.menu-left .item-content.active,
+.menu-left .item-content.active:focus,
+.menu-left button.item-content:focus {
+    background-color: #2f6551;
+    border-color: #2f6551;
+    color: #ffffff;
+}
+
+.menu-left .item-content .icono {
+    margin-right: 17px;
+}
+
+.menu-left .ion-ios-information {
+    right: initial;
+    left: 42px;
+}
+
+.menu-left .capacitador .item-content{
+    background-color: #fdf418;
+}
+
+
+.menu-right .popover {
+    height: 155px;
+    font-family: 'Muli', sans-serif;
+    font-size: 13pt;
+}
+
+.menu-right .popover .item {
+    padding: 13px 18px;
+    border: none;
+}
+
+.capacitador .usuarioActual{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+

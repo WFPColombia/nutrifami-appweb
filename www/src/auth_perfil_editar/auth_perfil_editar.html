@@ -1,0 +1,179 @@
+<ion-view>
+    <ion-content>
+        <div class="row">
+            <div class="perfil-panel editar-perfil">
+                <div class="perfil-header">
+                    <img ng-src="img/icons/ico-{{usuarioActivo.genero == null || usuarioActivo.genero == '' ? 'Masculino' : usuarioActivo.genero }}.png" alt="Genero {{usuarioActivo.genero}}">
+                    <h1>Mi información</h1>
+                </div>
+                <div class="perfil-body">
+                    <form name="form" ng-submit="updateUser()">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="username">Nombre de Usuario</label>
+                                    <input type="text" class="form-control" name="username" placeholder="Ingrese su nombre de usuario" ng-model="usuarioActivo.username" ng-model-options="{ updateOn: 'blur' }"  ng-minlength="6" required>
+                                    <div class="help-block" ng-show="form.username.$error.required">El campo es obligatorio.</div>
+                                    <div class="help-block" ng-show="form.username.$error.minlength">El nombre de usuario es muy corto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="email">Correo Electrónico</label>
+                                    <input type="email" class="form-control" name="email" placeholder="Ingrese su correo electrónico" ng-model="usuarioActivo.email" ng-model-options="{ updateOn: 'blur' }" required>
+                                    <div class="help-block" ng-show="form.email.$error.required">El campo es obligatorio.</div>
+                                    <div class="help-block" ng-show="form.email.$error.email">El formato de correo no es válido</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="first_name">Nombres</label>
+                                    <input type="text" class="form-control" name='first_name' placeholder="Ingrese su nombre" ng-model="usuarioActivo.first_name" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.first_name.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="last_name">Apellidos</label>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Ingrese su apellido" ng-model="usuarioActivo.last_name" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.last_name.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="tipo_documento">Tipo de Documento de Identidad</label>
+                                    <select class="form-control" name="tipos_documento" ng-options="option.name for option in tipos_documento.availableOptions track by option.id" ng-model="tipos_documento.selectedOption" required>
+                                    </select>
+                                    <div class="help-block" ng-show="form.tipos_documento.$error.required">El campo es obligatorio.</div>
+                                </div>
+                                
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="documento">No. Documento</label>
+                                    <input type="number" class="form-control" name="documento" placeholder="Ingrese su número de documento" ng-model="usuarioActivo.documento" ng-model-options="{ updateOn: 'blur' }" ng-minlength="6" required>
+                                    <div class="help-block" ng-show="form.documento.$error.required">El campo es obligatorio.</div>
+                                    <div class="help-block" ng-show="form.documento.$error.minlength">El número de documento es muy corto</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="telefono">Telefóno fijo</label>
+                                    <input type="number" class="form-control" name="telefono" placeholder="Ingrese su número teléfono" ng-model="usuarioActivo.telefono" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.telefono.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="movil">Telefóno móvil</label>
+                                    <input type="number" class="form-control" name="movil" placeholder="Ingrese su número de móvil" ng-model="usuarioActivo.movil" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.movil.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" placeholder="dd-MM-yyyy" name="fecha_nacimiento" ng-model="date.fecha_nacimiento" ng-model-options="{ updateOn: 'blur' }">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="genero">Genero</label>
+                                    <select class="form-control" name="genero" ng-options="option.name for option in generos.availableOptions track by option.id" ng-model="generos.selectedOption">
+                                        <option disabled value> -- Elige una opción -- </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="pais">País</label>
+                                    <input type="text" class="form-control" name="pais" placeholder="Ingrese su país" ng-model="usuarioActivo.pais" ng-model-options="{ updateOn: 'blur' }" required>
+                                    <!--<select name="pais" id="pais" class="form-control" ng-disabled="!paises" ng-model="usuarioActivo.pais_id" ng-options="pais.id as pais.name for pais in paises track by pais.sortname" ng-change="updateDropDownDepartamentos(usuarioActivo.pais_id)">
+                                        <option disabled value="">Seleccione su país</option>
+                                    </select>-->
+                                    <div class="help-block" ng-show="form.pais.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="departamento">Departamento</label>
+                                    <input type="text" class="form-control" name="departamento" placeholder="Ingrese su departamento" ng-model="usuarioActivo.departamento" ng-model-options="{ updateOn: 'blur' }" required>
+                                    <!--<select name="departamento" id="departamento" class="form-control" ng-disabled="!usuarioActivo.pais_id" ng-model="usuarioActivo.departamento_id" ng-options="departamento.id as departamento.name for departamento in departamentos_filter track by departamento.name" ng-change="updateDropDownCiudades(usuarioActivo.departamento_id)">
+                                        <option disabled value="">Seleccione su departamento</option>
+                                    </select>-->
+                                    <div class="help-block" ng-show="form.departamento.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="municipio">Muncipio</label>
+                                    <input type="text" class="form-control" name="municipio" placeholder="Ingrese su municipio o ciudad" ng-model="usuarioActivo.municipio" ng-model-options="{ updateOn: 'blur' }" required>
+                                    <!--<select name="municipio" id="municipio" class="form-control" ng-disabled="!usuarioActivo.departamento_id" ng-model="usuarioActivo.municipio_id" ng-options="ciudad.id as ciudad.name for ciudad in ciudades_filter track by ciudad.name">
+                                        <option disabled value="">Seleccione su ciudad o municipio</option>
+                                    </select>-->
+                                    <div class="help-block" ng-show="form.municipio.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="comunidad">Comunidad</label>
+                                    <input type="text" class="form-control" name="comunidad" placeholder="Escrba la comunidad a la que pertenece" ng-model="usuarioActivo.comunidad" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.comunidad.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="zona">Zona</label>
+                                    <input type="text" class="form-control" id="zona" name="zona" placeholder="Escrba la zona en la que vive" ng-model="usuarioActivo.zona" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.zona.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="etnia">Etnia</label>
+                                    <select class="form-control" name="etnia" ng-options="option.name for option in etnias.availableOptions track by option.id" ng-model="etnias.selectedOption">
+                                        <option disabled value> -- Elige una opción -- </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese su dirección de residencia" ng-model="usuarioActivo.direccion" ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="help-block" ng-show="form.direccion.$error.required">El campo es obligatorio.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="botones">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-default center-block" ng-disabled="form.$invalid" ion-ripple>Guardar Cambios</button>
+                                    <a class='cancelar' href="#/app/perfil" class="button">Cancelar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,132 @@
+.auth {
+    background-color: #00c97e;
+    background-image: url('../../img/login-bg.png');
+    background-position: center center;
+    min-height: 100%;
+    width: 100%;
+}
+
+.auth .header,
+.auth .footer{
+    margin: 40px 0px;
+}
+
+.auth .alert{
+    text-align: center;
+}
+
+.auth h2, .auth h4 {
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.auth .block{
+    border-top: 1px solid white;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    
+}
+
+
+.auth input {
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 18px;
+    box-shadow: none;
+    color: white;
+    font-size: 15pt;
+    height: 50px;
+    text-align: center;
+}
+
+.auth input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(255,255,255, 0.7);
+    font-family: 'Muli-Light', sans-serif;
+}
+.auth input::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(255,255,255, 0.7);
+    font-family: 'Muli-Light', sans-serif;
+}
+.auth input::-ms-input-placeholder { /* IE 10+ */
+    color: rgba(255,255,255, 0.7);
+    font-family: 'Muli-Light', sans-serif;
+}
+.auth input::-moz-placeholder { /* Firefox 18- */
+    color: rgba(255,255,255, 0.7);
+    font-family: 'Muli-Light', sans-serif;
+}
+
+.auth .forms p{
+    text-align: center;
+}
+
+.auth .forms p a,
+.auth .terms div a{
+    color: #fef418;
+    font-weight: bold;
+}
+
+.auth .terms label{
+    float: left;
+}
+
+.auth .terms div {
+    padding-top: 2px;
+    margin-left: 40px;
+}
+
+.auth [type="checkbox"]:checked,
+.auth [type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+.auth [type="checkbox"]:checked+label,
+.auth [type="checkbox"]:not(:checked)+label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.auth [type="checkbox"]:checked+label:before,
+.auth [type="checkbox"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ffffff;
+    border-radius: 100%;
+    background: #00c97e;
+}
+
+.auth [type="checkbox"]:checked+label:after,
+.auth [type="checkbox"]:not(:checked)+label:after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: #fef418;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.auth [type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.auth [type="checkbox"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}

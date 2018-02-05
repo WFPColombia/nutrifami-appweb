@@ -1,0 +1,57 @@
+<div class="auth">
+    <div class="container">
+        <div class="row header"> 
+            <div class="col-md-12">
+                <img class="center-block" src="img/logo-nutrifami.png" alt="Nutrifami" />
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Hemos mejorado la seguridad de Nutrifami, solo debes llenar los siguientes campos!</h2>
+            </div>
+        </div>-->
+        <div class="row" ng-show="error">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+            </div>
+        </div>
+        <div class="row forms bs-loading-container" bs-loading-overlay>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="block">
+                    <!--<h4>Inicia sesión con Usuario y Contraseña</h4>-->
+                    <form name="form"  ng-submit="signup()" role="form">
+                        <div class="alert alert-warning" ng-show="form.username.$error.minlength">El nombre de usuario es muy corto</div>
+                        <div class="alert alert-warning" ng-show="form.password.$error.minlength">La contraseña es muy corta</div>
+                        <div class="alert alert-warning" ng-show="form.email.$error.email">E-mail no válido</div>
+                        <div class="alert alert-warning" ng-show="form.email.$error.terminos">Debes aceptar los términos y condiciones</div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Usuario" name="username" autocomplete="off" ng-model="formSignup.username" ng-minlength="6" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Correo electronico" name="email" autocomplete="off" ng-model="formSignup.email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Escriba su contraseña" name="password" autocomplete="off" ng-model="formSignup.password" ng-minlength="8" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Repita su contraseña" autocomplete="off" ng-model="formSignup.password2" ng-minlength="8" required>
+                        </div>
+                        <div class="form-group terms">
+                            <input type="checkbox" id="terms" name="terms" ng-model="formSignup.terminos" required>
+                            <label for="terms" ></label>
+                            <div>
+                                <a href="http://nutrifami.org/#/terminos-y-condiciones" target="_blank">Acepto los terminos y condiciones, políticas de privacidad</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-lg center-block" ng-disabled="form.$invalid">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row footer">
+            <div class="col-md-12">
+                <img src="img/logo-wfp.png" class="center-block" alt="Logo Programa Mundial de Alimentos - Naciones Unidas " />
+            </div>
+        </div>
+    </div>
+</div>

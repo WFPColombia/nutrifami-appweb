@@ -1,0 +1,11 @@
+/nbproject/private/
+#netbeans specific
+core
+nbproject/*
+!nbproject/project.properties
+!nbproject/project.xml
+debug.log
+
+/node_modules
+/nbproject
+/www/lib/*

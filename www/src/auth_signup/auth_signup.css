@@ -1,0 +1,149 @@
+.auth-registro form {
+    margin-top: 35px;
+}
+
+.auth-registro .btn-default {
+    margin-top: 0px;
+}
+
+
+
+.registro .logo h1 {
+    color: #4d4d4d;
+    font-family: 26pt;
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
+.registro .popup-header {
+    margin-top: 20px;
+    position: relative;
+}
+
+.registro .popup-body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.registro form .form-group input {
+    background-color: #ffffff;
+    color: #4d4d4d;
+    font-size: 12pt;
+    font-family: 'Muli-Light', sans-serif;
+    height: 65px;
+    border: 1px solid #00c97e;
+    border-radius: 18px;
+    box-shadow: none;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.registro form .form-group input::-webkit-input-placeholder {
+    color: #4d4d4d;
+}
+
+.registro form .form-group input::-moz-placeholder {
+    color: #4d4d4d;
+    opacity: 1;
+}
+
+.registro form .form-group input::-moz-placeholder {
+    color: #4d4d4d;
+}
+
+.registro .help-block {
+    text-align: left;
+    color: #ff3b3b;
+    margin-top: 5px;
+    font-size: 10pt;
+}
+
+.registro .form-actions .help-block {
+    text-align: center;
+}
+
+.registro .login-enviar {
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    background-color: #00c97e;
+    height: 70px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    font-size: 16pt;
+    margin-top: 5px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.registro .row p {
+    color: #4d4d4d;
+    font-family: 'Muli', sans-serif;
+    font-size: 10pt;
+    margin: 20px 5%;
+    text-align: center;
+}
+
+.registro .cerrar {
+    position: absolute;
+    right: 5px;
+    top: -15px;
+    z-index: 10;
+}
+
+.registro .cerrar button {
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    color: #2f3e47;
+    background-color: #ffffff;
+}
+
+.registro .cerrar button:focus,
+.registro .cerrar button:active {
+    outline: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*END REGISTRO*/
