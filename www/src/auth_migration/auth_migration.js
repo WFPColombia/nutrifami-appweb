@@ -34,7 +34,7 @@ nf2.controller('AuthMigrationCtrl', function ($scope, bsLoadingOverlayService, $
         console.log("userLoggedIn Migration");
         UserService.migrarAvance().then(function () {
             bsLoadingOverlayService.stop();
-            $state.go('home');
+            $state.go('home.capacitation');
         });
     });
 

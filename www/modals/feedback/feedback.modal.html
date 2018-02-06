@@ -10,7 +10,7 @@
         </div>
         <div class="modal-footer">
             <div ng-class=" data.activo ? 'activo' : 'no-activo'">
-                <a href class="btn btn-default center-block bloqueado" role="button" ng-click="!data.activo || clickBoton()">{{ data.estado == 'acierto' ? 'Continuar':'Intentar de nuevo'}}</a>
+                <button class="btn btn-default center-block bloqueado" role="button" ng-click="!data.activo || clickBoton()">{{ data.estado == 'acierto' ? 'Continuar':'Intentar de nuevo'}}</button>
             </div>
         </div>
     </div>

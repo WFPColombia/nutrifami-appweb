@@ -1,0 +1,16 @@
+<div class="col-xs-12 col-sm-6" ng-class="$parent.unidad.opciones.length == 6 || $parent.unidad.opciones.length == 3 ? 'col-md-4' : ($parent.unidad.opciones.length == 2 ? 'col-md-6' : 'col-md-3')">
+
+    <div class="opcion" ng-click="click()" ng-class="[info.media.nombre != '' ? 'opcion-con-imagen' : '', info.selected ? 'selected' : 'no-selected']">
+        <div class="sonido" ng-hide="{{info.audio.nombre == ''}}">
+            <button ng-click="playAudio(info.id)" class="glyphicon glyphicon-volume-up" aria-hidden="true"></button>
+        </div>
+        <img data-ng-src="{{info.media.url}}" alt="{{ info.titulo}}" ng-hide="{{info.media.nombre == ''}}" />
+        <div ng-bind-html="info.texto | format | trust"></div>
+        <!--<div class="boton" ng-show="info.media.nombre == ''">
+            <button class="btn btn-primary center-block btn-lg btn-block" role="button">Seleccionar</button>
+        </div>-->
+        <div class="sticker" ng-show="info.evaluacion">
+            <span class="glyphicon center-block" aria-hidden="true" ng-class="info.selected == info.correcta ? 'glyphicon-ok bien' :'glyphicon-remove mal'"></span>
+        </div>
+    </div>
+</div>

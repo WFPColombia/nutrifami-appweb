@@ -1,0 +1,36 @@
+<div class="container bs-loading-container" bs-loading-overlay>
+    <div class="panel">
+        <div class="panel-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><!--<i class="icon {{ICON_AUDIO}}" aria-hidden="true"></i>-->Capacitaciones Activas</h1>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="capacitations" ng-repeat="capacitation in capacitations">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <!--<div class="audio"><i class="icon {{ICON_AUDIO}}" aria-hidden="true"></i></div>-->
+                            <!--<div class="medalla"><img src="img/icons/ico-modulo-medalla.png" alt="" /></div>-->
+                            <div class="img">
+                                <img src="img/intro-01.png">
+                            </div>
+                            <div class="title">
+                                <h2>{{capacitation.titulo}}</h2>
+                            </div>
+                            <p class="progress-text">{{capacitation.porcentaje}}%</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{capacitation.porcentaje}}%;">
+                                </div>
+                            </div>
+                            <button class="btn btn-block" ui-sref="nf.cap_capacitation({capacitation:'{{capacitation.id}}'})">INICIAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

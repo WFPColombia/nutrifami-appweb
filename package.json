@@ -14,5 +14,8 @@
     "devDependencies": {
         "bower": "^1.8.2",
         "gulp-webserver": "^0.9.1"
+    },
+    "dependencies": {
+        "gulp": "^3.9.1"
     }
 }

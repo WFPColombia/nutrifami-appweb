@@ -12,6 +12,8 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
 
     $rootScope.BASE_URL = 'http://localhost:8000/';
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
+    $rootScope.ASSETPATH = "https://s3.amazonaws.com/nutrifami/training/images/";
+    $rootScope.ASSETPATH_AUDIOS = "https://s3.amazonaws.com/nutrifami/training/audios/";
 
 
     if ($location.$$host === 'localhost') {
@@ -42,7 +44,7 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
     /*
      
      nutrifami.getSessionId();
-     //nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
+     
      
      if ($rootScope.globals.currentUser) {
      //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
@@ -77,7 +79,8 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
 
     $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
     $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
-
+    
+    nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
 
     // Configure Facebook login.
     $authProvider.facebook(angular.extend({}, commonConfig, {
@@ -118,23 +121,69 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
         controller: 'AuthSignupCtrl'
     });
 
-    $stateProvider.state('home', {
+    $stateProvider.state('nf', {
         url: '/nf',
         abstract: true,
         templateUrl: 'src/nav/nav.html',
         controller: 'NavCtrl'
     });
 
-    $stateProvider.state('home.capacitation', {
-        url: '/capacitation',
+    $stateProvider.state('nf.cap_home', {
+        url: '/',
         cache: false,
         views: {
-            menuContent: {
-                templateUrl: 'src/capacitation/capacitation.html'
-                //controller: 'CapacitationCtrl'
+            content: {
+                templateUrl: 'src/cap_home/cap_home.html',
+                controller: 'CapHomeCtrl'
             }
         }
     });
+    
+    $stateProvider.state('nf.cap_capacitation', {
+        url: '/:capacitation',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/cap_capacitation/cap_capacitation.html',
+                controller: 'CapCapacitationCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.cap_module', {
+        url: '/:capacitation/:module',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/cap_module/cap_module.html',
+                controller: 'CapModuleCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.cap_unit', {
+        url: '/:capacitation/:module/:lesson/:unit',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/cap_unit/cap_unit.html',
+                controller: 'CapUnitCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.cap_unit_end', {
+        url: '/:capacitation/:module/:lesson/:unit/end',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/cap_unit/cap_unit.html',
+                controller: 'CapUnitCtrl'
+            }
+        }
+    });
+    
+    
 
     /*$stateProvider.state('registro2', {
      url: '/auth/registro/2',
@@ -249,5 +298,5 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
      })*/
 
 
-    $urlRouterProvider.otherwise('/nf/capacitation');
+    $urlRouterProvider.otherwise('/nf/');
 });

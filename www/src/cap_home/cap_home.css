@@ -1,0 +1,122 @@
+.capacitations .card {
+    background-color: #00c97e;
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    position: relative;
+}
+
+.capacitations .card.ended {
+    background-color: #ffba23;
+}
+
+.capacitations .medalla {
+    position: absolute;
+    top: -13px;
+    right: -11px;
+}
+
+.capacitations .audio{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.capacitations .card .img {
+    float: left;
+    height: 85px;
+    margin: 15px 0 0 15px;
+    text-align: center;
+    width: 130px;
+}
+
+.capacitations .card img {
+    height: 100%;
+}
+
+.capacitations .card .titulo {
+    height: 85px;
+    display: table;
+    margin: 15px 15px 0 0px;
+    text-align: left;
+}
+
+.capacitations .card h2 {
+    color: #ffffff;
+    font-family: 'Muli', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.capacitations .progress-text {
+    bottom: 60px;
+    color: #ffffff;
+    font-family: 'Muli-bold', sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-left: 6px;
+    position: absolute;
+}
+
+.capacitations .progress {
+    background-color: rgba(255, 255, 255, 0.5);
+    background-image: none;
+    border-radius: 3px;
+    bottom: 60px;
+    height: 6px;
+    margin: 0 6px;
+    position: absolute;
+    width: calc(100% - 12px);
+}
+
+.capacitations .progress .progress-bar {
+    background-color: #fdf418;
+    background-image: none;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: 100%;
+}
+
+.capacitations .card .btn {
+    background-color: #09df78;
+    border-radius: 0px;
+    bottom: 0px;
+    color: white;
+    font-family: 'Raleway-bold', sans-serif;
+    letter-spacing: 5px;
+    margin: 0px;
+    position: absolute;
+    
+}
+
+.capacitations .card.ended .btn {
+    background-color: #ffa400;
+}
+
+.capacitations .capacitaciones-otras .card {
+    background-color: #ffffff;
+}
+
+.capacitations .capacitaciones-otras .card p {
+    color: #2f3e47;
+    text-align: center;
+}
+
+.capacitations .capacitaciones-otras .audio {
+    color: #09df78;
+    font-size: 18px;
+}
+
+.capacitations .capacitaciones-otras .card .img {
+    height: 75px;
+    margin: 12px 0;
+    text-align: center;
+    width: 100%;
+}

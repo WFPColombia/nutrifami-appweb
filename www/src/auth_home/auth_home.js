@@ -23,7 +23,7 @@ nf2.controller('AuthHomeCtrl', function ($scope, $state, bsLoadingOverlayService
     $scope.$on('userLoggedIn', function (event, data) {
         console.log("userLoggedIn Login");
         bsLoadingOverlayService.stop();
-        $state.go('home.capacitation');
+        $state.go('nf.cap_home');
 
     });
 

@@ -1,0 +1,11 @@
+<div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="leccion" ng-class="leccion.avance? 'leccion-terminada':''" ng-click="goToLesson()">
+        <div class="leccion-ok" ng-show="leccion.avance"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+        <div class="caption">
+            <img ng-src="img/badgets/icons-gray/ico_gray_{{leccion.icono}}.png" ng-show="!leccion.avance" />
+            <img ng-src="img/badgets/icons/ico_{{leccion.icono}}.png" ng-show="leccion.avance" />
+            <h4>{{ leccion.titulo.texto}}</h4>
+            <button class="btn btn-default btn-lg btn-block" role="button">{{ leccion.avance ? 'Repetir' : 'Comenzar'}}</button>
+        </div>
+    </div>
+</div>

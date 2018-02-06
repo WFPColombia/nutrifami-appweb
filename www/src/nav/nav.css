@@ -1,78 +1,80 @@
-.menu-left {
-    background-color: #00c97e;
-}
 
-.menu-left .item {
-    border: none;
-}
-
-.menu-left .bar.bar-stable {
-    background-color: rgba(0, 0, 0, 0);
+header .navbar {
     background-image: none;
-    padding-top: 16px;
-    padding-left: 16px;
-    height: 57px;
-}
-
-.menu-left .item-content {
     background-color: #00c97e;
-    border: none;
-    font-size: 14pt;
-    line-height: 35px;
-    margin-bottom: 0;
+    border-radius: 0;
+    border: solid 0;
+    min-height: 60px;
     color: #ffffff;
+    margin: 0;
 }
 
-.menu-left .item-content.activated {
-    background-color: #2f6551;
+header .navbar-brand {
+    padding: 8px 20px;
+    margin-right: 10px;
 }
 
-.menu-left .item-content img {
-    position: relative;
-    top: 10px;
+header .navbar-brand img {
+    height: 28px;
+    margin-top: 5px;
 }
 
-.item-complex .item-content,
-.item-radio .item-content {
-    padding: 3px 0 0 16px;
-    height: 57px;
-}
-
-.menu-left .item-content.active,
-.menu-left .item-content.active:focus,
-.menu-left button.item-content:focus {
-    background-color: #2f6551;
-    border-color: #2f6551;
+header .navbar-default .navbar-nav > li > a,
+header .navbar-default .navbar-nav > li > a:hover {
     color: #ffffff;
+    padding: 20px 15px;
 }
 
-.menu-left .item-content .icono {
-    margin-right: 17px;
+header .navbar-default .navbar-nav > .active > a,
+header .navbar-default .navbar-nav > .active > a:hover,
+header .navbar-default .navbar-nav > .active > a:focus {
+    background-image: none;
+    background-color: #0cc46b;
+    color: #ffffff;
+    height: 60px;
 }
 
-.menu-left .ion-ios-information {
-    right: initial;
-    left: 42px;
+header .navbar-right {
+    padding-right: 35px;
 }
 
-.menu-left .capacitador .item-content{
-    background-color: #fdf418;
+header .navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #ffffff;
 }
 
-
-.menu-right .popover {
-    height: 155px;
-    font-family: 'Muli', sans-serif;
-    font-size: 13pt;
+header .navbar-default .navbar-toggle {
+    border-color: #ffffff;
 }
 
-.menu-right .popover .item {
-    padding: 13px 18px;
-    border: none;
+header .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
-.capacitador .usuarioActual{
-    margin-top: 20px;
-    margin-left: 20px;
+header .glyphicon {
+    background-color: #ffffff;
+    color: red;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    font-size: 18px;
+    border-radius: 50%;
 }
 
+.tooltip-inner {
+    color: #09df78;
+    background-color: #ffffff;
+    border: solid 1px #dcdcdc;
+}
+
+.tooltip {
+    font-size: 10pt;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -5px;
+    border-bottom-color: #dcdcdc;
+    border-width: 0 5px 5px;
+}

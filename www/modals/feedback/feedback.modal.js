@@ -1,4 +1,4 @@
-nf2.controller('FeedbackUnidadModalController', function($scope, $uibModalInstance, $timeout, data) {
+nf2.controller('FeedbackModalCtrl', function($scope, $uibModalInstance, $timeout, data) {
     $scope.data = data;
 
     $scope.data.activo = false;

@@ -22,6 +22,7 @@
     "angular-touch": "^1.6.9",
     "bootstrap": "3",
     "angular-ui-router": "^1.0.14",
-    "satellizer": "^0.15.5"
+    "satellizer": "^0.15.5",
+    "angular-audio": "^1.7.4"
   }
 }

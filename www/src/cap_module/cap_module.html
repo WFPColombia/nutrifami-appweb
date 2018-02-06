@@ -1,0 +1,32 @@
+<div class="container bs-loading-container" bs-loading-overlay>
+    <div class="modulos lecciones">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="modulo-descripcion">
+                            <h1>{{ module.titulo.texto}}</h1>
+                            <div ng-bind-html="module.descripcion.texto | format | trust"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="modulo-avance">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ percentage }}%;">
+                                </div>
+                            </div>
+                            <h3>{{ total_lessons_endend}}/{{total_lessons}} Pasos completados</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <ng-repeat ng-repeat="lesson in lessons">
+                        <lesson-drt leccion="lesson"></lesson-drt>
+                    </ng-repeat>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
