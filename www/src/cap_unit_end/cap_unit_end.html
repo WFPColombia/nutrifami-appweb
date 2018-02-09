@@ -1,6 +1,4 @@
-<div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
-    <div class="container">
+<div class="container bs-loading-container" bs-loading-overlay>
         <div class="modulos unidad">
             <div class="panel">
                 <div class="panel-header">
@@ -38,7 +36,7 @@
                                         <span class="glyphicon glyphicon-ok center-block" aria-hidden="true"></span>
                                     </div>
                                     <div class="boton">
-                                        <a href ng-click="continuar()" class="btn btn-default center-block">Continuar</a>
+                                        <button ng-click="continuar()" class="btn btn-default center-block">Continuar</button>
                                     </div>
                                 </div>
                             </div>
@@ -47,6 +45,4 @@
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
-    </div>
 </div>

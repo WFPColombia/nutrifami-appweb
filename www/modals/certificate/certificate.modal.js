@@ -1,4 +1,4 @@
-nf2.controller('diplomaModalController', function($scope, $uibModalInstance, data) {
+nf2.controller('CertificateModalCtrl', function($scope, $uibModalInstance, data) {
 
     $scope.data = data;
 

@@ -19,7 +19,6 @@
     ->prependFile($this->basePath() . 'https://sdk.amazonaws.com/js/aws-sdk-2.3.15.min.js')
     ->prependFile($this->basePath('lib/pdfmake/build/vfs_fonts.js?'.$version))
     ->prependFile($this->basePath('lib/pdfmake/build/pdfmake.js?'.$version))
-    ->prependFile($this->basePath('lib/html2canvas/build/html2canvas.js?'.$version))
     ->prependFile($this->basePath('lib/js-md5/src/md5.js?'.$version))
     ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'))
     ->prependFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9'));
@@ -38,7 +37,11 @@
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="lib/satellizer/dist/satellizer.js" type="text/javascript"></script>
     <script src="lib/angular-audio/app/angular.audio.js" type="text/javascript"></script>
-
+    <script src="lib/html2canvas/build/html2canvas.js" type="text/javascript"></script>
+    <script src="lib/pdfmake/build/pdfmake.js" type="text/javascript"></script>
+    <script src="lib/pdfmake/build/vfs_fonts.js" type="text/javascript"></script>
+    
+    <!-- Angular -->
     <script src="js/app.js" type="text/javascript"></script>
     <script src="js/nutrifami.js" type="text/javascript"></script>
 
@@ -69,6 +72,9 @@
     <!-- Capacitation Unit-->
     <script src="src/cap_unit/cap_unit.js"></script>
     <link href="src/cap_unit/cap_unit.css" rel="stylesheet">
+    <!-- Capacitation Unit End-->
+    <script src="src/cap_unit_end/cap_unit_end.js"></script>
+    <link href="src/cap_unit_end/cap_unit_end.css" rel="stylesheet">
     
     
 
@@ -76,6 +82,7 @@
     <script src="directives/module/module.drt.js" type="text/javascript"></script>
     <script src="directives/lesson/lesson.drt.js" type="text/javascript"></script>
     <script src="directives/option/option.drt.js" type="text/javascript"></script>
+    <script src="directives/option-pairs/option-pairs.drt.js" type="text/javascript"></script>
     <!-- Services -->
     <script src="services/CapacitationService.js" type="text/javascript"></script>
     <script src="services/UserService.js" type="text/javascript"></script>
@@ -84,6 +91,7 @@
     <script src="filters/filters.js" type="text/javascript"></script>
     <!-- Modals -->
     <script src="modals/feedback/feedback.modal.js" type="text/javascript"></script>
+    <script src="modals/certificate/certificate.modal.js" type="text/javascript"></script>
     <!--<script src="services/ProfileService.js" type="text/javascript"></script>-->
     <!-- Styles --> 
     <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>

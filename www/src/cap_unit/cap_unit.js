@@ -18,7 +18,8 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
             delete $scope.unidad.opciones[i];
         }
     }
-
+    
+    console.log($scope.unidad);
 
     /* Validamos si la unidad actual es de parejas o de otra 
      * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
@@ -96,10 +97,6 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         $scope.unidad.opciones[i].match = false;
         $scope.audios['option' + $scope.unidad.opciones[i].id] = $rootScope.ASSETPATH_AUDIOS + $scope.unidad.opciones[i].audio.url;
     }
-
-    console.log($scope.audios);
-
-
 
     $scope.botonCalificar = false;
 
@@ -413,22 +410,6 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
             return result * sortOrder;
         }
     }
-});
-
-nf2.directive('parejasUnidadInfo', function () {
-    return {
-        restrict: 'E',
-        scope: {
-            info: '=',
-            index: '@'
-        },
-        templateUrl: 'views/directives/parejasUnidadInfo.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.click = function () {
-                $scope.$parent.seleccionarPareja($scope.index);
-            };
-        }
-    };
 });
 
 nf2.directive('reiniciarUnidad', function () {

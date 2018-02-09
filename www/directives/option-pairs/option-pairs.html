@@ -1,0 +1,17 @@
+ <!--<div class="col-md-4 pareja {{ info.pareja}} {{ info.match}} {{ info.estilo}}"> 
+    <span class="btn btn-default" role="button" ng-click="click()">{{info.texto}}</span>
+</div> -->
+<div class="col-xs-12 col-sm-6" ng-class="$parent.unidad.opciones.length == 6 ?  'col-md-4' : 'col-md-3'">
+        <div class="opcion" ng-click="click()" ng-class="[info.media.nombre != '' ? 'pareja-con-imagen' : 'pareja-sin-imagen', info.selected ? 'selected' : 'no-selected', info.match ? 'match':'', info.pareja, info.fallo ? 'pareja-mal':'', info.texto == '' ? 'sin-texto':'']">
+            <div class="sonido" ng-hide="info.audio.nombre == ''">
+                <button ng-click="playAudio(info.id)" class="glyphicon glyphicon-volume-up" aria-hidden="true"></button>
+            </div>
+            <img data-ng-src="{{assetpath}}{{info.media.url}}" alt="{{ info.titulo}}" ng-hide="{{info.media.nombre == ''}}" />
+            <div class="caption" ng-hide=" info.texto == ''">
+                <div ng-bind-html="info.texto | format | trust"></div>
+            </div>
+            <div class="sticker" ng-show="info.evaluacion">
+                <span class="glyphicon glyphicon-ok bien center-block" aria-hidden="true"></span>
+            </div>
+        </div>
+</div>

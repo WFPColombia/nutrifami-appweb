@@ -1,4 +1,4 @@
-nf2.directive('optionDrt', function () {
+nf2.directive('optionDrt', function ($rootScope) {
     return {
         restrict: 'E',
         scope: {
@@ -7,6 +7,7 @@ nf2.directive('optionDrt', function () {
         },
         templateUrl: 'directives/option/option.drt.html',
         link: function ($scope, $element, $attrs) {
+            $scope.assetpath = $rootScope.ASSETPATH;
             $scope.click = function () {
                 $scope.$parent.seleccionarOpcion($scope.index);
             };

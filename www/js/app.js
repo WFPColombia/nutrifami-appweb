@@ -177,8 +177,8 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
         cache: false,
         views: {
             content: {
-                templateUrl: 'src/cap_unit/cap_unit.html',
-                controller: 'CapUnitCtrl'
+                templateUrl: 'src/cap_unit_end/cap_unit_end.html',
+                controller: 'CapUnitEndCtrl'
             }
         }
     });

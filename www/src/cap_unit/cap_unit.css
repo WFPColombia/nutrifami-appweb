@@ -201,11 +201,11 @@
 
 
 .unidad .panel-body .opcion p {
-    margin: 15px auto 0 auto;
+    margin: 7px auto 0 auto;
     color: #2f3e47;
     text-align: center;
     font-size: 12pt;
-    width: 90%;
+    width: 95%;
 }
 
 .unidad .panel-body .opcion-con-imagen img,
@@ -262,14 +262,6 @@
     100% {}
 }
 
-.unidad .panel-body .opcion.pareja-sin-imagen {
-    min-height: 160px;
-}
-
-.unidad .panel-body .opcion.pareja-sin-imagen p {
-    margin: 25px auto 0 auto;
-    font-weight: bold;
-}
 
 .unidad .panel-body .opcion .boton {
     width: 100%;
@@ -488,39 +480,30 @@
     100% {}
 }
 
-.unidad-parejas .opciones .match .btn-default,
-.unidad-parejas .opcion-link .match {
+.unidad-parejas .opcion.match {
     -webkit-filter: opacity(30%);
     filter: opacity(30%);
 }
 
-.unidad-parejas .opciones .pareja-1 .btn-default,
-.unidad-parejas .opciones .pareja-1 .btn-default:hover,
-.unidad-parejas .opcion-link .pareja-1 {
+.unidad-parejas .opcion.pareja-1 {
     color: #ffffff;
     background-color: #09df78;
     border: 1px solid #09df78;
 }
 
-.unidad-parejas .opciones .pareja-2 .btn-default,
-.unidad-parejas .opciones .pareja-2 .btn-default:hover,
-.unidad-parejas .opcion-link .pareja-2 {
+.unidad-parejas .opcion.pareja-2 {
     color: #ffffff;
     background-color: #feea45;
     border: 1px solid #feea45;
 }
 
-.unidad-parejas .opciones .pareja-3 .btn-default,
-.unidad-parejas .opciones .pareja-3 .btn-default:hover,
-.unidad-parejas .opcion-link .pareja-3 {
+.unidad-parejas .opcion.pareja-3 {
     color: #ffffff;
     background-color: #3096fc;
     border: 1px solid #3096fc;
 }
 
-.unidad-parejas .opciones .pareja-4 .btn-default,
-.unidad-parejas .opciones .pareja-4 .btn-default:hover,
-.unidad-parejas .opcion-link .pareja-4 {
+.unidad-parejas .opcion.pareja-4 {
     color: #ffffff;
     background-color: #FC4CAA;
     border: 1px solid #FC4CAA;
@@ -539,10 +522,7 @@
 }
 
 .unidad .panel-body .leccion-completada .btn-default {
-    background-color: #09df78;
-    font-size: 12pt;
-    letter-spacing: 5px;
-    margin: 90px 40px 0px 40px;
+    margin-top:40px;
 }
 
 

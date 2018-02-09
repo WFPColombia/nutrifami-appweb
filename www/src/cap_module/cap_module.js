@@ -6,8 +6,6 @@ nf2.controller('CapModuleCtrl', function ($scope, $rootScope, $location, $anchor
     $scope.user = UserService.getUser();
     $scope.lessons = [];
 
-    $scope.assetpath = $rootScope.TARGETPATH + $stateParams.capacitacion + "/" + $stateParams.module + "/";
-
     $scope.total_lessons = 0;
     $scope.total_lessons_endend = 0;
 

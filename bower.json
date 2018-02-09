@@ -23,6 +23,8 @@
     "bootstrap": "3",
     "angular-ui-router": "^1.0.14",
     "satellizer": "^0.15.5",
-    "angular-audio": "^1.7.4"
+    "angular-audio": "^1.7.4",
+    "html2canvas": "^0.4.1",
+    "pdfmake": "^0.1.35"
   }
 }

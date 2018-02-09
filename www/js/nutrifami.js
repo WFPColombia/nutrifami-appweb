@@ -172,8 +172,6 @@ var nutrifami = {
          *  
          */
         initClient: function() {
-            
-
             if (window.cordova) {
                 console.log("Mobile");
                 localStorage.setItem("capacitacion", JSON.stringify(capacitacion));
@@ -188,7 +186,7 @@ var nutrifami = {
             } else {
                 console.log("Web");
                 var ran = Math.floor((Math.random() * 100) + 1);
-                $.getJSON("js/capacitacionAll.json?" + ran, function(data) {
+                $.getJSON("http://www.nutrifami.org/js/json.php?file=capacitacionAll.JSON" + ran, function(data) {
                     localStorage.setItem("capacitacion", JSON.stringify(data));
                     nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
                     nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
