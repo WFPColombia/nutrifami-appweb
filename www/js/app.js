@@ -10,7 +10,8 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
 
     console.log('run');
 
-    $rootScope.BASE_URL = 'http://localhost:8000/';
+    //$rootScope.BASE_URL = 'http://localhost:8000/';
+    $rootScope.BASE_URL = 'http://usuarios.nutrifami.org/';
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
     $rootScope.ASSETPATH = "https://s3.amazonaws.com/nutrifami/training/images/";
     $rootScope.ASSETPATH_AUDIOS = "https://s3.amazonaws.com/nutrifami/training/audios/";
@@ -77,8 +78,8 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     $authProvider.loginUrl = 'http://usuarios.nutrifami.org/api/token-auth/';
     $authProvider.signupUrl = 'http://usuarios.nutrifami.org/api/create-user/';
 
-    $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
-    $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
+    //$authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
+    //$authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
     
     nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
 
