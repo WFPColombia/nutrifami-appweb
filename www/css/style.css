@@ -140,6 +140,8 @@ h6 {
     border-radius: 7px;
     padding: 8px 14px;
     font-weight: normal;
+    color: gray;
+    letter-spacing: 0;
 }
 
 .panel .boton-flotante .glyphicon {

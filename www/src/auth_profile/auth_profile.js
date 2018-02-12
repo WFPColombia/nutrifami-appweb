@@ -1,67 +1,59 @@
-/*global angular*/
-nf2.controller('PerfilController', function($scope, $anchorScroll, $uibModal, $route, $timeout, PerfilService, bsLoadingOverlayService, UsuarioService) {
-    'use strict';
+nf2.controller('AuthProfileCtrl', function($scope, $anchorScroll, $timeout, UserService) {
 
     $anchorScroll();
 
-    /* Overloading*/
-    bsLoadingOverlayService.start();
-    /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
-    $scope.$on('$viewContentLoaded', function() {
-        bsLoadingOverlayService.stop();
-    });
-
-    $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
-    $scope.usuarioFamilia = UsuarioService.getUsuarioFamilia();
+    $scope.user = UserService.getUser();
+    console.log($scope.user);
+    // $scope.usuarioFamilia = UserService.getUsuarioFamilia();
 
     /* Creamos un arreglo para mostrar los miembros de la familia de forma dinamica */
-
-    $scope.usuarioActivo.miembrosPorRango = [{
+    /*
+    $scope.user.miembrosPorRango = [{
         rango: '0 a 2 años',
-        cantidad: parseInt($scope.usuarioActivo.rango_0a2),
+        cantidad: parseInt($scope.user.rango_0a2),
         rango_alias: '0a2',
         open: false
     }, {
         rango: '2 a 5 años',
-        cantidad: parseInt($scope.usuarioActivo.rango_2a5),
+        cantidad: parseInt($scope.user.rango_2a5),
         rango_alias: '2a5',
         open: false
     }, {
         rango: '6 a 17 años',
-        cantidad: parseInt($scope.usuarioActivo.rango_6a17),
+        cantidad: parseInt($scope.user.rango_6a17),
         rango_alias: '6a17',
         open: false
     }, {
         rango: '18 a 60 años',
-        cantidad: parseInt($scope.usuarioActivo.rango_18a60),
+        cantidad: parseInt($scope.user.rango_18a60),
         rango_alias: '18a60',
         open: false
     }, {
         rango: '60 0 más años',
-        cantidad: parseInt($scope.usuarioActivo.rango_60mas),
+        cantidad: parseInt($scope.user.rango_60mas),
         rango_alias: '60mas',
         open: false
-    }];
+    }]; */
 
     $scope.mensajeFam = {
         message: '',
         success: true,
         estado: false
-    }
+    };
 
     $scope.porInscribir = false;
 
-    $scope.usuarioActivo.totalMiembrosPorInscribir = 0;
-    for (var i in $scope.usuarioActivo.miembrosPorRango) {
-        $scope.usuarioActivo.totalMiembrosPorInscribir = $scope.usuarioActivo.totalMiembrosPorInscribir + $scope.usuarioActivo.miembrosPorRango[i].cantidad;
+    /*$scope.user.totalMiembrosPorInscribir = 0;
+    for (var i in $scope.user.miembrosPorRango) {
+        $scope.user.totalMiembrosPorInscribir = $scope.user.totalMiembrosPorInscribir + $scope.user.miembrosPorRango[i].cantidad;
     }
 
-    $scope.usuarioActivo.totalMiembrosInscritos = $scope.usuarioFamilia.length;
+    $scope.user.totalMiembrosInscritos = $scope.usuarioFamilia.length; */
 
     $scope.actualizarInfo = function(mensajeFam) {
         $scope.mensajeFam = mensajeFam;
-        UsuarioService.setUsuarioFamilia($scope.usuarioFamilia);
-        UsuarioService.setUsuarioActivo($scope.usuarioActivo, function(response) {});
+        UserService.setUsuarioFamilia($scope.usuarioFamilia);
+        UserService.setUsuarioActivo($scope.user, function(response) {});
         $scope.porInscribir = false;
 
 
@@ -72,7 +64,7 @@ nf2.controller('PerfilController', function($scope, $anchorScroll, $uibModal, $r
 
 });
 
-nf2.directive('agregarFamiliar', function(bsLoadingOverlayService, PerfilService, UsuarioService) {
+/*nf2.directive('agregarFamiliar', function(bsLoadingOverlayService, PerfilService, UserService) {
     return {
         restrict: 'E',
         scope: {
@@ -104,11 +96,11 @@ nf2.directive('agregarFamiliar', function(bsLoadingOverlayService, PerfilService
 
                 familiar.FAM_PER_BIRTHDATE = familiar.birthdate.getFullYear() + "-" + tempMonth + "-" + familiar.birthdate.getDate();
                 familiar.FAM_PER_PARENTESCO = familiar.parentescos.selectedOption.id;
-                familiar.FAM_PER_JEFE = $scope.$parent.usuarioActivo.id;
-                familiar.FAM_PER_CODIGO = $scope.$parent.usuarioActivo.login_codigo;
-                familiar.documento_jefe = $scope.$parent.usuarioActivo.login_documento;
+                familiar.FAM_PER_JEFE = $scope.$parent.user.id;
+                familiar.FAM_PER_CODIGO = $scope.$parent.user.login_codigo;
+                familiar.documento_jefe = $scope.$parent.user.login_documento;
 
-                /* If para verificar si es usuario nuevo o miembro de la familia */
+                // If para verificar si es usuario nuevo o miembro de la familia 
                 if (typeof $scope.miembro === 'undefined') {
                     familiar.rango = false;
                     familiar.cantidad = 0;
@@ -123,15 +115,15 @@ nf2.directive('agregarFamiliar', function(bsLoadingOverlayService, PerfilService
                 PerfilService.agregarFamiliar(familiar, function(response) {
 
                     if (response.success) {
-                        /* Restarle el familiar agregado al rango */
+                        // Restarle el familiar agregado al rango 
 
                         if (familiar.rango != false) {
-                            $scope.$parent.usuarioActivo.miembrosPorRango[$scope.index].cantidad--;
-                            $scope.$parent.usuarioActivo['rango_' + familiar.rango] = familiar.cantidad;
-                            $scope.$parent.usuarioActivo.totalMiembrosPorInscribir--;
+                            $scope.$parent.user.miembrosPorRango[$scope.index].cantidad--;
+                            $scope.$parent.user['rango_' + familiar.rango] = familiar.cantidad;
+                            $scope.$parent.user.totalMiembrosPorInscribir--;
 
                         }
-                        $scope.$parent.usuarioActivo.totalMiembrosInscritos++;
+                        $scope.$parent.user.totalMiembrosInscritos++;
                         $scope.$parent.usuarioFamilia.push(familiar);
                     }
 
@@ -162,4 +154,4 @@ nf2.directive('agregarFamiliar', function(bsLoadingOverlayService, PerfilService
             };
         }
     };
-});
+}); */

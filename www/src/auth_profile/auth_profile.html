@@ -1,5 +1,4 @@
-<div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
+<div>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -8,100 +7,111 @@
                         <a class="btn btn-default" ng-href="#/editar-perfil" role="button">Editar Info<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                     </div>
                     <div class="panel-header">
-                        <img ng-src="../img/ico-{{usuarioActivo.genero=='F'? 'femenino' : 'masculino'}}.png">
+                        <img ng-src="../img/ico-{{user.genero=='F'? 'femenino' : 'masculino'}}.png">
                         <h1>Mi información</h1>
                     </div>
                     <div class="panel-body">
                         <form>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Nombres</label>
-                                    <p ng-class="usuarioActivo.nombre == undefined ? 'sin-registro' : ''">{{ usuarioActivo.nombre!=undefined ? usuarioActivo.nombre:'Nombre no ingresado'}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Apellidos</label>
-                                    <p ng-class="usuarioActivo.apellido == undefined ? 'sin-registro' : ''">{{ usuarioActivo.apellido!=undefined ? usuarioActivo.apellido: 'Apellido no ingresado'}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Documento de Identidad</label>
-                                    <p ng-class="usuarioActivo.login_documento == undefined ? 'sin-registro' : ''">{{ usuarioActivo.login_documento!=undefined ? usuarioActivo.login_documento: 'Documento no ingresado'}}</p>
+                                    <label>Username</label>
+                                    <p ng-class="!user.username ? 'sin-registro' : ''">{{ user.username ? user.username: 'Username no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Correo electrónico</label>
-                                    <p ng-class="usuarioActivo.email == undefined ? 'sin-registro' : ''">{{ usuarioActivo.email!=undefined ? usuarioActivo.email: 'Documento no ingresado'}}</p>
+                                    <p ng-class="!user.email ? 'sin-registro' : ''">{{ user.email ? user.email: 'Documento no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Dirección</label>
-                                    <p ng-class="usuarioActivo.direccion == undefined ? 'sin-registro' : ''">{{ usuarioActivo.direccion!=undefined ? usuarioActivo.direccion: 'Direccion no ingresada'}}</p>
+                                    <label>Nombres</label>
+                                    <p ng-class="!user.first_name ? 'sin-registro' : ''">{{ user.first_name ? user.first_name:'Nombre no ingresado'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Apellidos</label>
+                                    <p ng-class="!user.last_name ? 'sin-registro' : ''">{{ user.last_name ? user.last_name: 'Apellido no ingresado'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Tipo de Documento de Identidad</label>
+                                    <p ng-class="!user.tipo_documento ? 'sin-registro' : ''">{{ user.tipo_documento ? user.tipo_documento: 'Tipo de documento no ingresado'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Documento de Identidad</label>
+                                    <p ng-class="!user.documento ? 'sin-registro' : ''">{{ user.documento ? user.documento: 'Documento no ingresado'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Teléfono Móvil</label>
+                                    <p ng-class="!user.movil ? 'sin-registro' : ''">{{ user.movil ? user.movil: 'Teléfono móvil no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Teléfono</label>
-                                    <p ng-class="usuarioActivo.telefono == undefined ? 'sin-registro' : ''">{{ usuarioActivo.telefono!=undefined ? usuarioActivo.telefono: 'Teléfono no ingresado'}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Genero</label>
-                                    <p ng-class="usuarioActivo.genero == undefined ? 'sin-registro' : ''">{{ usuarioActivo.genero != undefined ? (usuarioActivo.genero == 'F' ? 'Femenino' : 'Masculino') : 'Genero no ingresado'}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Etnia</label>
-                                    <p ng-class="usuarioActivo.etnia == undefined ? 'sin-registro' : ''">{{ usuarioActivo.etnia!=undefined ? usuarioActivo.etnia: 'Etina no ingresada'}}</p>
+                                    <p ng-class="!user.telefono ? 'sin-registro' : ''">{{ user.telefono ? user.telefono: 'Teléfono no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Fecha de Nacimiento</label>
-                                    <p ng-class="usuarioActivo.birthdate == undefined ? 'sin-registro' : ''">{{ usuarioActivo.birthdate!=undefined ? usuarioActivo.birthdate: 'Fecha no ingresada'}}</p>
+                                    <p ng-class="!user.fecha_nacimiento ? 'sin-registro' : ''">{{ user.fecha_nacimiento ? user.fecha_nacimiento: 'Fecha no ingresada'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Edad</label>
-                                    <p ng-class="usuarioActivo.edad == undefined ? 'sin-registro' : ''">{{ usuarioActivo.edad!=undefined ? usuarioActivo.edad: 'Edad no ingresada'}}</p>
+                                    <label>Genero</label>
+                                    <p ng-class="!user.genero ? 'sin-registro' : ''">{{ user.genero ? (user.genero == 'F' ? 'Femenino' : 'Masculino') : 'Genero no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Pais
-                                    </label>
-                                    <p ng-class="usuarioActivo.pais == undefined ? 'sin-registro' : ''">{{ usuarioActivo.pais!=undefined ? usuarioActivo.pais: 'País no ingresado'}}</p>
+                                    <label>Pais</label>
+                                    <p ng-class="!user.pais ? 'sin-registro' : ''">{{ user.pais ? user.pais: 'País no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Departamento</label>
-                                    <p ng-class="usuarioActivo.departamento == undefined ? 'sin-registro' : ''">{{ usuarioActivo.departamento!=undefined ? usuarioActivo.departamento: 'Departamento no ingresado'}}</p>
+                                    <p ng-class="!user.departamento ? 'sin-registro' : ''">{{ user.departamento ? user.departamento: 'Departamento no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Municipio</label>
-                                    <p ng-class="usuarioActivo.municipio == undefined ? 'sin-registro' : ''">{{ usuarioActivo.municipio!=undefined ? usuarioActivo.municipio: 'Municipio no ingresado'}}</p>
+                                    <p ng-class="!user.municipio ? 'sin-registro' : ''">{{ user.municipio ? user.municipio: 'Municipio no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Comunidad</label>
-                                    <p ng-class="usuarioActivo.comunidad == undefined ? 'sin-registro' : ''">{{ usuarioActivo.comunidad!=undefined ? usuarioActivo.comunidad: 'Comunidad no ingresada'}}</p>
+                                    <p ng-class="!user.comunidad ? 'sin-registro' : ''">{{ user.comunidad ? user.comunidad: 'Comunidad no ingresada'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Zona</label>
-                                    <p ng-class="usuarioActivo.zona == undefined ? 'sin-registro' : ''">{{ usuarioActivo.zona!=undefined ? usuarioActivo.zona: 'Zona no ingresada'}}</p>
+                                    <p ng-class="!user.zona ? 'sin-registro' : ''">{{ user.zona ? user.zona: 'Zona no ingresada'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Etnia</label>
+                                    <p ng-class="!user.etnia ? 'sin-registro' : ''">{{ user.etnia ? user.etnia: 'Etina no ingresada'}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Dirección</label>
+                                    <p ng-class="!user.direccion ? 'sin-registro' : ''">{{ user.direccion ? user.direccion: 'Direccion no ingresada'}}</p>
                                 </div>
                             </div>
                         </form>
@@ -109,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!--<div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-perfil">
                     <div class="boton-flotante">
@@ -118,7 +128,7 @@
                     <div class="panel-header">
                         <img ng-src="../img/ico-familia.png">
                         <h1>Mi familia</h1>
-                        <h3>{{ usuarioActivo.totalMiembrosPorInscribir}} familiares por inscribir</h3>
+                        <h3>{{ user.totalMiembrosPorInscribir}} familiares por inscribir</h3>
                     </div>
                     <div class="panel-body">
                         <div ng-show="mensajeFam.estado" class="alert" ng-class=" mensajeFam.success ? 'alert-success': 'alert-danger'" role="alert">{{mensajeFam.message}}</div>
@@ -133,7 +143,7 @@
                                     <div uib-accordion-group class="panel-first" is-open="porInscribir">
                                         <agregar-familiar></agregar-familiar>
                                     </div>
-                                    <div uib-accordion-group class="panel-default" ng-repeat="miembro in usuarioActivo.miembrosPorRango track by $index" ng-hide="miembro.cantidad === 0" is-open="miembro.open">
+                                    <div uib-accordion-group class="panel-default" ng-repeat="miembro in user.miembrosPorRango track by $index" ng-hide="miembro.cantidad === 0" is-open="miembro.open">
                                         <uib-accordion-heading>
                                             <div class="col-md-4 col-sm-4 col-xs-4">{{miembro.cantidad}}</div>
                                             <div class="col-md-4 col-sm-4 col-xs-4">{{miembro.rango}}</div>
@@ -147,7 +157,7 @@
                     </div>
                     <div class="panel-header">
                         <h1>Mi familia</h1>
-                        <h3>{{ usuarioActivo.totalMiembrosInscritos}} familiares inscritos</h3>
+                        <h3>{{ user.totalMiembrosInscritos}} familiares inscritos</h3>
                     </div>
                     <div class="panel-body">
                         <div class="col-md-12">
@@ -157,11 +167,11 @@
                                     <div class="col-md-3 col-sm-3 col-xs-3">Parentesco</div>
                                     <div class="col-md-3 col-sm-3 col-xs-3">Documento</div>
                                     <div class="col-md-3 col-sm-3 col-xs-3">Nacimiento</div>
-                                    <!--<div class="col-md-2 col-sm-2 col-xs-2">Editar info</div> -->
+                                    <!--<div class="col-md-2 col-sm-2 col-xs-2">Editar info</div> - ->
                                 </div>
                                 <uib-accordion close-others="true">
                                     <div uib-accordion-group class="panel-first" is-open="status.open">
-                                        <!--<agregar-familiar></agregar-familiar>-->
+                                        <!--<agregar-familiar></agregar-familiar>- ->
                                     </div>
                                     <div uib-accordion-group class="panel-default" ng-repeat="familiar in usuarioFamilia track by $index" ng-hide="miembro.cantidad === 0">
                                         <uib-accordion-heading>
@@ -169,9 +179,9 @@
                                             <div class="col-md-3 col-sm-3 col-xs-3">{{familiar.FAM_PER_PARENTESCO}}</div>
                                             <div class="col-md-3 col-sm-3 col-xs-3">{{familiar.FAM_PER_DOCUMENTO}}</div>
                                             <div class="col-md-3 col-sm-3 col-xs-3">{{familiar.FAM_PER_BIRTHDATE}}</div>
-                                            <!--<div class="editar-miembro col-md-2 col-sm-2 col-xs-2"><a href="#">Editar</a></div>-->
+                                            <!--<div class="editar-miembro col-md-2 col-sm-2 col-xs-2"><a href="#">Editar</a></div>- ->
                                         </uib-accordion-heading>
-                                        <!--<agregar-familiar miembro="familiar" index="{{$index}}"></agregar-familiar>-->
+                                        <!--<agregar-familiar miembro="familiar" index="{{$index}}"></agregar-familiar>- ->
                                     </div>
                                 </uib-accordion>
                             </div>
@@ -179,7 +189,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
-    <footer ng-include="'views/template/footer.tpl.html'"></footer>
 </div>

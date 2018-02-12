@@ -106,8 +106,6 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
         controller: 'AuthHomeCtrl'
     });
 
-
-
     $stateProvider.state('migration', {
         url: '/auth/migration',
         cache: false,
@@ -184,7 +182,17 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
         }
     });
     
-    
+    $stateProvider.state('nf.auth_profile', {
+        url: '/profile',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/auth_profile/auth_profile.html',
+                controller: 'AuthProfileCtrl'
+            }
+        }
+    });
+       
 
     /*$stateProvider.state('registro2', {
      url: '/auth/registro/2',
@@ -195,43 +203,6 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
 
 
     /*
-     $routeProvider.when('/terminos-y-condiciones', {
-     templateUrl: 'views/terminos.html',
-     hideMenus: true
-     });
-     
-     $routeProvider.when('/login', {
-     controller: 'LoginController',
-     templateUrl: 'views/login.tpl.html',
-     hideMenus: true
-     });
-     
-     
-     
-     $routeProvider.when('/capacitacion', {
-     controller: 'CapacitacionController',
-     templateUrl: 'views/capacitacion.html'
-     });
-     
-     $routeProvider.when('/m/:modulo', {
-     controller: 'ModuloController',
-     templateUrl: 'views/modulo.html'
-     });
-     
-     $routeProvider.when('/m/:modulo/:leccion/:unidad', {
-     controller: 'UnidadController',
-     templateUrl: 'views/unidad.html'
-     });
-     
-     $routeProvider.when('/m/:modulo/:leccion/:unidad/leccion-terminada/', {
-     controller: 'LeccionTerminadaController',
-     templateUrl: 'views/leccionTerminada.html'
-     });
-     
-     $routeProvider.when('/perfil', {
-     controller: 'PerfilController',
-     templateUrl: 'views/perfil.html'
-     });
      
      $routeProvider.when('/editar-perfil', {
      controller: 'EditarPerfilController',
