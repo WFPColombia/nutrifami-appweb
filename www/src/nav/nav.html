@@ -22,7 +22,7 @@
                     <li ng-class=" progreso ? 'active' : ''"><a ng-href="#/mi-progreso" tooltip-placement="bottom" uib-tooltip="Aquí puede ver cuánto ha avanzado con Nutrifami y descargar los diplomas obtenidos en cada módulo.">Progreso</a></li>
                     <li ng-class=" tips ? 'active' : ''"><a ng-href="#/tips" tooltip-placement="bottom" uib-tooltip="En esta sección encontrará consejos y recomendaciones sobre nutrición, alimentación y hábitos saludables.">Consejos Saludables</a></li>
                     <li ng-class=" nutricompra ? 'active' : ''"><a ng-href="#/nutricompra" tooltip-placement="bottom" uib-tooltip="Divertido juego para que ponga a prueba todas sus habilidades, para elegir adecuadamente los alimentos para su hogar.">Nutricompra</a></li>
-                    <li ng-class=" sobre ? 'active' : ''"><a ng-href="#/sobre-nutrifami">Sobre Nutrifami</a></li>
+                    <li ng-class=" sobre ? 'active' : ''"><a ui-sref="nf.about">Sobre Nutrifami</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a ui-sref="nf.auth_profile">{{ user.first_name}} <i ng-show="user.municipio == null || user.municipio == ''" class="glyphicon glyphicon-exclamation-sign" tooltip-placement="bottom" uib-tooltip="Hay algunos campos de su perfil que faltan por completar. !Haga clic aquí para completar toda la información!"></i></a></li>
@@ -42,8 +42,12 @@
 
 <div ui-view="content"></div>
 
-<div class="row text-center">
-    <div class="col-md-12">
-        <a href="#/sobre-nutrifami" title="Más sobre Nutrifami"><img src="../img/wfp_blue.png"></a>
+<footer>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <a ui-sref="nf.about" title="Más sobre Nutrifami"><img src="../img/wfp_blue.png"></a>
+            </div>
+        </div>
     </div>
-</div>
+</footer>

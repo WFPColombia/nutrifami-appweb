@@ -80,7 +80,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
 
     //$authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
     //$authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
-    
+
     nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
 
     // Configure Facebook login.
@@ -137,7 +137,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.cap_capacitation', {
         url: '/:capacitation',
         cache: false,
@@ -148,7 +148,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.cap_module', {
         url: '/:capacitation/:module',
         cache: false,
@@ -159,7 +159,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.cap_unit', {
         url: '/:capacitation/:module/:lesson/:unit',
         cache: false,
@@ -170,7 +170,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.cap_unit_end', {
         url: '/:capacitation/:module/:lesson/:unit/end',
         cache: false,
@@ -181,7 +181,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.auth_profile', {
         url: '/profile',
         cache: false,
@@ -192,7 +192,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.auth_profile_edit', {
         url: '/profile/edit',
         cache: false,
@@ -203,7 +203,17 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
+    $stateProvider.state('nf.about', {
+        url: '/about',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/about/about.html',
+            }
+        }
+    });
+
     /*$stateProvider.state('registro2', {
      url: '/auth/registro/2',
      cache: false,
