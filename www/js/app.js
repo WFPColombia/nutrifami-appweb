@@ -192,8 +192,18 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-       
-
+    
+    $stateProvider.state('nf.auth_profile_edit', {
+        url: '/profile/edit',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/auth_profile_edit/auth_profile_edit.html',
+                controller: 'AuthProfileEditCtrl'
+            }
+        }
+    });
+    
     /*$stateProvider.state('registro2', {
      url: '/auth/registro/2',
      cache: false,
