@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row forms bs-loading-container" bs-loading-overlay>
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
                 <div class="block">
                     <h4>Inicia sesión con Usuario y Contraseña</h4>
                     <form name="form"  ng-submit="login()" role="form">
@@ -31,11 +31,11 @@
                         <p><a href="http://usuarios.nutrifami.org/admin/password_reset/" target="_blank">¿Ha olvidado la contraseña?</a></p>
                     </form>
                 </div>
-            </div>
-            <div class="col-md-6">
+            </div>-->
+            <div class="col-md-6 col-md-offset-3">
                 <div class="block">
                     <h4>Inicia sesión con Documento de Identidad</h4>
-                    <form name="formDocument"  ng-submit="loginDocument()" role="form">
+                    <form name="formDocument" ng-submit="loginDocument()" role="form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Documento de Identidad" autocomplete="off" ng-model="formLoginDocument.username" required>
                         </div>

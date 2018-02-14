@@ -10,7 +10,6 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
 
     console.log('run');
 
-    //$rootScope.BASE_URL = 'http://localhost:8000/';
     $rootScope.BASE_URL = 'http://usuarios.nutrifami.org/';
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
     $rootScope.ASSETPATH = "https://s3.amazonaws.com/nutrifami/training/images/";
@@ -18,7 +17,7 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
 
 
     if ($location.$$host === 'localhost') {
-        console.log('is localhost');
+        $rootScope.BASE_URL = 'http://localhost:8000/';
     }
 
     $rootScope.globals = JSON.parse(localStorage.getItem('globals')) || {};

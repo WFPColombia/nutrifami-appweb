@@ -38,7 +38,6 @@ nf2.controller('AuthHomeCtrl', function ($scope, $state, bsLoadingOverlayService
         console.log('userLoggedInwithDocument');
         bsLoadingOverlayService.stop();
         $state.go('migration');
-
     });
 
 

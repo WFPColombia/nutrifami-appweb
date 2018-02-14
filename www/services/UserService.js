@@ -126,6 +126,17 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
                     service.failedAuth({message: 'Los datos ingresados no son correctos, inténtelo nuevamente'});
                 });
     };
+    
+    service.checkDocument = function (document) {
+        // comprobar si usuario existe en nfusuarios;
+        // si existe ir a pedir password
+        // si no existe comprobar usuario en base de datos antigua
+        // Si tampoco existe devolver error de usuario inexistente
+        
+        
+        
+        
+    };
 
     /**
      * @description Cierra sesión de $auth, elimina el usuario de la cache y lanza evento UserLoogedOut de Ionic
