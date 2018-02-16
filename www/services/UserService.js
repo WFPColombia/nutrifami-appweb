@@ -51,6 +51,8 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
 
     /**
      * 
+     * @param {type} user
+     * @returns {undefined}
      * @param {type} username
      * @param {type} email
      * @param {type} password
@@ -61,7 +63,8 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
         $auth.signup(user)
                 .then(function (response) {
                     console.log(response);
-                    service.login(user.username, user.password);
+                    localStorage.setItem("username", JSON.stringify(user.username));
+                    service.login(user.password);
                 })
                 .catch(function (response) {
                     console.log(response);
@@ -97,6 +100,19 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
             }
         });
     };
+    
+    service.checkUser = function (username){
+        $http({
+            method: 'GET',
+            url: $rootScope.BASE_URL + 'api/check-user/' + username
+        }).then(function (response) {
+            localStorage.setItem("username", JSON.stringify(username));
+            $rootScope.$broadcast('userChecked');
+        }, function (error) {
+            service.failedAuth({message: 'El documento o usuario no existe'});
+        });
+        
+    };
 
     /**
      * 
@@ -104,7 +120,8 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
      * @param {type} password
      * @returns {undefined}
      */
-    service.login = function (username, password) {
+    service.login = function (password) {
+        var username = JSON.parse(localStorage.getItem('username'));
         var user = {
             username: username,
             password: password
@@ -127,17 +144,6 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
                 });
     };
     
-    service.checkDocument = function (document) {
-        // comprobar si usuario existe en nfusuarios;
-        // si existe ir a pedir password
-        // si no existe comprobar usuario en base de datos antigua
-        // Si tampoco existe devolver error de usuario inexistente
-        
-        
-        
-        
-    };
-
     /**
      * @description Cierra sesión de $auth, elimina el usuario de la cache y lanza evento UserLoogedOut de Ionic
      * @returns {undefined}
@@ -153,6 +159,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
         localStorage.removeItem("misCompras");
         localStorage.removeItem("staff");
         localStorage.removeItem("current_trainee");
+        localStorage.removeItem("username");
         $rootScope.$emit('userLoggedOut');
     };
 

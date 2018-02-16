@@ -11,33 +11,13 @@ nf2.controller('AuthHomeCtrl', function ($scope, $state, bsLoadingOverlayService
     $scope.login = function () {
         $scope.error = '';
         bsLoadingOverlayService.start();
-        UserService.login($scope.formLogin.username, $scope.formLogin.password);
+        UserService.checkUser($scope.formLogin.username);
     };
 
-    $scope.loginDocument = function () {
-        $scope.error = '';
-        bsLoadingOverlayService.start();
-        UserService.loginCedula($scope.formLoginDocument.username, 'no-pass');
-    };
-
-    $scope.$on('userLoggedIn', function (event, data) {
-        console.log("userLoggedIn Login");
+    $scope.$on('userChecked', function (event, data) {
+        console.log('userChecked');
         bsLoadingOverlayService.stop();
-        $state.go('nf.cap_home');
-
-    });
-
-    // will fire in case authentication failed
-    $scope.$on('userFailedLogin', function (event, response) {
-        console.log('userFailedLogin');
-        bsLoadingOverlayService.stop();
-        $scope.error = response.message;
-    });
-
-    $scope.$on('userLoggedInwithDocument', function (event, data) {
-        console.log('userLoggedInwithDocument');
-        bsLoadingOverlayService.stop();
-        $state.go('migration');
+        $state.go('password');
     });
 
 

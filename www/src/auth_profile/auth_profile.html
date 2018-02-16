@@ -14,14 +14,14 @@
                         <form>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Username</label>
+                                    <label>Documento</label>
                                     <p ng-class="!user.username ? 'sin-registro' : ''">{{ user.username ? user.username: 'Username no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Correo electrónico</label>
-                                    <p ng-class="!user.email ? 'sin-registro' : ''">{{ user.email ? user.email: 'Documento no ingresado'}}</p>
+                                    <label>Tipo de Documento de Identidad</label>
+                                    <p ng-class="!user.tipo_documento ? 'sin-registro' : ''">{{ user.tipo_documento ? user.tipo_documento: 'Tipo de documento no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
@@ -38,14 +38,8 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Tipo de Documento de Identidad</label>
-                                    <p ng-class="!user.tipo_documento ? 'sin-registro' : ''">{{ user.tipo_documento ? user.tipo_documento: 'Tipo de documento no ingresado'}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Documento de Identidad</label>
-                                    <p ng-class="!user.documento ? 'sin-registro' : ''">{{ user.documento ? user.documento: 'Documento no ingresado'}}</p>
+                                    <label>Correo electrónico</label>
+                                    <p ng-class="!user.email ? 'sin-registro' : ''">{{ user.email ? user.email: 'Documento no ingresado'}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">

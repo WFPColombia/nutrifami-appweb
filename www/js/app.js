@@ -15,8 +15,8 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
     $rootScope.ASSETPATH = "https://s3.amazonaws.com/nutrifami/training/images/";
     $rootScope.ASSETPATH_AUDIOS = "https://s3.amazonaws.com/nutrifami/training/audios/";
 
-
-    if ($location.$$host === 'localhost') {
+    if ($location.$$host === 'localhost' || $location.$$host === '127.0.0.1') {
+        console.log('is local!!');
         $rootScope.BASE_URL = 'http://localhost:8000/';
     }
 
@@ -77,11 +77,11 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     $authProvider.loginUrl = 'http://usuarios.nutrifami.org/api/token-auth/';
     $authProvider.signupUrl = 'http://usuarios.nutrifami.org/api/create-user/';
 
-    //$authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
-    //$authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
+    $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
+    $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
 
     nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
-
+    
     // Configure Facebook login.
     $authProvider.facebook(angular.extend({}, commonConfig, {
         clientId: '126883721233688',
@@ -105,11 +105,11 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
         controller: 'AuthHomeCtrl'
     });
 
-    $stateProvider.state('migration', {
-        url: '/auth/migration',
+    $stateProvider.state('password', {
+        url: '/auth/password',
         cache: false,
-        templateUrl: 'src/auth_migration/auth_migration.html',
-        controller: 'AuthMigrationCtrl'
+        templateUrl: 'src/auth_password/auth_password.html',
+        controller: 'AuthPasswordCtrl'
     });
 
     $stateProvider.state('auth_signup', {

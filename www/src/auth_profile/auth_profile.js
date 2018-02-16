@@ -60,7 +60,7 @@ nf2.controller('AuthProfileCtrl', function($scope, $anchorScroll, $timeout, User
         $timeout(function() {
             $scope.mensajeFam.estado = false;
         }, 10000);
-    }
+    };
 
 });
 

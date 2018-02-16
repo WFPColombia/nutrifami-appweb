@@ -15,7 +15,7 @@ nf2.controller('AuthSignupCtrl', function ($scope, $state, bsLoadingOverlayServi
             bsLoadingOverlayService.start();
             var user = {
                 username: $scope.formSignup.username,
-                email: $scope.formSignup.email,
+                email: '',
                 password: $scope.formSignup.password,
                 first_name: '',
                 last_name: '',
@@ -33,7 +33,7 @@ nf2.controller('AuthSignupCtrl', function ($scope, $state, bsLoadingOverlayServi
     $scope.$on('userLoggedIn', function (event, data) {
         console.log("userLoggedIn Registro");
         bsLoadingOverlayService.stop();
-        $state.go('home');
+        $state.go('nf.cap_home');
 
     });
 
