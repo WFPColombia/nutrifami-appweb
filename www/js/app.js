@@ -77,8 +77,8 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     $authProvider.loginUrl = 'http://usuarios.nutrifami.org/api/token-auth/';
     $authProvider.signupUrl = 'http://usuarios.nutrifami.org/api/create-user/';
 
-    $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
-    $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
+    // $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
+    // $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
 
     nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
     
