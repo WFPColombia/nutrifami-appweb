@@ -1,47 +1,93 @@
-nf2.factory('CapacitationService', function() {
+nf2.factory('CapacitationService', function ($http) {
     var service = {};
 
-    service.initClient = function(callback) {
-        
-        if (typeof nutrifami.training.cap_modulos['5'] == 'undefined') {
-            var data = JSON.parse(localStorage.getItem('capacitacion'));
-            nutrifami.training.cap_capacitacionesId = data['serv_capacitacionesId'];
-            nutrifami.training.cap_capacitaciones = data['serv_capacitaciones'];
-            nutrifami.training.cap_modulos = data['serv_modulos'];
-            nutrifami.training.cap_lecciones = data['serv_lecciones'];
-            nutrifami.training.cap_unidadesinformacion = data['serv_unidades'];
-            nutrifami.training.cap_unidadestips = data["serv_tips"];
-            
-            //console.log(nutrifami.training.cap_capacitaciones);
+    service.capacitation = {};
+
+    service.initClient = function () {
+        console.log('initClient');
+        service.capacitation = JSON.parse(localStorage.getItem('capacitacion'));
+        if (!service.capacitation) {
+            console.log('hay que descargar la capacitacion');
+            $http.get('http://www.nutrifami.org/js/json.php?file=capacitacion.JSON').then(function (response) {
+                localStorage.setItem("capacitacion", JSON.stringify(response.data));
+                service.capacitation = response.data;
+            });
         }
     };
 
-    service.getCapacitacionesId = function() {
-        //this.initClient();
-        return nutrifami.training.getCapacitacionesId();
 
+    /* Capacitations */
+    service.getPublicCapacitations = function () {
+        var capacitations = service.capacitation.serv_capacitaciones;
+        var publicCapacitations = {};
+        
+        
+        for (var c in capacitations) {
+            if (capacitations[c].activo === '1' && capacitations[c].status.nombre === 'publico') {
+                publicCapacitations[capacitations[c].id] = capacitations[c];
+            }
+        }
+        return publicCapacitations;
     };
-    
-    service.getCapacitacionesActivas = function(){
-        //this.initClient();
+
+    service.getCapacitationsIds = function () {
+        if (typeof service.capacitation.serv_capacitacionesId !== 'undefined') {
+            return service.capacitation.serv_capacitacionesId;
+        } else {
+            return false;
+        }
+    };
+
+    service.getCapacitation = function (cid) {
+        cid = cid || 3;
+        if (typeof service.capacitation.serv_capacitaciones[cid] !== 'undefined') {
+            return service.capacitation.serv_capacitaciones[cid];
+        } else {
+            return false;
+        }
+    };
+
+    service.getCapacitationsActives = function () {
         var capacitaciones = [];
-        var cids = nutrifami.training.getCapacitacionesId();
-        console.log(cids);
+        var cids = service.getCapacitationsIds();
         for (var cid in cids) {
-            var tempCapacitacion = nutrifami.training.getCapacitacion(cids[cid]);
-            if (tempCapacitacion.activo == '1') {
+            var tempCapacitacion = service.getCapacitation(cids[cid]);
+            if (tempCapacitacion.activo === '1') {
                 capacitaciones.push(tempCapacitacion);
             }
         }
         return capacitaciones;
     };
 
-    service.getModulosId = function(cid) {
-        //this.initClient();
-        return nutrifami.training.getModulosId(cid);
+    /* End - Capacitations*/
 
+    /* Modules */
+
+    service.getPublicModules = function () {
+        var capacitations = service.getPublicCapacitations();
+        var public_modules = {};
+        for (var c in capacitations){
+            for (var m in capacitations[c].modulos){
+                public_modules[capacitations[c].modulos[m]] = service.getModule(capacitations[c].modulos[m]);
+            }
+        }
+        return public_modules;
     };
-    service.getModulosActivos = function(capacitacion) {
+
+    /**
+     * 
+     * @param {type} cid
+     * @returns {JSON@call;parse.serv_capacitaciones.modulos|service.capacitation.serv_capacitaciones.modulos|response.data.serv_capacitaciones.modulos|Boolean}
+     */
+    service.getModulesIds = function (cid) {
+        cid = cid || 3;
+        if (typeof service.capacitation.serv_capacitaciones[cid].modulos !== 'undefined') {
+            return service.capacitation.serv_capacitaciones[cid].modulos;
+        } else {
+            return false;
+        }
+    };
+    service.getModulesActives = function (capacitacion) {
 
         //this.initClient();
 
@@ -84,18 +130,39 @@ nf2.factory('CapacitationService', function() {
 
     };
 
-    service.getModulo = function(modulo) {
-        //this.initClient();
-        return nutrifami.training.getModulo(modulo);
+    service.getModule = function (mid) {
+        if (typeof service.capacitation.serv_modulos[mid] !== 'undefined') {
+            return service.capacitation.serv_modulos[mid];
+        } else {
+            return false;
+        }
     };
-    
-    service.getLessonsId = function(mid) {
-        //this.initClient();
-        return nutrifami.training.getLeccionesId(mid);
+
+    /* End - Modules*/
+
+    /* Lessons */
+
+    service.getPublicLessons = function () {
+        var modules = service.getPublicModules();
+        var public_lessons = {};
+        for (var m in modules){
+            for (var l in modules[m].lecciones){
+                public_lessons[modules[m].lecciones[l]] = service.getLesson(modules[m].lecciones[l]);
+            }
+        }
+        return public_lessons;
+    };
+
+    service.getLessonsIds = function (mid) {
+        if (typeof service.capacitation.serv_modulos[mid].lecciones !== 'undefined') {
+            return service.capacitation.serv_modulos[mid].lecciones;
+        } else {
+            return false;
+        }
 
     };
 
-    service.getLeccionesActivas = function(modulo) {
+    service.getLessonsActives = function (modulo) {
         //this.initClient();
         var lecciones = [];
         lids = nutrifami.training.getLeccionesId(modulo);
@@ -105,35 +172,61 @@ nf2.factory('CapacitationService', function() {
             if (tempLeccion.activo == 1) {
                 lecciones.push(tempLeccion);
             }
-
         }
 
         return lecciones;
 
     };
 
-    service.getLeccion = function(leccion) {
-        this.initClient();
-        return nutrifami.training.getLeccion(leccion);
+    service.getLesson = function (lid) {
+        if (typeof service.capacitation.serv_lecciones[lid] !== 'undefined') {
+            return service.capacitation.serv_lecciones[lid];
+        } else {
+            return false;
+        }
     };
 
-    service.getUnidadesActivas = function(leccion) {
+    /* End - Lessons */
+
+    /* Units */
+
+    service.getUnitsIds = function (lid) {
+        if (typeof service.capacitation.serv_lecciones[lid].unidades !== 'undefined') {
+            return service.capacitation.serv_lecciones[lid].unidades;
+        } else {
+            return false;
+        }
+
+    };
+
+    service.getUnitsActives = function (lid) {
         this.initClient();
-        var uids = nutrifami.training.getUnidadesId(leccion);
+        var uids = service.getUnitsIds(lid);
         var temp = [];
         for (var i in uids) {
-            if (nutrifami.training.getUnidad(uids[i]).activo == 1) {
-                temp.push(nutrifami.training.getUnidad(uids[i]));
+            if (service.getUnit(uids[i]).activo === '1') {
+                temp.push(service.getUnit(uids[i]));
             }
         }
         return temp;
 
     };
 
-    service.getUnidad = function(leccion, rp_unidad) {
+    service.getUnit = function (uid) {
+        if (typeof service.capacitation.serv_unidades[uid] !== 'undefined') {
+            return service.capacitation.serv_unidades[uid];
+        } else {
+            return false;
+        }
+
+    };
+
+    service.getUnitFromOrder = function (lid, rp_unidad) {
         //this.initClient();
-        unidades = this.getUnidadesActivas(leccion);
+        unidades = service.getUnitsActives(lid);
         return unidades[rp_unidad - 1];
     };
     return service;
+
+    /* End - Units */
 });

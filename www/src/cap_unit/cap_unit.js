@@ -1,14 +1,13 @@
 /*global angular*/
 nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams, bsLoadingOverlayService, $anchorScroll, $timeout, $uibModal, ngAudio, UserService, CapacitationService) {
     $anchorScroll();
-    //nutrifami.training.initClient();
-
+    
     $scope.textoBoton = 'Calificar';
     $scope.usuarioActivo = UserService.getUser();
     $scope.estadoUnidad = 'espera';
-    $scope.unidad = CapacitationService.getUnidad($stateParams.lesson, $stateParams.unit);
+    $scope.unidad = CapacitationService.getUnitFromOrder($stateParams.lesson, $stateParams.unit);
     $scope.unidad.numeroUnidad = $stateParams.unit;
-    $scope.unidad.totalUnidades = CapacitationService.getUnidadesActivas($stateParams.lesson).length;
+    $scope.unidad.totalUnidades = CapacitationService.getUnitsActives($stateParams.lesson).length;
 
     var tempOpciones = []; //Arreglo para almacenar las opciones
 

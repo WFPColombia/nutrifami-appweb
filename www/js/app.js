@@ -6,9 +6,11 @@ var dependencies = ['ui.router', 'satellizer', 'ngCookies', 'ngAudio', 'ngTouch'
 
 var nf2 = angular.module('nf2App', dependencies);
 
-nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
+nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationService) {
 
     console.log('run');
+    
+    
 
     $rootScope.BASE_URL = 'http://usuarios.nutrifami.org/';
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
@@ -37,10 +39,9 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService) {
     bsLoadingOverlayService.setGlobalConfig({
         templateUrl: 'template/loading-overlay.html'
     });
-
-
-
-
+    
+    CapacitationService.initClient();    
+    
     /*
      
      nutrifami.getSessionId();
@@ -77,10 +78,8 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     $authProvider.loginUrl = 'http://usuarios.nutrifami.org/api/token-auth/';
     $authProvider.signupUrl = 'http://usuarios.nutrifami.org/api/create-user/';
 
-    // $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
-    // $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
-
-    nutrifami.training.initClient(); // Ahora se carga cuando se hace login y se debe buscar la info guardada en el localstorage
+    //$authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
+    //$authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
     
     // Configure Facebook login.
     $authProvider.facebook(angular.extend({}, commonConfig, {

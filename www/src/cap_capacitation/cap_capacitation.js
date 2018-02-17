@@ -1,7 +1,7 @@
 /*global angular*/
 nf2.controller('CapCapacitationCtrl', function ($scope, $stateParams, UserService, CapacitationService) {
         CapacitationService.initClient();
-        $scope.mids = CapacitationService.getModulosId($stateParams.capacitation);
+        $scope.mids = CapacitationService.getModulesIds($stateParams.capacitation);
         $scope.user = UserService.getUser();
 
         $scope.modulos = [];
@@ -9,7 +9,7 @@ nf2.controller('CapCapacitationCtrl', function ($scope, $stateParams, UserServic
 
         //Creamos un arreglo para poder recorerlo y mostrarlo a traves de directivas 
         for (var mid in $scope.mids) {
-            var tempModulo = CapacitationService.getModulo($scope.mids[mid]);
+            var tempModulo = CapacitationService.getModule($scope.mids[mid]);
             tempModulo.disponible = true;
             if (tempModulo.activo == '1') {
                 tempModulo.activo = true;

@@ -4,8 +4,8 @@ nf2.controller('CapUnitEndCtrl', function ($scope, $anchorScroll, $state, $state
     $anchorScroll();
 
     $scope.user = UserService.getUser();
-    $scope.leccion = CapacitationService.getLeccion($stateParams.lesson);
-    $scope.modulo = CapacitationService.getModulo($stateParams.module);
+    $scope.leccion = CapacitationService.getLesson($stateParams.lesson);
+    $scope.modulo = CapacitationService.getModule($stateParams.module);
     var avanceModulo = UserService.getAvanceModulo($stateParams.module);
 
     $scope.continuar = function () {

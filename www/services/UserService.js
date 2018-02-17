@@ -1,4 +1,4 @@
-nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
+nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationService) {
 
     var service = {};
 
@@ -337,9 +337,9 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
     service.crearGestorAvance = function () {
 
         console.log("Crear gestor descarga");
-
+        
         var usuarioAvance = {};
-        usuarioAvance['totalUnidades'] = Object.keys(nutrifami.training.cap_lecciones).length;
+        usuarioAvance['totalUnidades'] = Object.keys(CapacitationService.getPublicLessons()).length;
         usuarioAvance['medallas'] = 0;
         usuarioAvance['capacitacionesTerminadas'] = 0;
         usuarioAvance['modulosTerminados'] = 0;
@@ -349,13 +349,13 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
         usuarioAvance['capacitaciones'] = {};
         usuarioAvance['modulos'] = {};
         usuarioAvance['lecciones'] = {};
-
-        for (var i in nutrifami.training.cap_capacitaciones) {
+        
+        for (var i in CapacitationService.getPublicCapacitations()) {
             if (i !== 'completo') {
                 var tempObject = {};
                 tempObject[i] = {
                     completo: false,
-                    totalModulos: Object.keys(nutrifami.training.getModulosId(i)).length,
+                    totalModulos: Object.keys(CapacitationService.getModulesIds(i)).length,
                     completados: 0,
                     porcentaje: 0
                 };
@@ -363,18 +363,18 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
             }
         }
 
-        for (var i in nutrifami.training.cap_modulos) {
+        for (var i in CapacitationService.getPublicModules()) {
             var tempObject = {};
             tempObject[i] = {
                 completo: false,
-                totalLecciones: Object.keys(nutrifami.training.getLeccionesId(i)).length,
+                totalLecciones: Object.keys(CapacitationService.getLessonsIds(i)).length,
                 completados: 0,
                 porcentaje: 0
             };
             $.extend(usuarioAvance.modulos, tempObject);
         }
 
-        for (var i in nutrifami.training.cap_lecciones) {
+        for (var i in CapacitationService.getPublicLessons()) {
             var tempObject = {};
             tempObject[i] = false;
             $.extend(usuarioAvance.lecciones, tempObject);
@@ -434,13 +434,13 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
         var diplomas = [];
         for (var c in usuarioAvance.capacitaciones) {
             usuarioAvance['capacitaciones'][c]['completo'] = true;
-            var mids = nutrifami.training.getModulosId(c);
+            var mids = CapacitationService.getModulesIds(c);
             var completados = 0;
             for (var mid in mids) {
                 if (!usuarioAvance['modulos'][mids[mid]]['completo']) {
                     usuarioAvance['capacitaciones'][c]['completo'] = false;
                 } else {
-                    var modulo = nutrifami.training.getModulo(mids[mid]);
+                    var modulo = CapacitationService.getModule(mids[mid]);
                     diplomas.push(modulo.titulo.texto);
                     completados++;
                     modulosTerminados++;
@@ -469,7 +469,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q) {
 
         for (var m in usuarioAvance.modulos) {
             usuarioAvance['modulos'][m]['completo'] = true;
-            var lids = nutrifami.training.getLeccionesId(m);
+            var lids = CapacitationService.getLessonsIds(m);
             var completados = 0;
             for (var lid in lids) {
                 if (!usuarioAvance['lecciones'][lids[lid]]) {
