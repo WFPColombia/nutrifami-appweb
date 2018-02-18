@@ -137,9 +137,6 @@ nf2.controller('AuthProfileEditCtrl', function ($filter, $scope, UserService, $a
          
          */
 
-
-        console.log($scope.user);
-
         UserService.updateUser($scope.user);
 
         /*UsuarioService.setUsuarioActivo(user, function(response) {

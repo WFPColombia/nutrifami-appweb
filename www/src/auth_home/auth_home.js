@@ -4,14 +4,12 @@ nf2.controller('AuthHomeCtrl', function ($scope, $state, bsLoadingOverlayService
     console.log("AuthHomeCtrl");
     UserService.logOut();
 
-
     $scope.formLogin = {};
-    $scope.formLoginDocument = {};
 
     $scope.login = function () {
         $scope.error = '';
         bsLoadingOverlayService.start();
-        UserService.checkUser($scope.formLogin.username);
+        UserService.login($scope.formLogin.username, $scope.formLogin.password);
     };
 
     // will fire in case authentication failed
@@ -21,10 +19,10 @@ nf2.controller('AuthHomeCtrl', function ($scope, $state, bsLoadingOverlayService
         $scope.error = response.message;
     });
 
-    $scope.$on('userChecked', function (event, data) {
-        console.log('userChecked');
+    $scope.$on('userLoggedIn', function (event, data) {
+        console.log("userLoggedIn Login");
         bsLoadingOverlayService.stop();
-        $state.go('password');
+        $state.go('nf.cap_home');
     });
 
 });

@@ -62,9 +62,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
         console.log(user);
         $auth.signup(user)
                 .then(function (response) {
-                    console.log(response);
-                    localStorage.setItem("username", JSON.stringify(user.username));
-                    service.login(user.password);
+                    service.login(user.username, user.password);
                 })
                 .catch(function (response) {
                     console.log(response);
@@ -87,41 +85,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
      * @param {type} password
      * @returns {undefined}
      */
-    service.loginCedula = function (username, password) {
-        nutrifami.login(username, password, function (response) {
-            if (response.success) {
-                if (response.data.response === 1) {
-                    service.userMigration(response.data);
-                } else {
-                    service.failedAuth({message: 'El documento es incorrecto'});
-                }
-            } else {
-                service.failedAuth({message: 'Ha ocurrido un error durante la ejecución'});
-            }
-        });
-    };
-    
-    service.checkUser = function (username){
-        $http({
-            method: 'GET',
-            url: $rootScope.BASE_URL + 'api/check-user/' + username
-        }).then(function (response) {
-            localStorage.setItem("username", JSON.stringify(username));
-            $rootScope.$broadcast('userChecked');
-        }, function (error) {
-            service.failedAuth({message: 'El documento o usuario no existe'});
-        });
-        
-    };
-
-    /**
-     * 
-     * @param {type} username
-     * @param {type} password
-     * @returns {undefined}
-     */
-    service.login = function (password) {
-        var username = JSON.parse(localStorage.getItem('username'));
+    service.login = function (username, password) {
         var user = {
             username: username,
             password: password
@@ -246,66 +210,6 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
             console.log(response);
             $rootScope.$broadcast('userFaliedUpdate', response.data);
         });
-    };
-
-    service.userMigration = function (data) {
-
-        var oldUser = data;
-        var oldAvance = data.avance[oldUser.id];
-        var tempAvance = [];
-        for (var c in oldAvance) {
-            for (var m in oldAvance[c]) {
-                for (var l in oldAvance[c][m]) {
-                    if (oldAvance[c][m][l]) {
-                        tempAvance.push(l);
-                    }
-                }
-            }
-        }
-
-        var tempUser = {
-            first_name: oldUser["nombre"] || '',
-            last_name: oldUser["apellido"] || '',
-            id_antiguo: oldUser["id"]
-        };
-
-        localStorage.setItem("tempUser", JSON.stringify(tempUser));
-        localStorage.setItem("tempAvance", JSON.stringify(tempAvance));
-
-        $rootScope.$broadcast('userLoggedInwithDocument', {data: data});
-    };
-
-    service.migrarAvance = function () {
-
-        var tempAvance = JSON.parse(localStorage.getItem('tempAvance'));
-        var deferred = $q.defer();
-        var promises = [];
-        for (var a in tempAvance) {
-            var data = {
-                'capacitacion': 0,
-                'modulo': 0,
-                'leccion': tempAvance[a]
-            };
-            promises.push($http({
-                method: 'POST',
-                url: $rootScope.BASE_URL + 'api/avances/',
-                data: data
-            }).then(function successCallback(response) {
-                console.log(response);
-            }, function errorCallback(response) {
-                console.log(response);
-            }));
-        }
-
-        $q.all(promises).then(function (res) {
-            deferred.resolve();
-            localStorage.removeItem('tempUser');
-            localStorage.removeItem("tempAvance");
-            service.readAvance();
-        });
-
-        return deferred.promise;
-
     };
 
     /**
