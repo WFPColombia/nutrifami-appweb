@@ -1,0 +1,447 @@
+/* COMPRAS */
+
+.compras .panel {
+    margin-top: 10px;
+}
+
+.compras .panel .panel-header {
+    margin-top: 50px;
+    color: #00c97e;
+    margin-bottom: 30px;
+}
+
+.compras .panel .panel-header h1 {
+    margin: 0;
+}
+
+.compras .panel .panel-body {
+    padding: 0px;
+}
+
+.compras .panel .panel-body h3 {
+    color: #2f3e47;
+    cursor: pointer;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    padding: 0px;
+    text-align: center;
+}
+
+.compras .panel .panel-body p {
+    padding: 0px;
+    color: #2f3e47;
+    font-size: 16px;
+    font-family: 'Muli-Light', sans-serif;
+    text-align: center;
+}
+
+.compras .compras-descripcion p {
+    color: #2f3e47;
+    cursor: pointer;
+    font-family: 'Muli', sans-serif;
+    font-size: 16pt;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.compras .compras-descripcion .glyphicon {
+    color: #00c97e;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
+/*.compras .compras-porcentajes .compras-ideal,
+.compras .compras-porcentajes .compras-ideal-min,
+.compras .compras-porcentajes .compras-ideal-max {
+    border-left: 2px solid;
+    height: 520px;
+    position: absolute;
+    right: calc(20% + 15px);
+    z-index: 1;
+    top: -25px;
+}
+
+.compras .compras-porcentajes .compras-ideal-max {
+    border-left: 1px dotted;
+    right: calc(10% + 15px);
+}
+
+.compras .compras-porcentajes .compras-ideal-min {
+    border-left: 1px dotted;
+    right: calc(30% + 15px);
+}
+
+.compras .compras-porcentajes .compra-ideal-convencion {
+    position: absolute;
+    top: -55px;
+    right: calc(20% - 12px);
+    text-align: center;
+    line-height: 1em;
+}*/
+
+.compras-porcentajes {
+    height: 44px;
+    margin-bottom: 40px;
+}
+
+.compras .compras-porcentajes .col-md-3 {
+    padding: 0;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-tipo img {
+    float: left;
+    margin-right: 10px;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-tipo p {
+    color: #2f3e47;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding-top: 10px;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress {
+    background-color: #efefef;
+    background-image: none;
+    border-radius: 10px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    cursor: pointer;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 97%;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .progress-bar {
+    -webkit-transition: width 2s ease;
+    transition: width 2s ease;
+    box-shadow: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .cantidad {
+    text-align: right;
+    font-size: 25pt;
+    position: absolute;
+    top: 4px;
+    right: 50px;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra {
+    position: relative;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .fa {
+    color: #98999a;
+    cursor: pointer;
+    font-size: 27pt;
+    position: absolute;
+    right: 0px;
+    top: 3px;
+}
+
+.compras .recomendados-header {
+    cursor: pointer;
+}
+
+.compras-grupo .compras-grupo-titulo {
+    border-radius: 5px;
+    height: 80px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.compras-grupo .compras-grupo-titulo img {
+    margin-right: 10px;
+}
+
+.compras-grupo .compras-grupo-titulo h1 {
+    font-family: 'Muli', sans-serif;
+    font-size: 15pt;
+    color: #ffffff;
+    text-align: center;
+}
+
+.compras-grupo .panel {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 25px;
+    min-height: 600px;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes img {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes h2 {
+    color: #2f3e47;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 14pt;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen {
+    color: #2f3e47;
+    font-size: 11pt;
+    font-family: 'Muli', sans-serif;
+    padding-left: 60px;
+    padding-right: 60px;
+    text-transform: lowercase;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen .nombre-producto {
+    margin-bottom: 25px;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen .precio {
+    text-align: right;
+    font-size: 13pt;
+}
+
+.compras-grupo .compras-grupo-ultimo-mes .compras-resumen .totales {
+    border-top: 1px solid #2f3e47;
+    font-size: 17pt;
+    padding-top: 35px;
+    margin-bottom: 30px;
+}
+
+.compras-grupo .compras-grupo-recomendacion {
+    padding: 0px 60px 30px 60px;
+}
+
+.compras-grupo .compras-grupo-recomendacion img {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.compras-grupo .compras-grupo-recomendacion h2 {
+    color: #2f3e47;
+    font-family: 'Muli-Light', sans-serif;
+    font-size: 14pt;
+    margin-bottom: 40px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.compras-grupo .compras-grupo-recomendacion h2 span {
+    color: #00c97e;
+}
+
+.compras-grupo .compras-grupo-recomendacion p {
+    margin-top: 35px;
+    font-size: 11pt;
+}
+
+.compras-grupo .compras-grupo-nombre-recomendado {
+    background-color: #f5f4f4;
+    font-size: 11pt;
+    padding: 15px 60px;
+    text-transform: lowercase;
+}
+
+.compras-grupo .compras-grupo-nombre-recomendado:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CEREALES,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-1,
+.compras .panel-body .panel-default.grupo-1>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-1,
+.compras-grupo .progress-radial .overlay.grupo-1 {
+    background-color: #f2df00 !important;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CARNES,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-2,
+.compras .panel-body .panel-default.grupo-2>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-2,
+.compras-grupo .progress-radial .overlay.grupo-2 {
+    background-color: #ff9600;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-LECHELACTEOS,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-3,
+.compras .panel-body .panel-default.grupo-3>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-3,
+.compras-grupo .progress-radial .overlay.grupo-3 {
+    background-color: #0fa7ff;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-VEGETALES,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-4,
+.compras .panel-body .panel-default.grupo-4>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-4,
+.compras-grupo .progress-radial .overlay.grupo-4 {
+    background-color: #7bd462;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-GRASAS,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-5,
+.compras .panel-body .panel-default.grupo-5>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-5,
+.compras-grupo .progress-radial .overlay.grupo-5 {
+    background-color: #ff037a;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-AZUCAR,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-6,
+.compras .panel-body .panel-default.grupo-6>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-6,
+.compras-grupo .progress-radial .overlay.grupo-6 {
+    background-color: #d360fe;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-CONDIMENTOS,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-9,
+.compras .panel-body .panel-default.grupo-9>.panel-heading,
+.compras-grupo .compras-grupo-titulo.grupo-9,
+.compras-grupo .progress-radial .overlay.grupo-9 {
+    background-color: #bd8330;
+    background-image: none;
+}
+
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-NOGRUPO,
+.compras .compras-porcentajes .compras-porcentaje-barra .progress .grupo-0,
+.compras .panel-body .panel-default.grupo-0>.panel-heading0,
+.compras-grupo .compras-grupo-titulo.grupo-0,
+.compras-grupo .progress-radial .overlay.grupo-0 {
+    background-color: #000000;
+    background-image: none;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-grupo-descripcion {
+    margin-top: 35px;
+    font-size: 13pt;
+    color: #2f3e47;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-grupo-descripcion p {
+    cursor: pointer;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-grupo-descripcion i {
+    color: #2f3e47;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen {
+    color: #2f3e47;
+    font-size: 12pt;
+    font-family: 'Muli', sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen .nombre-producto {
+    margin-bottom: 25px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen .precio {
+    text-align: right;
+    font-size: 13pt;
+}
+
+.modal-dialog .compras-grupo .modal-body .compras-resumen .totales {
+    border-top: 1px solid #7f7f7f;
+    font-size: 17pt;
+    padding-top: 15px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal {
+    margin-top: 55px;
+    -webkit-box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion {
+    line-height: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion.ng-hide {
+    line-height: 0px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion.ng-hide-add,
+.modal-dialog .compras-grupo .modal-body .compra-ideal .list .item.item-accordion.ng-hide-remove {
+    display: block !important;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item {
+    border: none;
+    background-color: #f6f5f5;
+    color: #2f3e47;
+    padding: 7px;
+    font-size: 12pt;
+    padding-left: 27px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item img {
+    float: left;
+    margin-right: 20px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item h3 {
+    font-size: 16px;
+    color: #2f3e47;
+    font-family: 'Muli', sans-serif;
+    padding-top: 10px;
+    margin-top: 12px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item h3 .icon {
+    font-size: 10pt;
+    color: #4d6675;
+    position: relative;
+    top: -5px;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item h4 {
+    color: #00c97e;
+    text-transform: uppercase;
+    font-size: 9pt;
+    font-family: 'Raleway-Bold', sans-serif;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item.item-stable {
+    background-color: #ffffff;
+    position: relative;
+    border: none;
+}
+
+.modal-dialog .compras-grupo .modal-body .compra-ideal .item.item-stable>.icon {
+    font-size: 14pt;
+    color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 43px;
+    right: 16px;
+}
+
+
+/* END - COMPRAS */

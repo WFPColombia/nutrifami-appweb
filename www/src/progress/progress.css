@@ -1,0 +1,100 @@
+/* MI PROGRESO */
+
+.progreso .panel .panel-header {
+    margin-top: 30px;
+    color: #00c97e;
+    margin-bottom: 30px;
+}
+
+.progreso .mi-progreso .progreso-puntos-experiencia p {
+    font-size: 13pt;
+    color: #ff5400;
+    font-family: 'Muli-Italic', sans-serif;
+    margin-top: 20px;
+}
+
+.progreso .mi-progreso .progreso-puntos-experiencia {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+}
+
+.progreso .mi-progreso .progreso-porcentaje {
+    padding: 25px 0px 20px 0px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.progreso .mi-progreso .progreso-porcentaje .row {
+    margin: 0 auto;
+    width: 170px;
+}
+
+.progreso .mi-progreso .progreso-resumen {
+    color: #2f3e47;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 9pt;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.progreso .mi-progreso .progreso-resumen img {
+    margin-right: 7px;
+    margin-top: 15px;
+}
+
+.progreso .mi-progreso .progreso-resumen span {
+    font-size: 25pt;
+    font-family: 'Muli-Italic', sans-serif;
+    position: absolute;
+    top: 18px;
+}
+
+.progreso .mis-diplomas {
+    margin-top: 80px;
+}
+
+.progreso .progreso-familia,
+.progreso .mis-diplomas .diplomas {
+    color: #2f3e47;
+    border-bottom: 1px #cccccc solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.progreso .progreso-familia .miembro-familia,
+.progreso .mis-diplomas .diplomas .titulo-diploma {
+    font-size: 11pt;
+    color: #2f3e47;
+    margin-top: 14px;
+}
+
+.progreso .progreso-familia .medallas {
+    font-size: 16pt;
+}
+
+.progreso .progreso-familia .medallas span {
+    font-size: 9pt;
+    font-family: 'Raleway-Bold', sans-serif;
+    text-transform: uppercase;
+}
+
+.progreso .mis-diplomas .diplomas .imprimir-diploma {
+    font-size: 16pt;
+    margin-top: 14px;
+    text-align: right;
+}
+
+.progreso .mis-diplomas .diplomas .imprimir-diploma a {
+    color: #ff5400;
+    cursor: pointer;
+}
+
+.progreso .mis-diplomas .diplomas .imprimir-diploma a:hover,
+.progreso .mis-diplomas .diplomas .imprimir-diploma a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+
+/* END - MI PROGRESO */

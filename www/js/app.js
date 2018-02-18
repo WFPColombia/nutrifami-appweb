@@ -78,8 +78,8 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     $authProvider.loginUrl = 'http://usuarios.nutrifami.org/api/token-auth/';
     $authProvider.signupUrl = 'http://usuarios.nutrifami.org/api/create-user/';
 
-    //$authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
-    //$authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
+    $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
+    $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
     
     // Configure Facebook login.
     $authProvider.facebook(angular.extend({}, commonConfig, {
@@ -201,7 +201,51 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-
+    
+    $stateProvider.state('nf.progress', {
+        url: '/progress',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/progress/progress.html',
+                controller: 'ProgressCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.shopping_intro', {
+        url: '/shopping/intro',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/shopping_intro/shopping_intro.html',
+                controller: 'ShoppingIntroCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.shopping_home', {
+        url: '/shopping/home',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/shopping_home/shopping_home.html',
+                controller: 'ShoppingHomeCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.shopping_group', {
+        url: '/shopping/group',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/shopping_group/shopping_group.html',
+                controller: 'ShoppingGroupCtrl'
+            }
+        }
+    });
+    
     $stateProvider.state('nf.about', {
         url: '/about',
         cache: false,
@@ -210,83 +254,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
                 templateUrl: 'src/about/about.html',
             }
         }
-    });
-
-    /*$stateProvider.state('registro2', {
-     url: '/auth/registro/2',
-     cache: false,
-     templateUrl: 'src/auth_registro2/auth_registro2.html',
-     controller: 'AuthRegistro2Ctrl'
-     });*/
-
-
-    /*
-     
-     $routeProvider.when('/editar-perfil', {
-     controller: 'EditarPerfilController',
-     templateUrl: 'views/editar-perfil.tpl.html'
-     });
-     
-     $routeProvider.when('/sobre-nutrifami', {
-     controller: 'SobreController',
-     templateUrl: 'views/sobre.html'
-     });
-     
-     $routeProvider.when('/mis-compras', {
-     controller: 'misComprasController',
-     templateUrl: 'views/misCompras.html'
-     });
-     
-     $routeProvider.when('/mis-compras/intro', {
-     controller: 'misComprasIntroController',
-     templateUrl: 'views/misComprasIntro.html'
-     });
-     
-     $routeProvider.when('/mis-compras/:grupo', {
-     controller: 'misComprasGrupoController',
-     templateUrl: 'views/misComprasGrupo.html'
-     });
-     
-     $routeProvider.when('/mi-progreso', {
-     controller: 'ProgresoController',
-     templateUrl: 'views/progreso.html'
-     });
-     
-     $routeProvider.when('/tips', {
-     controller: 'TipsController',
-     templateUrl: 'views/tips.html'
-     });
-     
-     $routeProvider.when('/tips/:modulo', {
-     controller: 'TipsModuloController',
-     templateUrl: 'views/tipsModulo.html'
-     });
-     
-     $routeProvider.when('/nutricompra', {
-     controller: 'nc_homeController',
-     templateUrl: 'views/nutricompra/nc_home.html'
-     });
-     
-     $routeProvider.when('/nutricompra/como-jugar', {
-     controller: 'nc_comoJugarController',
-     templateUrl: 'views/nutricompra/nc_comoJugar.html'
-     });
-     
-     $routeProvider.when('/nutricompra/jugar', {
-     controller: 'nc_jugarController',
-     templateUrl: 'views/nutricompra/nc_jugar.html'
-     });
-     
-     $routeProvider.when('/nutricompra/jugar/resumen', {
-     controller: 'nc_jugarResumenController',
-     templateUrl: 'views/nutricompra/nc_resumen.html'
-     });
-     
-     $routeProvider.when('/nutricompra/jugar/terminar', {
-     controller: 'nc_jugarTerminarController',
-     templateUrl: 'views/nutricompra/nc_terminar.html'
-     })*/
-
+    });   
 
     $urlRouterProvider.otherwise('/nf/');
 });

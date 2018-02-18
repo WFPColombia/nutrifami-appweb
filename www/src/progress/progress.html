@@ -1,5 +1,4 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class='progreso'>
             <div class="panel">
@@ -13,7 +12,7 @@
                 </div>
                 <div class="panel-body" id="prueba">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="mi-progreso">
                                 <h2 class="text-center">Mi progreso</h2>
                                 <div class="progreso-puntos-experiencia">
@@ -41,11 +40,11 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <img src="img/icons/ico-progreso-nivel.png" /> Nivel Actual
-                                            <br><span>{{usuarioAvance.nivel}}</span>
+                                            <br><span>{{usuarioAvance.capacitacionesTerminadas}}</span>
                                         </div>
                                         <div class="col-md-4">
                                             <img src="img/icons/ico-progreso-leccion.png" /> Lección Actual
-                                            <br><span>{{usuarioAvance.leccion}}</span>
+                                            <br><span>{{usuarioAvance.modulosTerminados}}</span>
                                         </div>
                                         <div class="col-md-4">
                                             <img src="img/icons/ico-progreso-medallas.png" /> Medallas Ganadas
@@ -71,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!--<div class="col-md-6">
                             <h2 class="text-center">Mi Familia</h2>
                             <div ng-repeat="familiar in usuarioFamilia">
                                 <div class="progreso-familia">
@@ -83,15 +82,14 @@
                                             <img width="30" src="img/badgets/icons/ico_1.png" alt="" /> {{familiar.medallas}}
                                             <br><span>Medallas</span>
                                         </div>
-                                        <!--<button class="icon ion-volume-high sonido"></button>-->
+                                        <!--<button class="icon ion-volume-high sonido"></button>-- >
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
     </div>
 </div>
