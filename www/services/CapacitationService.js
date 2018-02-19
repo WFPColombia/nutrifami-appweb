@@ -3,16 +3,25 @@ nf2.factory('CapacitationService', function ($http) {
 
     service.capacitation = {};
 
-    service.initClient = function () {
+    service.initClient = function (callback) {
         console.log('initClient');
         service.capacitation = JSON.parse(localStorage.getItem('capacitacion'));
-        if (!service.capacitation) {
-            console.log('hay que descargar la capacitacion');
-            $http.get('http://www.nutrifami.org/js/json.php?file=capacitacion.JSON').then(function (response) {
-                localStorage.setItem("capacitacion", JSON.stringify(response.data));
-                service.capacitation = response.data;
-            });
-        }
+        var version_old = JSON.parse(localStorage.getItem('version'));
+        var version_new = '';
+
+        $http.get('http://www.nutrifami.org/js/json.php?file=version.JSON').then(function (response) {
+            version_new = response.data.Capacitacion.ID;
+            if (version_old !== version_new || !service.capacitation) {
+                localStorage.setItem("version", JSON.stringify(version_new));
+                $http.get('http://www.nutrifami.org/js/json.php?file=capacitacion.JSON').then(function (response) {
+                    localStorage.setItem("capacitacion", JSON.stringify(response.data));
+                    service.capacitation = response.data;
+                    callback();
+                });
+            } else {
+                callback();
+            }
+        });
     };
 
 
@@ -20,8 +29,8 @@ nf2.factory('CapacitationService', function ($http) {
     service.getPublicCapacitations = function () {
         var capacitations = service.capacitation.serv_capacitaciones;
         var publicCapacitations = {};
-        
-        
+
+
         for (var c in capacitations) {
             if (capacitations[c].activo === '1' && capacitations[c].status.nombre === 'publico') {
                 publicCapacitations[capacitations[c].id] = capacitations[c];
@@ -66,8 +75,8 @@ nf2.factory('CapacitationService', function ($http) {
     service.getPublicModules = function () {
         var capacitations = service.getPublicCapacitations();
         var public_modules = {};
-        for (var c in capacitations){
-            for (var m in capacitations[c].modulos){
+        for (var c in capacitations) {
+            for (var m in capacitations[c].modulos) {
                 public_modules[capacitations[c].modulos[m]] = service.getModule(capacitations[c].modulos[m]);
             }
         }
@@ -145,8 +154,8 @@ nf2.factory('CapacitationService', function ($http) {
     service.getPublicLessons = function () {
         var modules = service.getPublicModules();
         var public_lessons = {};
-        for (var m in modules){
-            for (var l in modules[m].lecciones){
+        for (var m in modules) {
+            for (var l in modules[m].lecciones) {
                 public_lessons[modules[m].lecciones[l]] = service.getLesson(modules[m].lecciones[l]);
             }
         }

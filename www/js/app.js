@@ -7,6 +7,8 @@ var dependencies = ['ui.router', 'satellizer', 'ngCookies', 'ngAudio', 'ngTouch'
 var nf2 = angular.module('nf2App', dependencies);
 
 nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationService) {
+    
+    console.log('run');
 
     $rootScope.BASE_URL = 'http://usuarios.nutrifami.org/';
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
@@ -36,7 +38,9 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationSe
         templateUrl: 'template/loading-overlay.html'
     });
     
-    CapacitationService.initClient();    
+    CapacitationService.initClient(function(){
+        
+    });    
     
     /*
      

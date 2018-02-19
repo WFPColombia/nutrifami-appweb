@@ -1,6 +1,5 @@
 /*global angular*/
 nf2.controller('CapCapacitationCtrl', function ($scope, $stateParams, UserService, CapacitationService) {
-        CapacitationService.initClient();
         $scope.mids = CapacitationService.getModulesIds($stateParams.capacitation);
         $scope.user = UserService.getUser();
 
