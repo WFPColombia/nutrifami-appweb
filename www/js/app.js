@@ -8,10 +8,6 @@ var nf2 = angular.module('nf2App', dependencies);
 
 nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationService) {
 
-    console.log('run');
-    
-    
-
     $rootScope.BASE_URL = 'http://usuarios.nutrifami.org/';
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
     $rootScope.ASSETPATH = "https://s3.amazonaws.com/nutrifami/training/images/";
@@ -251,7 +247,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
         cache: false,
         views: {
             content: {
-                templateUrl: 'src/about/about.html',
+                templateUrl: 'src/about/about.html'
             }
         }
     });   
