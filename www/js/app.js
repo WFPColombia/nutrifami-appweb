@@ -236,7 +236,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     });
     
     $stateProvider.state('nf.shopping_group', {
-        url: '/shopping/group',
+        url: '/shopping/:group',
         cache: false,
         views: {
             content: {

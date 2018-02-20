@@ -25,10 +25,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9 compras-porcentaje-barra">
-                                        <div class="progress" go-click="/mis-compras/{{grupo.grupo_id}}">
+                                        <div class="progress" ui-sref="nf.shopping_group({group:'{{grupo.grupo_id}}'})">
                                             <div class="progress-bar grupo-{{grupo.grupo_id}}" style="width: {{animar ?  grupo.porcentaje_visual: '0'}}%;"></div>
                                         </div>
-                                        <a href="#/mis-compras/{{grupo.grupo_id}}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                        <a ui-sref="nf.shopping_group({group:'{{grupo.grupo_id}}'})"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -1,4 +1,4 @@
-nf2.factory('ShoppingService', function ($http, $rootScope) {
+nf2.factory('ShoppingService', function ($http) {
     var service = {};
 
     var nombreUsuario = '';
@@ -89,7 +89,7 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
 
             ],
             'bajo': [
-                'Recuerde que una alimentación saludable debe incluir alimentos de todos los  grupos: (Anexar imagen Plato Saludable)'
+                'Recuerde que una alimentación saludable debe incluir alimentos de todos los  grupos'
 
             ]
         },
@@ -113,40 +113,25 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
      * @param {type} usuario
      * @param {type} callback
      * @returns {undefined}
-     * ComprasService.getConsolidadoCompras(usuario, function (response){});
+     * ShoppingService.getConsolidadoCompras(usuario, function (response){});
      */
     service.getConsolidadoCompras = function (usuario, callback) {
+        console.log('getConsolidadoCompras');
         var misCompras = JSON.parse(localStorage.getItem('misCompras'));
-
-        if (misCompras === null) {
-            var response = {
-                success: false,
-                message: 'Ha ocurrido un error durante la ejecución'
-            };
-            
-            callback(response);
-
-
-
-            /*$http({
-                method: 'GET',
-                url: "http://www.nutrifami.org/app/api/get-consolidado-compras"
-            }).then(function (response) {
+        if (!misCompras) {
+            console.log('!misCompras');
+            var serv = "http://www.nutrifami.org/app/api/get-consolidado-compras?did=" + usuario.username;
+            $http.get(serv).then(function (response) {
                 localStorage.setItem("misCompras", JSON.stringify(response.data));
-                response.success = true;
-                response.data = 'objServ';
                 console.log(response);
-            }, function (error) {
-                response.success = false;
-                response.message = 'Ha ocurrido un error durante la ejecución';
-                console.log(error);
-            });*/
+                callback(response.data);
+            }, function (err) {
+                console.log(err);
+                callback(false);
+            });
+
         } else {
-            var response = {
-                success: true,
-                data: misCompras
-            };
-            callback(response);
+            callback(misCompras);
         }
     };
 
@@ -156,16 +141,16 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
      * @param {type} callback
      * @returns {undefined}
      * 
-     * ComprasService.getConsolidadoComprasUltimoMes(usuario,function(response){});
+     * ShoppingService.getConsolidadoComprasUltimoMes(usuario,function(response){});
      * 
      */
     service.getConsolidadoComprasUltimoMes = function (usuario, callback) {
-        nombreUsuario = usuario.nombre;
-        this.getConsolidadoCompras(usuario, function (response) {
-            if (response.success) {
-                if (Object.keys(response.data).length > 0) {
-                    response.puntoVenta = response.data.punto_venta_id;
-                    var consumoUltimoMes = ordenarGrupos(getLast(getLast(response.data.redencion)));
+        nombreUsuario = usuario.first_name;
+        service.getConsolidadoCompras(usuario, function (response) {
+            if (response) {
+                if (Object.keys(response).length > 0) {
+                    console.log(response);
+                    var consumoUltimoMes = ordenarGrupos(getLast(getLast(response.redencion)));
                     for (var i in consumoUltimoMes) {
                         consumoUltimoMes[i].porcentaje_visual = calcularPorcentajeVisual(consumoUltimoMes[i].porcentaje_compra, consumoUltimoMes[i].porcentaje_recomendado);
                         if (consumoUltimoMes[i].porcentaje_visual >= 65 && consumoUltimoMes[i].porcentaje_visual <= 95) {
@@ -178,10 +163,10 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
 
                         }
                     }
-                    response.data = consumoUltimoMes;
-                } else {
-                    response.success = false;
-                    response.mensaje = "No hay datos";
+                    response = consumoUltimoMes;
+                    callback(response);
+                }else{
+                    callback(false)
                 }
             }
             callback(response);
@@ -210,27 +195,27 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
      * @param {type} puntoVenta
      * @param {type} callback
      * @returns {undefined}
-     * ComprasService.getProductosPuntoVenta(puntoVenta, function (response){});
+     * ShoppingService.getProductosPuntoVenta(puntoVenta, function (response){});
      */
-    service.getProductosPuntoVenta = function (puntoVenta, callback) {
+    service.getProductosPuntoVenta = function (callback) {
+        var pid = JSON.parse(localStorage.getItem('misCompras')).punto_venta_id;
         var miPuntoVenta = JSON.parse(localStorage.getItem('puntoVenta'));
-        if (miPuntoVenta === null) {
-            nutrifami.consumo.getProductosPuntoVenta(puntoVenta, function (response) {
-                response.data = ordenarRecomendados(response.data);
+        if (!miPuntoVenta) {
+            var serv = "http://www.nutrifami.org/app/api/get-productos-puntoventa?pid=" + pid;
+            $http.get(serv).then(function (response) {
+                
                 localStorage.setItem("puntoVenta", JSON.stringify(response.data));
-                callback(response);
+                callback(response.data);
+            }, function (err) {
+                callback(false);
             });
         } else {
-            var response = {
-                success: true,
-                data: miPuntoVenta
-            };
-            callback(response);
+            callback(miPuntoVenta);
         }
     };
 
-    service.getProductosPuntoVentaByGroup = function (puntoVenta, grupo_id, callback) {
-        this.getProductosPuntoVenta(puntoVenta, function (response) {
+    service.getProductosPuntoVentaByGroup = function (pid, grupo_id, callback) {
+        service.getProductosPuntoVenta(pid, function (response) {
             var response2 = response;
             var dataBygroup = {};
             if (response.success) {
@@ -380,7 +365,7 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
             }];
 
 
-        indice = 0;
+        var indice = 0;
 
         for (var i = 1; i <= 8; i++) {
             if (typeof myObj[i] !== 'undefined') {
@@ -436,7 +421,7 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
                 tempList.push(myList[i]);
             }
         }
-        return tempList
+        return tempList;
     }
 
     function seleccionarMasBaratos(myList, cantidad) {
@@ -444,7 +429,7 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
         for (var i in myList) {
 
             if (myList[i]) {
-                myList[i].precio = parseFloat(myList[i].precio)
+                myList[i].precio = parseFloat(myList[i].precio);
             } else {
                 myList[i] = {
                     nombre: 'No hay productos de este grupo en esta tienda',
@@ -463,10 +448,17 @@ nf2.factory('ShoppingService', function ($http, $rootScope) {
     function seleccionarFeedbackAleatorio(grupo, estado) {
 
         var alt = Math.floor((Math.random() * feedbacks[grupo][estado].length));
-        var fb = feedbacks[grupo][estado][alt];
 
-        return fb.replace("______", nombreUsuario);
+        var texto = feedbacks[grupo][estado][alt];
+
+        var fb = {
+            'texto': texto.replace("______", nombreUsuario),
+            'audio': "audios/mis-compras/grupo-" + grupo + "-" + estado + "-" + alt + ".wav"
+        };
+
+        return fb;
     }
 
     return service;
-});
+}
+);

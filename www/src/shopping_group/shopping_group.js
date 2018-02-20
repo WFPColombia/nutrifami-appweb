@@ -1,48 +1,37 @@
-nf2.controller('misComprasGrupoController', function($scope, $routeParams, $anchorScroll, ComprasService, ngAudio, bsLoadingOverlayService, UsuarioService) {
+nf2.controller('ShoppingGroupCtrl', function ($scope, $stateParams, $anchorScroll, ShoppingService, bsLoadingOverlayService, UserService) {
     'use strict';
 
     $anchorScroll();
 
-    $scope.usuarioActivo = UsuarioService.getUsuarioActivo()
+    $scope.usuarioActivo = UserService.getUser();
     $scope.compras = true;
 
-    var usuario = {};
-    var puntoVenta = {
-        'pid': 0
-    };
-
-    usuario.did = $scope.usuarioActivo.login_documento;
-    //usuario.did = '1006330568';
-    usuario.nombre = $scope.usuarioActivo.nombre;
-
-    var cargarRecomendados = function() {
+    var cargarRecomendados = function () {
 
         bsLoadingOverlayService.start();
 
-        ComprasService.getProductosPuntoVenta(puntoVenta, function(response) {
-            if (response.success) {
-                $scope.recomendados = response.data[$routeParams.grupo - 1];
-            } else {}
-            bsLoadingOverlayService.stop();
+        ShoppingService.getConsolidadoComprasUltimoMes($scope.usuarioActivo, function (response) {
+            if (response) {
+                $scope.consumoUltimoMes = response;
 
+                $scope.data = $scope.consumoUltimoMes[$stateParams.group - 1];
 
+                ShoppingService.getProductosPuntoVenta(function (response) {
+                    console.log(response);
+                    if (response) {
+                        console.log(response);
+                        $scope.recomendados = response[$stateParams.group];
+                        console.log($scope.recomendados);
+                    } else {
+                    }
+                    bsLoadingOverlayService.stop();
+                });
+            } else {
+                $scope.negarAcceso();
+            }
         });
     };
 
-    bsLoadingOverlayService.start();
 
-    ComprasService.getConsolidadoComprasUltimoMes(usuario, function(response) {
-        if (response.success) {
-            $scope.consumoUltimoMes = response.data;
-            console.log($scope.consumoUltimoMes);
-            puntoVenta['pid'] = response.puntoVenta;
-            cargarRecomendados();
-        } else {
-            $scope.negarAcceso();
-        }
-
-        bsLoadingOverlayService.stop();
-    });
-
-    $scope.data = $scope.consumoUltimoMes[$routeParams.grupo - 1];
+    cargarRecomendados();
 });

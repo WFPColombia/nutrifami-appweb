@@ -10,7 +10,6 @@ nf2.controller('ShoppingHomeCtrl', function ($scope, $timeout, $state, $uibModal
     $scope.audio1 = ngAudio.load("audios/compras-intro.mp3");
     $scope.audio2 = ngAudio.load("audios/compras-dieta-variada.mp3");
 
-    var usuario = {};
 
     $scope.consumoUltimoMes = [{
             'nombre': "Cereales, raíces, tubérculos y plátanos.",
@@ -63,25 +62,20 @@ nf2.controller('ShoppingHomeCtrl', function ($scope, $timeout, $state, $uibModal
         });
     };
 
-    usuario.did = $scope.usuarioActivo.login_documento;
-    //usuario.did = '1006330568';
+    $scope.usuarioActivo.username = '1006330568';
 
     bsLoadingOverlayService.start();
 
-    ShoppingService.getConsolidadoComprasUltimoMes(usuario, function (response) {
-        $scope.noHayDatos = false;
-        if (response.success) {
-            $scope.consumoUltimoMes = response.data;
-
-            //cargarRecomendados();
+        ShoppingService.getConsolidadoComprasUltimoMes($scope.usuarioActivo, function (response) {
+        console.log(response);
+        if (response) {
+            $scope.consumoUltimoMes = response;
             $timeout(function () {
                 $scope.animar = true;
             }, 1500);
         } else {
-            $scope.noHayDatos = true;
             $scope.negarAcceso();
         }
-
         bsLoadingOverlayService.stop();
     });
 });

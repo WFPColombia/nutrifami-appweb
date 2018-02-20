@@ -1,5 +1,4 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class='compras-grupo'>
             <div class="compras-grupo-titulo grupo-{{data.grupo_id}}">
@@ -33,7 +32,7 @@
                         <div class="compras-grupo-recomendacion">
                             <img height="50px" src="img/icons/ico_canasta.png" class="center-block">
                             <h2>Aquí encontrara recomendaciones para que su dieta sea mas variada</h2>
-                            <p>{{data.feedback}}</p>
+                            <p>{{data.feedback.texto}}</p>
                         </div>
                         <!--<div ng-repeat="producto in recomendados.productos" class="compras-grupo-nombre-recomendado">
                             {{producto.nombre}}
@@ -42,6 +41,5 @@
                 </div>
             </div>
         </div>
-        <footer ng-include=" 'views/template/footer.tpl.html' "></footer>
     </div>
 </div>
