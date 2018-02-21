@@ -9,7 +9,7 @@ nf2.controller('AuthHomeCtrl', function ($scope, $state, bsLoadingOverlayService
     $scope.login = function () {
         $scope.error = '';
         bsLoadingOverlayService.start();
-        UserService.login($scope.formLogin.username, $scope.formLogin.password);
+        UserService.login($scope.formLogin.username, 'abc12345');
     };
 
     // will fire in case authentication failed

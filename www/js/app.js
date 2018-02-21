@@ -92,8 +92,8 @@ nf2.config(function ($authProvider, $translateProvider, $stateProvider, $urlRout
     $authProvider.loginUrl = 'http://usuarios.nutrifami.org/api/token-auth/';
     $authProvider.signupUrl = 'http://usuarios.nutrifami.org/api/create-user/';
 
-    // $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
-    // $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
+    $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
+    $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
 
     // Configure Facebook login.
     $authProvider.facebook(angular.extend({}, commonConfig, {

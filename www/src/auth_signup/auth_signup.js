@@ -5,28 +5,17 @@ nf2.controller('AuthSignupCtrl', function ($scope, $state, bsLoadingOverlayServi
     $scope.signup = function () {
 
         $scope.error = "";
-
-        if (/[^a-zA-Z0-9\-\/]/.test($scope.formSignup.username)) {
-            $scope.error = "El Usuario no es válido. El usuario no debe tener caracteres especiales ni espacios";
-            return false;
-        }
-
-        if ($scope.formSignup.password === $scope.formSignup.password2) {
-            bsLoadingOverlayService.start();
-            var user = {
-                username: $scope.formSignup.username,
-                email: '',
-                password: $scope.formSignup.password,
-                first_name: '',
-                last_name: '',
-                id_antiguo: null,
-                terminos: $scope.formSignup.terminos,
-            };
-            UserService.signup(user);
-
-        } else {
-            $scope.error = "Las contraseñas deben ser iguales";
-        }
+        bsLoadingOverlayService.start();
+        var user = {
+            username: $scope.formSignup.username,
+            email: '',
+            password: 'abc12345',
+            first_name: $scope.formSignup.first_name,
+            last_name: $scope.formSignup.last_name,
+            id_antiguo: null,
+            terminos: $scope.formSignup.terminos
+        };
+        UserService.signup(user);
     };
 
 
