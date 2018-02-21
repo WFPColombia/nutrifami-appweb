@@ -1,13 +1,13 @@
 /*
  * Configuración de angular para la aplicación Web de nutrifami
  */
-var dependencies = ['ui.router', 'satellizer', 'ngCookies', 'ngAudio', 'ngTouch', 'bsLoadingOverlay', 'ui.bootstrap', 'ngAnimate', '720kb.socialshare'];
+var dependencies = ['ui.router', 'satellizer', 'ngCookies', 'ngAudio', 'ngTouch', 'bsLoadingOverlay', 'ui.bootstrap', 'ngAnimate', '720kb.socialshare', 'pascalprecht.translate'];
 'use strict';
 
 var nf2 = angular.module('nf2App', dependencies);
 
-nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationService) {
-    
+nf2.run(function ($rootScope, $location, $window, $translate, bsLoadingOverlayService, CapacitationService) {
+
     console.log('run');
 
     $rootScope.BASE_URL = 'http://usuarios.nutrifami.org/';
@@ -37,11 +37,25 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationSe
     bsLoadingOverlayService.setGlobalConfig({
         templateUrl: 'template/loading-overlay.html'
     });
-    
-    CapacitationService.initClient(function(){
-        
-    });    
-    
+
+    CapacitationService.initClient(function () {
+
+    });
+
+    // Language settings
+    var stored_lang_key = localStorage.getItem('NG_TRANSLATE_LANG_KEY');
+    if (stored_lang_key) {
+        console.log('stored_lang_key');
+        $rootScope.lang = stored_lang_key;
+        $translate.use(stored_lang_key);
+    } else {
+        console.log('not stored_lang_key');
+        var locale = $window.navigator.language || $window.navigator.userLanguage;
+        var lang = locale.substring(0, 2);
+        $rootScope.lang = lang;
+        $translate.use(lang);
+    }
+
     /*
      
      nutrifami.getSessionId();
@@ -60,7 +74,7 @@ nf2.run(function ($rootScope, $location, bsLoadingOverlayService, CapacitationSe
      });*/
 });
 
-nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
+nf2.config(function ($authProvider, $translateProvider, $stateProvider, $urlRouterProvider) {
 
     var commonConfig = {
         // Popup should expand to full screen with no location bar/toolbar.
@@ -80,7 +94,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
 
     // $authProvider.loginUrl = 'http://localhost:8000/api/token-auth/';
     // $authProvider.signupUrl = 'http://localhost:8000/api/create-user/';
-    
+
     // Configure Facebook login.
     $authProvider.facebook(angular.extend({}, commonConfig, {
         clientId: '126883721233688',
@@ -96,6 +110,17 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
     });
 
     $authProvider.tokenType = 'Token';
+
+    // Multilanguaje Settings
+
+    $translateProvider
+            .useStaticFilesLoader({
+                prefix: '/translations/locale-',
+                suffix: '.json'
+            })
+            .preferredLanguage('es')
+            .useLocalStorage()
+            .useMissingTranslationHandlerLog();
 
     $stateProvider.state('auth', {
         url: '/auth',
@@ -201,7 +226,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.progress', {
         url: '/progress',
         cache: false,
@@ -212,7 +237,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.shopping_intro', {
         url: '/shopping/intro',
         cache: false,
@@ -223,7 +248,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.shopping_home', {
         url: '/shopping/home',
         cache: false,
@@ -234,7 +259,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.shopping_group', {
         url: '/shopping/:group',
         cache: false,
@@ -245,7 +270,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
             }
         }
     });
-    
+
     $stateProvider.state('nf.about', {
         url: '/about',
         cache: false,
@@ -254,7 +279,7 @@ nf2.config(function ($authProvider, $stateProvider, $urlRouterProvider) {
                 templateUrl: 'src/about/about.html'
             }
         }
-    });   
+    });
 
     $urlRouterProvider.otherwise('/nf/');
 });

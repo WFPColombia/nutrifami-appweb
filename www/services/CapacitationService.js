@@ -101,9 +101,9 @@ nf2.factory('CapacitationService', function ($http) {
         //this.initClient();
 
         var modulos = [];
-        mids = nutrifami.training.getModulosId(capacitacion);
+        var mids = service.getModulesIds(capacitacion);
         for (var mid in mids) {
-            var tempModulo = nutrifami.training.getModulo(mids[mid]);
+            var tempModulo = service.getModule(mids[mid]);
 
             tempModulo.avance = {};
             tempModulo.avance.finalizado = false;
@@ -174,9 +174,9 @@ nf2.factory('CapacitationService', function ($http) {
     service.getLessonsActives = function (modulo) {
         //this.initClient();
         var lecciones = [];
-        lids = nutrifami.training.getLeccionesId(modulo);
+        var lids = service.getLessonsIds(modulo);
         for (var lid in lids) {
-            var tempLeccion = nutrifami.training.getLeccion(lids[lid]);
+            var tempLeccion = service.getLesson(lids[lid]);
 
             if (tempLeccion.activo == 1) {
                 lecciones.push(tempLeccion);
@@ -209,7 +209,6 @@ nf2.factory('CapacitationService', function ($http) {
     };
 
     service.getUnitsActives = function (lid) {
-        this.initClient();
         var uids = service.getUnitsIds(lid);
         var temp = [];
         for (var i in uids) {
@@ -232,10 +231,47 @@ nf2.factory('CapacitationService', function ($http) {
 
     service.getUnitFromOrder = function (lid, rp_unidad) {
         //this.initClient();
-        unidades = service.getUnitsActives(lid);
+        var unidades = service.getUnitsActives(lid);
         return unidades[rp_unidad - 1];
     };
-    return service;
+    
 
     /* End - Units */
+
+    /* Tips */
+
+    /**
+     * 
+     * @returns {Array|Object}
+     * 
+     * TipsService.getTipsByLeccion()
+     *  
+     */
+    service.getTipsByLesson = function (leccion) {
+
+        var tids = service.getLesson(leccion).tips;
+        var tips = [];
+        for (var i in tids) {
+            //console.log(tids[i]);
+            var tip = service.getTipById(tids[i]);
+
+            if (tip.activo != 0) {
+                tips.push(tip);
+            }
+        }
+
+        return tips;
+    };
+
+    service.getTipById = function (tid) {
+        if (typeof service.capacitation.serv_tips !== 'undefined') {
+            return service.capacitation.serv_tips[tid];
+        } else {
+            return false;
+        }
+    };
+
+    /* End - Tips */
+    
+    return service;
 });

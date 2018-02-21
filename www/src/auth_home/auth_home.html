@@ -1,4 +1,5 @@
 <div class="auth">
+    <languaje-drt position="'fixed'"></languaje-drt>
     <div class="container">
         <div class="row header"> 
             <div class="col-md-12">
@@ -7,7 +8,8 @@
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2>¡Aprenda Jugando sobre nutrición, alimentación y hábitos saludables!</h2>
+                <h2>{{'¡Aprenda Jugando sobre nutrición, alimentación y hábitos saludables!' | translate}}</h2>
+
             </div>
         </div>
         <div class="row" ng-show="error">
@@ -18,22 +20,22 @@
         <div class="row forms bs-loading-container" bs-loading-overlay>
             <div class="col-md-6 col-md-offset-3">
                 <div class="block">
-                    <h4>Iniciar sesión</h4>
+                    <h4> {{'Iniciar sesión' | translate }}</h4>
                     <form name="form"  ng-submit="login()" role="form">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ingrese documento o usuario" autocomplete="off" ng-model="formLogin.username" required>
+                            <input type="text" class="form-control" placeholder="{{'Ingrese documento o usuario' | translate}}" autocomplete="off" ng-model="formLogin.username" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Escriba su contraseña" autocomplete="off" ng-model="formLogin.password" required>
+                            <input type="password" class="form-control" placeholder="{{'Escriba su contraseña' | translate}}" autocomplete="off" ng-model="formLogin.password" required>
                         </div>
-                        <h5>Si en ningún momento ha cambiado su contraseña, la contraseña por defecto es abc12345</h5>
-                        <button type="submit" class="btn btn-secondary btn-lg center-block" ng-disabled="form.$invalid">INGRESAR</button>
-                        <p><a href="http://usuarios.nutrifami.org/admin/password_reset/" target="_blank">¿Ha olvidado la contraseña?</a></p>
+                        <h5>{{'Si en ningún momento ha cambiado su contraseña, la contraseña por defecto es abc12345' | translate}}</h5>
+                        <button type="submit" class="btn btn-secondary btn-lg center-block" ng-disabled="form.$invalid">{{'INGRESAR' | translate}}</button>
+                        <p><a href="http://usuarios.nutrifami.org/admin/password_reset/" target="_blank">{{'¿Ha olvidado la contraseña?' | translate}}</a></p>
                     </form>
                 </div>
                 <div class="block">
-                    <h4>¿No tienes una cuenta?</h4>
-                    <button class="btn btn-third center-block" ui-sref="auth_signup">Crear cuenta</button>
+                    <h4>{{'¿No tienes una cuenta?' | translate}}</h4>
+                    <button class="btn btn-third center-block" ui-sref="auth_signup">{{'Crear cuenta' | translate}}</button>
                 </div>
             </div>
             <!-- <div class="col-md-6 col-md-offset-3">

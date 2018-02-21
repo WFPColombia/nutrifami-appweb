@@ -30,8 +30,9 @@
                         <a ui-sref="nf.about">Sobre Nutrifami</a>
                     </li>
                 </ul>
-
+                
                 <ul class="nav navbar-nav navbar-right">
+                    <li><languaje-drt></languaje-drt></li>
                     <li><a ui-sref="nf.auth_profile">{{ user.first_name ? user.first_name : 'Usuario'}} <i ng-show="user.municipio == null || user.municipio == ''" class="glyphicon glyphicon-exclamation-sign" tooltip-placement="bottom" uib-tooltip="Hay algunos campos de su perfil que faltan por completar. !Haga clic aquí para completar toda la información!"></i></a></li>
                     <li><a ui-sref="auth">Cerrar Sesión</a></li>
                 </ul>

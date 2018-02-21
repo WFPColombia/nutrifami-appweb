@@ -309,7 +309,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
         $http({
             method: 'GET',
             url: $rootScope.BASE_URL + 'api/avance-user/',
-            data: {},
+            data: {}
         }).then(function successCallback(response) {
             console.log(response);
             service.setAvance(response.data);
@@ -424,6 +424,16 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
             $rootScope.$broadcast('avanceFaliedSave', response.data);
         });
 
+    };
+    
+    service.getLocation = function(callback) {
+        $http.get('js/location.json').then(function(response) {
+            console.log(response);
+            callback(response.data);
+        }, function errorCallback(err) {
+            console.log(err);
+            callback({});
+        });
     };
 
     return service;

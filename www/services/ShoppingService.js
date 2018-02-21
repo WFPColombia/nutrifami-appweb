@@ -451,6 +451,7 @@ nf2.factory('ShoppingService', function ($http) {
 
         var texto = feedbacks[grupo][estado][alt];
 
+
         var fb = {
             'texto': texto.replace("______", nombreUsuario),
             'audio': "audios/mis-compras/grupo-" + grupo + "-" + estado + "-" + alt + ".wav"
