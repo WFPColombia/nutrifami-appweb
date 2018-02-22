@@ -1,5 +1,4 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class='tips'>
             <div class="panel">
@@ -20,10 +19,9 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3" ng-repeat="m in modulos">
-                            <button ng-click='m.titulo.audio.audio.paused ? m.titulo.audio.audio.play() : m.titulo.audio.audio.pause()' class="tip-sonido glyphicon glyphicon-volume-up
-" aria-hidden="true"></button>
-                            <div class="tip" go-click="/tips/{{m.id}}" nav-direction="forward">
-                                <img ng-src="{{m.imagen.url}}" />
+                            <!--<button ng-click='m.titulo.audio.audio.paused ? m.titulo.audio.audio.play() : m.titulo.audio.audio.pause()' class="tip-sonido glyphicon glyphicon-volume-up" aria-hidden="true"></button> -->
+                            <div class="tip" ui-sref="nf.tips_module({module:'{{m.id}}'})" nav-direction="forward">
+                                <img ng-src="{{assetpath}}{{m.imagen.url}}" />
                                 <h2>{{m.titulo.texto}}</h2>
                             </div>
                         </div>
@@ -31,6 +29,5 @@
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
     </div>
 </div>

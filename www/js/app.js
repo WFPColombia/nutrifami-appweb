@@ -270,6 +270,28 @@ nf2.config(function ($authProvider, $translateProvider, $stateProvider, $urlRout
             }
         }
     });
+    
+    $stateProvider.state('nf.tips', {
+        url: '/tips',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/tips/tips.html',
+                controller: 'TipsCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.tips_module', {
+        url: '/tips/:module',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/tips_module/tips_module.html',
+                controller: 'TipsModuleCtrl'
+            }
+        }
+    });
 
     $stateProvider.state('nf.about', {
         url: '/about',

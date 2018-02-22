@@ -9,6 +9,7 @@ nf2.controller('CapModuleCtrl', function ($scope, $rootScope, $location, $anchor
     $scope.total_lessons_endend = 0;
 
     $scope.lids = CapacitationService.getLessonsIds($stateParams.module);
+    $scope.assetpath = $rootScope.ASSETPATH;
 
     for (var lid in $scope.lids) {
         var tempLesson = CapacitationService.getLesson($scope.lids[lid]);

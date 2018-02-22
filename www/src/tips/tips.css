@@ -1,0 +1,134 @@
+/* TIPS */
+
+.tips .panel-group .panel {
+    border-radius: 0px;
+    border: none;
+    border-top: 2px solid #dcdcdc;
+    border-bottom: 2px solid #dcdcdc;
+    font-size: 12pt;
+    margin-top: 0px;
+    position: relative;
+}
+
+.tips .panel .panel-header {
+    margin-top: 30px;
+    color: #00c97e;
+    margin-bottom: 30px;
+}
+
+.tips .panel .panel-header h1 {
+    cursor: pointer;
+}
+
+.tips .panel .panel-header p {
+    text-align: center;
+    margin-top: 15px;
+    color: #2f3e47;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.tips .panel .panel-body .tip {
+    height: 200px;
+    background-color: #00c97e;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: center;
+    border: none;
+    margin-bottom: 18px;
+    position: relative;
+    cursor: pointer;
+}
+
+.tips .panel .panel-body .tip img {
+    margin-top: 15px;
+    width: 46%;
+}
+
+.tips .panel .panel-body .tip h2 {
+    color: #ffffff;
+    padding: 0 15px;
+    margin-top: 15px;
+    font-size: 17px;
+}
+
+.tips .panel .panel-body a.accordion-toggle:active,
+.tips .panel .panel-body a.accordion-toggle:focus {
+    outline: none;
+}
+
+.tips .panel .panel-body span.ng-binding.ng-scope {
+    font-size: 25px;
+}
+
+.tips .panel .panel-body .tip-texto .compartir {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+}
+
+.tips .panel .panel-body .tip-texto .compartir span {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.tips .panel .panel-body .tip-sonido {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    width: 50px;
+    height: 50px;
+    color: #ffffff;
+    font-size: 12pt;
+    position: absolute;
+    top: -5px;
+    right: 12px;
+    z-index: 10;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+}
+
+.tips .panel .panel-body .tip-sonido:focus,
+.tips .panel .panel-body .tip-sonido:active {
+    outline: none;
+}
+
+.tips .panel-title .glyphicon {
+    font-size: 24pt;
+    color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 33px;
+    right: 30px;
+}
+
+.tips .panel-default>.panel-heading+.panel-collapse .panel-body {
+    border-top-color: #ffffff;
+    margin-top: 15px;
+    padding: 0px;
+}
+
+.tips .panel-collapse p {
+    padding: 30px;
+    margin: 0;
+    width: 70%;
+}
+
+
+/*.tips .panel .panel-body .tip-texto p {
+    margin: 35px 15px;
+    width: 70%;
+}*/
+
+.tips .panel .panel-body .tip-texto {
+    border-top: 1px solid #dcdcdc;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.tips .panel .panel-body .tip-texto:nth-child(even) {
+    background-color: #f6f5f5;
+}
+
+
+/* END - TIPS */
