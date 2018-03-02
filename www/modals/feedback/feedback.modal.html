@@ -4,13 +4,13 @@
     </div>
     <div class="modal-body">
         <div>
-            <p class="mensaje" ng-show="{{data.estado === 'acierto'}}">Muy bien! Respuesta correcta</p>
-            <p class="mensaje" ng-hide="{{data.estado === 'acierto'}}">Intenta de nuevo! respuesta incorrecta</p>
+            <p class="mensaje" ng-show="{{data.estado === 'acierto'}}">{{'Muy bien! Respuesta correcta' | translate }}</p>
+            <p class="mensaje" ng-hide="{{data.estado === 'acierto'}}">{{'Intenta de nuevo! respuesta incorrecta' | translate }}</p>
             <div ng-repeat="fb in data.feedback track by $index" class="feedback" ng-bind-html="fb.texto | trust"></div>
         </div>
         <div class="modal-footer">
             <div ng-class=" data.activo ? 'activo' : 'no-activo'">
-                <button class="btn btn-default center-block bloqueado" role="button" ng-click="!data.activo || clickBoton()">{{ data.estado == 'acierto' ? 'Continuar':'Intentar de nuevo'}}</button>
+                <button class="btn btn-default center-block bloqueado" role="button" ng-click="!data.activo || clickBoton()">{{ data.estado == 'acierto' ? ('Continuar' | translate):('Intentar de nuevo' | translate)}}</button>
             </div>
         </div>
     </div>

@@ -52,7 +52,7 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         if ($scope.unidad.tipo.id == 1) {
             $timeout(function () {
                 $scope.botonCalificar = true;
-                $scope.textoBoton = 'continuar';
+                $scope.textoBoton = 'Continuar';
             }, 10000);
 
         }

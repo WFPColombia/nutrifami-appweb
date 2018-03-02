@@ -5,7 +5,7 @@
             <img ng-src="img/badgets/icons-gray/ico_gray_{{leccion.icono}}.png" ng-show="!leccion.avance" />
             <img ng-src="img/badgets/icons/ico_{{leccion.icono}}.png" ng-show="leccion.avance" />
             <h4>{{ leccion.titulo.texto}}</h4>
-            <button class="btn btn-default btn-lg btn-block" role="button">{{ leccion.avance ? 'Repetir' : 'Comenzar'}}</button>
+            <button class="btn btn-default btn-lg btn-block" role="button">{{ leccion.avance ? ('Repetir' | translate) : ('Comenzar' | translate)}}</button>
         </div>
     </div>
 </div>
