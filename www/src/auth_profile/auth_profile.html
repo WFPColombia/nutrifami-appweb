@@ -4,108 +4,108 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-perfil">
                     <div class="boton-flotante">
-                        <a class="btn btn-default" ui-sref="nf.auth_profile_edit" role="button">Editar Info<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                        <a class="btn btn-default" ui-sref="nf.auth_profile_edit" role="button">{{'Editar Perfil' | translate }}<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                     </div>
                     <div class="panel-header">
                         <img ng-src="../img/ico-{{user.genero=='F'? 'femenino' : 'masculino'}}.png">
-                        <h1>Mi información</h1>
+                        <h1>{{'Mi información' | translate }}</h1>
                     </div>
                     <div class="panel-body">
                         <form>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Documento</label>
-                                    <p ng-class="!user.username ? 'sin-registro' : ''">{{ user.username ? user.username: 'Username no ingresado'}}</p>
+                                    <label>{{'Documento' | translate }}</label>
+                                    <p ng-class="!user.username ? 'sin-registro' : ''">{{ user.username ? user.username: ('Documento no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Tipo de Documento de Identidad</label>
-                                    <p ng-class="!user.tipo_documento ? 'sin-registro' : ''">{{ user.tipo_documento ? user.tipo_documento: 'Tipo de documento no ingresado'}}</p>
+                                    <label>{{'Tipo de Documento de Identidad' | translate }}</label>
+                                    <p ng-class="!user.tipo_documento ? 'sin-registro' : ''">{{ user.tipo_documento ? user.tipo_documento: ('Tipo de documento no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Nombres</label>
-                                    <p ng-class="!user.first_name ? 'sin-registro' : ''">{{ user.first_name ? user.first_name:'Nombre no ingresado'}}</p>
+                                    <label>{{'Nombres' | translate }}</label>
+                                    <p ng-class="!user.first_name ? 'sin-registro' : ''">{{ user.first_name ? user.first_name:('Nombre no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Apellidos</label>
-                                    <p ng-class="!user.last_name ? 'sin-registro' : ''">{{ user.last_name ? user.last_name: 'Apellido no ingresado'}}</p>
+                                    <label>{{'Apellidos' | translate }}</label>
+                                    <p ng-class="!user.last_name ? 'sin-registro' : ''">{{ user.last_name ? user.last_name: ('Apellido no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Correo electrónico</label>
-                                    <p ng-class="!user.email ? 'sin-registro' : ''">{{ user.email ? user.email: 'Documento no ingresado'}}</p>
+                                    <label>{{'Correo electrónico' | translate }}</label>
+                                    <p ng-class="!user.email ? 'sin-registro' : ''">{{ user.email ? user.email: ('Correo electrónico no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Teléfono Móvil</label>
-                                    <p ng-class="!user.movil ? 'sin-registro' : ''">{{ user.movil ? user.movil: 'Teléfono móvil no ingresado'}}</p>
+                                    <label>{{'Teléfono Móvil' | translate }}</label>
+                                    <p ng-class="!user.movil ? 'sin-registro' : ''">{{ user.movil ? user.movil: ('Teléfono móvil no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Teléfono</label>
-                                    <p ng-class="!user.telefono ? 'sin-registro' : ''">{{ user.telefono ? user.telefono: 'Teléfono no ingresado'}}</p>
+                                    <label>{{'Teléfono' | translate }}</label>
+                                    <p ng-class="!user.telefono ? 'sin-registro' : ''">{{ user.telefono ? user.telefono: ('Teléfono no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Fecha de Nacimiento</label>
-                                    <p ng-class="!user.fecha_nacimiento ? 'sin-registro' : ''">{{ user.fecha_nacimiento ? user.fecha_nacimiento: 'Fecha no ingresada'}}</p>
+                                    <label>{{'Fecha de Nacimiento' | translate }}</label>
+                                    <p ng-class="!user.fecha_nacimiento ? 'sin-registro' : ''">{{ user.fecha_nacimiento ? user.fecha_nacimiento: ('Fecha no ingresada'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Genero</label>
-                                    <p ng-class="!user.genero ? 'sin-registro' : ''">{{ user.genero ? (user.genero == 'F' ? 'Femenino' : 'Masculino') : 'Genero no ingresado'}}</p>
+                                    <label>{{'Genero' | translate }}</label>
+                                    <p ng-class="!user.genero ? 'sin-registro' : ''">{{ user.genero ? (user.genero == 'F' ? ('Femenino'| translate) : ('Masculino'| translate)) : ('Genero no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Pais</label>
-                                    <p ng-class="!user.pais ? 'sin-registro' : ''">{{ user.pais ? user.pais: 'País no ingresado'}}</p>
+                                    <label>{{'País' | translate }}</label>
+                                    <p ng-class="!user.pais ? 'sin-registro' : ''">{{ user.pais ? user.pais: ('País no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Departamento</label>
-                                    <p ng-class="!user.departamento ? 'sin-registro' : ''">{{ user.departamento ? user.departamento: 'Departamento no ingresado'}}</p>
+                                    <label>{{'Departamento' | translate }}</label>
+                                    <p ng-class="!user.departamento ? 'sin-registro' : ''">{{ user.departamento ? user.departamento: ('Departamento no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Municipio</label>
-                                    <p ng-class="!user.municipio ? 'sin-registro' : ''">{{ user.municipio ? user.municipio: 'Municipio no ingresado'}}</p>
+                                    <label>{{'Municipio' | translate }}</label>
+                                    <p ng-class="!user.municipio ? 'sin-registro' : ''">{{ user.municipio ? user.municipio: ('Municipio no ingresado'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Comunidad</label>
-                                    <p ng-class="!user.comunidad ? 'sin-registro' : ''">{{ user.comunidad ? user.comunidad: 'Comunidad no ingresada'}}</p>
+                                    <label>{{'Comunidad' | translate }}</label>
+                                    <p ng-class="!user.comunidad ? 'sin-registro' : ''">{{ user.comunidad ? user.comunidad: ('Comunidad no ingresada'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Zona</label>
-                                    <p ng-class="!user.zona ? 'sin-registro' : ''">{{ user.zona ? user.zona: 'Zona no ingresada'}}</p>
+                                    <label>{{'Zona' | translate }}</label>
+                                    <p ng-class="!user.zona ? 'sin-registro' : ''">{{ user.zona ? user.zona: ('Zona no ingresada'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Etnia</label>
-                                    <p ng-class="!user.etnia ? 'sin-registro' : ''">{{ user.etnia ? user.etnia: 'Etina no ingresada'}}</p>
+                                    <label>{{'Etnia' | translate }}</label>
+                                    <p ng-class="!user.etnia ? 'sin-registro' : ''">{{ user.etnia ? user.etnia: ('Etina no ingresada'| translate)}}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Dirección</label>
-                                    <p ng-class="!user.direccion ? 'sin-registro' : ''">{{ user.direccion ? user.direccion: 'Direccion no ingresada'}}</p>
+                                    <label>{{'Dirección' | translate }}</label>
+                                    <p ng-class="!user.direccion ? 'sin-registro' : ''">{{ user.direccion ? user.direccion: ('Direccion no ingresada'| translate)}}</p>
                                 </div>
                             </div>
                         </form>
