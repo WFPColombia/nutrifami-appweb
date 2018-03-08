@@ -228,6 +228,8 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
 
     /**
      * 
+     * @param {type} response
+     * @returns {undefined}
      */
     service.failedAuth = function (response) {
         console.log("failedAuth");
@@ -240,8 +242,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
      */
     service.crearGestorAvance = function () {
 
-        console.log("Crear gestor descarga");
-        
+        console.log("Crear gestor avance");
         var usuarioAvance = {};
         usuarioAvance['totalUnidades'] = Object.keys(CapacitationService.getPublicLessons()).length;
         usuarioAvance['medallas'] = 0;
@@ -259,7 +260,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
                 var tempObject = {};
                 tempObject[i] = {
                     completo: false,
-                    totalModulos: Object.keys(CapacitationService.getModulesIds(i)).length,
+                    totalModulos: Object.keys(CapacitationService.getModulesActives(i)).length,
                     completados: 0,
                     porcentaje: 0
                 };
@@ -271,13 +272,13 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
             var tempObject = {};
             tempObject[i] = {
                 completo: false,
-                totalLecciones: Object.keys(CapacitationService.getLessonsIds(i)).length,
+                totalLecciones: Object.keys(CapacitationService.getLessonsActives(i)).length,
                 completados: 0,
                 porcentaje: 0
             };
             $.extend(usuarioAvance.modulos, tempObject);
         }
-
+        
         for (var i in CapacitationService.getPublicLessons()) {
             var tempObject = {};
             tempObject[i] = false;
@@ -290,13 +291,11 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
 
     /**
      * 
-     * @param {type} data
+     * @param {type} avances
      * @returns {undefined}
      */
     service.setAvance = function (avances) {
-        console.log(avances);
         service.crearGestorAvance();
-
         var usuarioAvance = service.getAvance();
         for (var a in avances) {
             usuarioAvance['lecciones'][avances[a]['leccion']] = true;
@@ -305,6 +304,10 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
         service.comprobarAvanceModulo();
     };
 
+    /**
+     * 
+     * @returns {undefined}
+     */
     service.readAvance = function () {
         $http({
             method: 'GET',
@@ -320,7 +323,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
             //$rootScope.$broadcast('userFaliedUpdate', response.data);
         });
 
-    }
+    };
 
 
     service.getAvance = function () {
@@ -348,13 +351,11 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
                     diplomas.push(modulo.titulo.texto);
                     completados++;
                     modulosTerminados++;
-
                 }
             }
             usuarioAvance['capacitaciones'][c]['completados'] = completados;
             usuarioAvance['capacitaciones'][c]['porcentaje'] = parseInt((100 / usuarioAvance['capacitaciones'][c]['totalModulos']) * usuarioAvance['capacitaciones'][c]['completados']);
         }
-        console.log(modulosTerminados);
         usuarioAvance['modulosTerminados'] = modulosTerminados;
         usuarioAvance['diplomas'] = diplomas;
         localStorage.setItem("usuarioAvance", JSON.stringify(usuarioAvance));
@@ -373,15 +374,14 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
 
         for (var m in usuarioAvance.modulos) {
             usuarioAvance['modulos'][m]['completo'] = true;
-            var lids = CapacitationService.getLessonsIds(m);
+            var lids = CapacitationService.getLessonsActives(m);
             var completados = 0;
             for (var lid in lids) {
-                if (!usuarioAvance['lecciones'][lids[lid]]) {
+                if (!usuarioAvance['lecciones'][lids[lid].id]) {
                     usuarioAvance['modulos'][m]['completo'] = false;
                 } else {
                     completados++;
                     medallas++;
-
                 }
             }
             usuarioAvance['modulos'][m]['completados'] = completados;

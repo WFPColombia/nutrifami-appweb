@@ -1,9 +1,11 @@
-nf2.controller('CapModuleCtrl', function ($scope, $rootScope, $location, $anchorScroll, $stateParams, $anchorScroll, UserService, CapacitationService) {
+nf2.controller('CapModuleCtrl', function ($scope, $rootScope, $anchorScroll, $stateParams, $anchorScroll, UserService, CapacitationService) {
     $anchorScroll();
 
     $scope.module = CapacitationService.getModule($stateParams.module);
     $scope.user = UserService.getUser();
     $scope.lessons = [];
+    
+    console.log($scope.module);
 
     $scope.total_lessons = 0;
     $scope.total_lessons_endend = 0;

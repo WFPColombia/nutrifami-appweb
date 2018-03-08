@@ -29,12 +29,9 @@ nf2.factory('CapacitationService', function ($http) {
     service.getPublicCapacitations = function () {
         var capacitations = service.capacitation.serv_capacitaciones;
         var publicCapacitations = {};
-
-
         for (var c in capacitations) {
             // if (capacitations[c].activo === '1' && capacitations[c].status.nombre === 'publico') {
             if (capacitations[c].activo === '1') {
-
                 publicCapacitations[capacitations[c].id] = capacitations[c];
             }
         }
@@ -79,7 +76,9 @@ nf2.factory('CapacitationService', function ($http) {
         var public_modules = {};
         for (var c in capacitations) {
             for (var m in capacitations[c].modulos) {
-                public_modules[capacitations[c].modulos[m]] = service.getModule(capacitations[c].modulos[m]);
+                if (service.getModule(capacitations[c].modulos[m]).activo === "1") {
+                    public_modules[capacitations[c].modulos[m]] = service.getModule(capacitations[c].modulos[m]);
+                }
             }
         }
         return public_modules;
@@ -100,43 +99,14 @@ nf2.factory('CapacitationService', function ($http) {
     };
     service.getModulesActives = function (capacitacion) {
 
-        //this.initClient();
-
         var modulos = [];
         var mids = service.getModulesIds(capacitacion);
         for (var mid in mids) {
             var tempModulo = service.getModule(mids[mid]);
-
-            tempModulo.avance = {};
-            tempModulo.avance.finalizado = false;
-            //tempModulo.disponible = false;
-            tempModulo.disponible = true;
-
-
-            if (tempModulo.activo == '1') {
-                tempModulo.activo = true;
-            } else {
-                tempModulo.activo = false;
+            if (tempModulo.activo === '1') {
+                modulos.push(tempModulo);
             }
-            modulos.push(tempModulo);
         }
-
-        modulos[0].disponible = true;
-        for (var i in modulos) {
-            if (i != 0) {
-                var temp = i - 1;
-                if (modulos[i].avance.finalizado) {
-                    modulos[i].disponible = true;
-                } else if (modulos[i].avance.leccionesFinalizadas > 0) {
-                    modulos[i].disponible = true;
-                } else if (modulos[temp].avance.finalizado) {
-                    modulos[i].disponible = true;
-                }
-            }
-
-
-        }
-
         return modulos;
 
     };
@@ -158,7 +128,9 @@ nf2.factory('CapacitationService', function ($http) {
         var public_lessons = {};
         for (var m in modules) {
             for (var l in modules[m].lecciones) {
-                public_lessons[modules[m].lecciones[l]] = service.getLesson(modules[m].lecciones[l]);
+                if (service.getLesson(modules[m].lecciones[l]).activo === "1") {
+                    public_lessons[modules[m].lecciones[l]] = service.getLesson(modules[m].lecciones[l]);
+                }
             }
         }
         return public_lessons;
@@ -179,8 +151,7 @@ nf2.factory('CapacitationService', function ($http) {
         var lids = service.getLessonsIds(modulo);
         for (var lid in lids) {
             var tempLeccion = service.getLesson(lids[lid]);
-
-            if (tempLeccion.activo == 1) {
+            if (tempLeccion.activo === "1") {
                 lecciones.push(tempLeccion);
             }
         }

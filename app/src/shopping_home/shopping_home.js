@@ -62,7 +62,7 @@ nf2.controller('ShoppingHomeCtrl', function ($scope, $timeout, $state, $uibModal
         });
     };
 
-    $scope.usuarioActivo.username = '1006330568';
+    //$scope.usuarioActivo.username = '1006330568';
 
     bsLoadingOverlayService.start();
 

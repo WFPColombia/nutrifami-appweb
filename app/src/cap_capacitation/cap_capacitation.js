@@ -3,6 +3,9 @@ nf2.controller('CapCapacitationCtrl', function ($scope, $stateParams, UserServic
         $scope.capacitation = CapacitationService.getCapacitation($stateParams.capacitation);
         $scope.mids = CapacitationService.getModulesIds($stateParams.capacitation);
         $scope.user = UserService.getUser();
+        
+        console.log($scope.capacitation);
+        console.log($scope.mids);
 
         $scope.modulos = [];
         //Obtenemos los ids de los modulos de la capacitación 3 
@@ -11,7 +14,7 @@ nf2.controller('CapCapacitationCtrl', function ($scope, $stateParams, UserServic
         for (var mid in $scope.mids) {
             var tempModulo = CapacitationService.getModule($scope.mids[mid]);
             tempModulo.disponible = true;
-            if (tempModulo.activo == '1') {
+            if (tempModulo.activo === '1') {
                 tempModulo.activo = true;
             } else {
                 tempModulo.activo = false;

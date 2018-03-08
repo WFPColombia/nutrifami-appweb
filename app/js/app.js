@@ -14,18 +14,13 @@ nf2.run(function ($rootScope, $location, $window, $translate, bsLoadingOverlaySe
     $rootScope.TARGETPATH = "https://s3.amazonaws.com/nutrifami/";
     $rootScope.ASSETPATH = "https://s3.amazonaws.com/nutrifami/training/images/";
     $rootScope.ASSETPATH_AUDIOS = "https://s3.amazonaws.com/nutrifami/training/audios/";
-    $rootScope.version = '20180308';
 
-    if ($location.$$host === 'localhost' || $location.$$host === '127.0.0.1') {
-        console.log('is local!!');
-        $rootScope.BASE_URL = 'http://localhost:8000/';
-    }
+    // $rootScope.BASE_URL = 'http://localhost:8000/';
 
     $rootScope.globals = JSON.parse(localStorage.getItem('globals')) || {};
     // Redirecciona a la pagina de auth si el usuario no está logeado e intenta ir a una página no autorizada
 
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
-        console.log('$locationChangeStart');
         // redirect to login page if not logged in
         if (!$rootScope.globals.currentUser) {
             var url = $location.path().substring(0, 5); // Tomamos los primeros 5 caracteres para hacer la validadción de las paginas
