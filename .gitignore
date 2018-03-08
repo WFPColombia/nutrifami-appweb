@@ -8,4 +8,6 @@ debug.log
 
 /node_modules
 /nbproject
-/www/lib/*
+/app/lib/*
+/www/*
+/www/index.html
