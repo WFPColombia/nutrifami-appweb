@@ -112,7 +112,7 @@ nf2.config(function ($authProvider, $translateProvider, $stateProvider, $urlRout
     $translateProvider
             .useStaticFilesLoader({
                 prefix: '/translations/locale-',
-                suffix: '.json'
+                suffix: '.json?--VERSION--'
             })
             .preferredLanguage('es')
             .useLocalStorage()

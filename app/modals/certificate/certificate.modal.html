@@ -5,10 +5,10 @@
         </div>
         <div class="papel center-block">
             <div class="margen">
-                <h1>Diploma</h1>
-                <p>otorgado a:</p>
+                <h1>{{'Diploma' | translate }}</h1>
+                <p>{{'otorgado a' | translate }}:</p>
                 <h2>{{data.nombre}} {{data.apellido}}</h2>
-                <p>por haber aprobado exitosamente el Módulo de capacitación</p>
+                <p>{{'por haber aprobado exitosamente el Módulo de capacitación' | translate }}</p>
                 <h3>{{data.modulo}}</h3>
                 <img class="center-block" src="../img/logo-nutrifami-verde.png" width="90px" />
                 <h4>2018</h4>
@@ -20,9 +20,9 @@
     </div>
     <div class="modal-footer">
         <div class="activo">
-            <a href class="btn btn-default " role="button" ng-click="descargar()"><i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i>
- Descargar</a>
-            <a href class="btn btn-default " role="button" ng-click="cerrar()">Continuar</a>
+            <a href class="btn btn-default" role="button" ng-click="descargar()"><i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i>
+ {{'Descargar' | translate }}</a>
+            <a href class="btn btn-default" role="button" ng-click="cerrar()">{{'Continuar' | translate }}</a>
         </div>
     </div>
 </div>

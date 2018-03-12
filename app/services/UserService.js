@@ -338,14 +338,15 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
     service.comprobarAvanceCapacitacion = function () {
         var usuarioAvance = service.getAvance();
         var modulosTerminados = 0;
+        var capacitacionesTerminadas = 0;
         var diplomas = [];
         for (var c in usuarioAvance.capacitaciones) {
-            usuarioAvance['capacitaciones'][c]['completo'] = true;
+            usuarioAvance['capacitaciones'][c]['completo'] = true; // 111 Ponemos la capacitacion como terminada por defecto
             var mids = CapacitationService.getModulesIds(c);
             var completados = 0;
             for (var mid in mids) {
                 if (!usuarioAvance['modulos'][mids[mid]]['completo']) {
-                    usuarioAvance['capacitaciones'][c]['completo'] = false;
+                    usuarioAvance['capacitaciones'][c]['completo'] = false; // 111 Pero si hay un modulo que no este terminado la cambiamos a no terminada
                 } else {
                     var modulo = CapacitationService.getModule(mids[mid]);
                     diplomas.push(modulo.titulo.texto);
@@ -356,8 +357,16 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
             usuarioAvance['capacitaciones'][c]['completados'] = completados;
             usuarioAvance['capacitaciones'][c]['porcentaje'] = parseInt((100 / usuarioAvance['capacitaciones'][c]['totalModulos']) * usuarioAvance['capacitaciones'][c]['completados']);
         }
-        usuarioAvance['modulosTerminados'] = modulosTerminados;
-        usuarioAvance['diplomas'] = diplomas;
+        
+        //Contamos las capacitaciones terminadas
+        for (var c in usuarioAvance.capacitaciones ){
+            if(usuarioAvance.capacitaciones[c].completo){
+                capacitacionesTerminadas++;
+            }
+        }
+        usuarioAvance.modulosTerminados = modulosTerminados;
+        usuarioAvance.capacitacionesTerminadas = capacitacionesTerminadas;
+        usuarioAvance.diplomas = diplomas;
         localStorage.setItem("usuarioAvance", JSON.stringify(usuarioAvance));
 
     };

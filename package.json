@@ -1,6 +1,6 @@
 {
     "name": "nfwebapp",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Aplicación web multiplataforma para Nutrifami",
     "author": [
         "Alejandro Tunaroza<alejandro.tunaroza@gmail.com>"
@@ -18,6 +18,7 @@
         "gulp-minify-css": "^1.2.4",
         "gulp-minify-html": "^1.0.6",
         "gulp-rename": "^1.2.2",
+        "gulp-replace": "^0.6.1",
         "gulp-uglify": "^3.0.0",
         "gulp-webserver": "^0.9.1"
     },

@@ -7,6 +7,9 @@ var minifyCSS = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var deleteLines = require('gulp-delete-lines');
 var rename = require('gulp-rename');
+var replace = require('gulp-replace');
+
+var now = Date.parse(new Date()); //Para versionar los archivos y evitar la cache
 
 // Servidor web de desarrollo
 gulp.task("dev-server", function () {
@@ -43,6 +46,7 @@ gulp.task("build", function () {
     //Minimizando y fusión de archivos JavaScript
     gulp.src(["./app/js/app.js", "./app/src/**/*.js", "./app/directives/**/*.js", "./app/services/**/*.js", "./app/filters/**/*.js", "./app/modals/**/*.js"])
             .pipe(concat("nf2.min.js"))
+            .pipe(replace('--VERSION--', now))
             //.pipe(uglify())
             .pipe(rename("nf2.min.js"))
             .pipe(gulp.dest("www/js/"));
@@ -53,11 +57,11 @@ gulp.task("build", function () {
             .pipe(minifyCSS())
             .pipe(rename("nf2.min.css"))
             .pipe(gulp.dest("www/css/"));
-    
+
     gulp.src("./app/css/font-awesome.min.css").pipe(gulp.dest("./www/css/"));
-    
+
     //Copying audio, fonts, translations and img folders
-    
+
     gulp.src("./app/fonts/*").pipe(gulp.dest("./www/fonts/"));
     gulp.src("./app/audios/*").pipe(gulp.dest("./www/audios/"));
     gulp.src("./app/img/**/*").pipe(gulp.dest("./www/img/"));
@@ -74,7 +78,7 @@ gulp.task("build", function () {
     gulp.src("./app/modals/**/*.html")
             .pipe(minifyHTML())
             .pipe(gulp.dest("www/modals/"));
-    
+
     gulp.src("./app/template/*.html")
             .pipe(minifyHTML())
             .pipe(gulp.dest("www/template/"));
@@ -90,8 +94,10 @@ gulp.task("build", function () {
             .pipe(deleteLines({
                 "filters": ["<!-- DEVFILE -->"]
             }))
+            .pipe(replace('VERSION', now))
             //.pipe(minifyHTML())
             .pipe(gulp.dest("www/"));
+
 
 });
 
