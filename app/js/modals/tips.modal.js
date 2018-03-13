@@ -14,5 +14,5 @@ nf2.controller('TipsModalController', function($scope, $uibModalInstance, $timeo
         
         $uibModalInstance.close(narrador);
         
-    }
+    };
 });
