@@ -1,5 +1,4 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class="nutricompra">
             <div class="panel intro">
@@ -15,12 +14,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h2><a href="#/nutricompra/como-jugar">¿Cómo Jugar?</a></h2>
-                        <a href="#/nutricompra/jugar" class="btn btn-default center-block" role="button">Jugar</a>
+                        <h2 ui-sref="nf.nc_tutorial">{{'¿Cómo Jugar?' | translate }}</h2>
+                        <button ui-sref="nf.nc_play" class="btn btn-third center-block" role="button">{{'Jugar' | translate }}</button>
                     </div>
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
     </div>
 </div>

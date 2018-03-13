@@ -1,21 +1,11 @@
 /*global angular*/
-nf2.controller('nc_jugarResumenController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutricompraService) {
+nf2.controller('ncCartCtrl', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UserService, NutricompraService) {
     'use strict';
 
     $anchorScroll();
 
 
-    $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
-
-
-    /* Overloading*/
-    bsLoadingOverlayService.start();
-    /* Se apaga cuando el todo el contenido de la vista ha sido cargado*/
-    $scope.$on('$viewContentLoaded', function() {
-        /* Se le agrega 0,3 segundos para poder verlo ver inicialmente
-         * cuando el contenido se demore mucho en cargar se puede quitar el timeout*/
-        bsLoadingOverlayService.stop();
-    });
+    $scope.usuarioActivo = UserService.getUser();
 
     $scope.nutricompra = true;
 
@@ -27,13 +17,13 @@ nf2.controller('nc_jugarResumenController', function($scope, $anchorScroll, $loc
             actualizarProductos();
         });
 
-    }
+    };
 
     function actualizarProductos() {
         NutricompraService.getProductos(function(response) {
             $scope.productosVitrina = response.productosVitrina;
             $scope.productosCarrito = response.productosCarrito;
-            $scope.cantidadProductosCarrito = response.cantidadProductosCarrito
+            $scope.cantidadProductosCarrito = response.cantidadProductosCarrito;
 
             console.log($scope.productosCarrito);
         });

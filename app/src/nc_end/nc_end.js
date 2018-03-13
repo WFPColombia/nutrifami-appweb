@@ -1,12 +1,12 @@
 /*global angular*/
-nf2.controller('nc_jugarTerminarController', function($scope, $anchorScroll, $location, $uibModal, bsLoadingOverlayService, UsuarioService, NutricompraService) {
+nf2.controller('ncEndCtrl', function($scope, $anchorScroll, $uibModal, bsLoadingOverlayService, UserService, NutricompraService) {
     'use strict';
 
     $anchorScroll();
 
 
-    $scope.usuarioActivo = UsuarioService.getUsuarioActivo();
-    $scope.feedbacks = {}
+    $scope.usuarioActivo = UserService.getUser();
+    $scope.feedbacks = {};
 
     /* Overloading*/
     bsLoadingOverlayService.start();
@@ -31,19 +31,15 @@ nf2.controller('nc_jugarTerminarController', function($scope, $anchorScroll, $lo
         var data = {
             texto1: '¿Quiere jugar de Nuevo?',
             texto2: 'Podrá seguir practicando para hacer una compra saludable',
-            boton1: 'Jugar',
-            enlace1: 'nutricompra',
-            boton2: 'Salir',
-            enlace2: 'capacitacion'
+            boton: 'Jugar'
         };
 
         var modalInstance = $uibModal.open({
             animation: true,
             windowClass: 'nutricompra-salir',
-            templateUrl: 'views/nutricompra/nc_salir.modal.html',
-            controller: 'nc_salirModalController',
+            templateUrl: 'modals/nc_exit/nc_exit.modal.html',
+            controller: 'ncExitModalCtrl',
             keyboard: false,
-            size: 'sm',
             backdrop: 'static',
             resolve: {
                 data: function() {

@@ -298,6 +298,60 @@ nf2.config(function ($authProvider, $translateProvider, $stateProvider, $urlRout
             }
         }
     });
+    
+    $stateProvider.state('nf.nc_home', {
+        url: '/nc',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/nc_home/nc_home.html',
+                controller: 'ncHomeCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.nc_tutorial', {
+        url: '/nc/tutotial',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/nc_tutorial/nc_tutorial.html'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.nc_play', {
+        url: '/nc/play',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/nc_play/nc_play.html',
+                controller: 'ncPlayCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.nc_cart', {
+        url: '/nc/cart',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/nc_cart/nc_cart.html',
+                controller: 'ncCartCtrl'
+            }
+        }
+    });
+    
+    $stateProvider.state('nf.nc_end', {
+        url: '/nc/end',
+        cache: false,
+        views: {
+            content: {
+                templateUrl: 'src/nc_end/nc_end.html',
+                controller: 'ncEndCtrl'
+            }
+        }
+    });
 
     $urlRouterProvider.otherwise('/nf/');
 });

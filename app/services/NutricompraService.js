@@ -1,5 +1,4 @@
-nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$timeout',
-    function() {
+nf2.factory('NutricompraService', [function() {
         var service = {};
 
         var grupos = [
@@ -23,71 +22,71 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
         };
 
         var feedbacks = [
-            'Incluya productos lácteos en su alimentación diaria para fortalecer sus músculos, huesos y dientes. ',
-            'La leche y los derivados lácteos aportan proteína y calcio que el cuerpo necesita; consúmalos diariamente. ',
-            'Los cereales, raíces, tubérculos y plátanos dan energía para realizar las actividades diarias. ',
-            'Recuerda que una alimentación saludable, debe incluir alimentos de todos los grupos. ',
-            'Incluya y varíe alimentos ricos en proteínas como: las carnes, leguminosas y huevo. Estas ayudan a la formación y reparación de los músculos. ',
+            'Incluya productos lácteos en su alimentación diaria para fortalecer sus músculos, huesos y dientes.',
+            'La leche y los derivados lácteos aportan proteína y calcio que el cuerpo necesita; consúmalos diariamente.',
+            'Los cereales, raíces, tubérculos y plátanos dan energía para realizar las actividades diarias.',
+            'Recuerda que una alimentación saludable, debe incluir alimentos de todos los grupos.',
+            'Incluya y varíe alimentos ricos en proteínas como: las carnes, leguminosas y huevo. Estas ayudan a la formación y reparación de los músculos.',
             'Las carnes, leguminosas y huevos contienen hierro y proteínas, que contribuyen para tener una alimentación saludable.',
             'Las frutas y verduras son indispensables para el cuerpo. Aportan vitaminas, minerales y fibra.',
             'Incluya en su alimentación mínimo cinco porciones de frutas y verduras al día. Prefiera las frutas enteras.',
-            'Mantenga una alimentación saludable, utilizando aceite vegetal en cantidad moderada. ',
-            'Las grasas vegetales ayudan a que los alimentos absorban y retengan los sabores. Consúmalas en cantidad moderada. ',
-            'El azúcar moreno, miel o panela  aportan energía y muy pocos nutrientes. Consúmalos en pequeñas cantidades. ',
-            'Consumir alimentos saludables y nutritivos, le ayudan a estar vigoroso  y saludable. ',
-            'Los alimentos aportan los nutrientes necesarios para el adecuado funcionamiento del organismo. ',
+            'Mantenga una alimentación saludable, utilizando aceite vegetal en cantidad moderada.',
+            'Las grasas vegetales ayudan a que los alimentos absorban y retengan los sabores. Consúmalas en cantidad moderada.',
+            'El azúcar moreno, miel o panela  aportan energía y muy pocos nutrientes. Consúmalos en pequeñas cantidades.',
+            'Consumir alimentos saludables y nutritivos, le ayudan a estar vigoroso  y saludable.',
+            'Los alimentos aportan los nutrientes necesarios para el adecuado funcionamiento del organismo.'
         ];
 
         var productosCarrito = [{
             'grupo': 'cereales',
-            'nombre': 'Cereales, raíces, tubérculos y plátanos.',
+            'nombre': 'Cereales, raíces, tubérculos y plátanos',
             'alias': 'cereal',
             'porcentaje_recomendado': 27,
             'porcentaje_agregado': 0,
-            'productos': [],
+            'productos': []
         }, {
             'grupo': 'grasas',
-            'nombre': 'Grasas.',
+            'nombre': 'Grasas',
             'alias': 'grasas',
             'porcentaje_recomendado': 2,
             'porcentaje_agregado': 0,
-            'productos': [],
+            'productos': []
         }, {
             'grupo': 'frutas',
-            'nombre': 'Frutas y verduras.',
+            'nombre': 'Frutas y verduras',
             'alias': 'frutas',
             'porcentaje_recomendado': 27,
             'porcentaje_agregado': 0,
-            'productos': [],
+            'productos': []
         }, {
             'grupo': 'azucares',
-            'nombre': 'Azucar.',
+            'nombre': 'Azucar',
             'alias': 'azucares',
             'porcentaje_recomendado': 2,
             'porcentaje_agregado': 0,
-            'productos': [],
+            'productos': []
         }, {
             'grupo': 'carnes',
-            'nombre': 'Carnes, huevos y leguminosas secas.',
+            'nombre': 'Carnes, huevos y leguminosas secas',
             'alias': 'carnes',
             'porcentaje_recomendado': 19,
             'porcentaje_agregado': 0,
-            'productos': [],
+            'productos': []
         }, {
             'grupo': 'inadecuados',
             'nombre': 'Inadecuados',
             'alias': 'inadecuados',
             'porcentaje_recomendado': 0,
             'porcentaje_agregado': 0,
-            'productos': [],
+            'productos': []
         }, {
             'grupo': 'lacteos',
-            'nombre': 'Leches y otros productos lacteos.',
+            'nombre': 'Leches y otros productos lacteos',
             'alias': 'leche',
             'porcentaje_recomendado': 23,
             'porcentaje_agregado': 0,
-            'productos': [],
-        }, ]
+            'productos': []
+        }];
 
 
 
@@ -109,7 +108,7 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                     productosVitrina: obtenerProductosVitrina(),
                     productosCarrito: productosCarrito,
                     cantidadProductosCarrito: 0
-                }
+                };
 
 
                 localStorage.setItem("nutricompra", JSON.stringify(nutricompra));
@@ -121,9 +120,11 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
 
         /**
          * 
+         * @param {type} grupo
+         * @param {type} id_producto
+         * @param {type} index
          * @param {type} callback
          * @returns {undefined}
-         * NutricompraService.addProductoAlCarrito(grupo, id_producto, index, function (response){});
          */
         service.addProductoAlCarrito = function(grupo, id_producto, index, callback) {
 
@@ -133,24 +134,21 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                 var tempProductosCarrito = response.productosCarrito;
                 var tempProductosVitrina = response.productosVitrina;
                 var tempCantidad = response.cantidadProductosCarrito;
-                for (a in tempProductosCarrito) {
-                    if (tempProductosCarrito[a].alias == grupo) {
+                for (var a in tempProductosCarrito) {
+                    if (tempProductosCarrito[a].alias === grupo) {
                         tempProducto = {
                             id_producto: id_producto,
                             index: index,
                             left: randomPosition(44, 110) + 'px',
                             top: (randomPosition(0, 10) - 20) + 'px'
-                        }
+                        };
 
-                        tempProductosCarrito[a].productos.push(tempProducto)
+                        tempProductosCarrito[a].productos.push(tempProducto);
                         tempCantidad++;
                         tempProductosVitrina[index].seleccionado = true;
 
-
                         var temPorcentaje_agregado = (100 / 15) * tempProductosCarrito[a].productos.length;
                         tempProductosCarrito[a].porcentaje_agregado = temPorcentaje_agregado;
-
-
                     }
                 }
 
@@ -158,10 +156,7 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                     productosVitrina: tempProductosVitrina,
                     productosCarrito: tempProductosCarrito,
                     cantidadProductosCarrito: tempCantidad
-                }
-
-
-
+                };
                 localStorage.setItem("nutricompra", JSON.stringify(nutricompra));
 
                 callback();
@@ -180,8 +175,8 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                 var tempProductosVitrina = response.productosVitrina;
                 var tempCantidad = response.cantidadProductosCarrito;
 
-                for (a in tempProductosCarrito) {
-                    if (tempProductosCarrito[a].alias == grupo) {
+                for (var a in tempProductosCarrito) {
+                    if (tempProductosCarrito[a].alias === grupo) {
 
                         var tempIndiceVitrina = tempProductosCarrito[a].productos[index].index;
 
@@ -200,7 +195,7 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                     productosVitrina: response.productosVitrina,
                     productosCarrito: tempProductosCarrito,
                     cantidadProductosCarrito: tempCantidad
-                }
+                };
 
 
 
@@ -226,12 +221,12 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                     'bandera': 'Regular',
                     'texto1': 'ha sido una compra poco saludable',
                     'feedback': feedbacks[alt]
-                }
+                };
 
                 var indiceFallo = 0;
 
                 var tempProductosCarrito = response.productosCarrito;
-                for (a in tempProductosCarrito) {
+                for (var a in tempProductosCarrito) {
 
                     indiceFallo = indiceFallo + (Math.abs(tempProductosCarrito[a].porcentaje_recomendado - tempProductosCarrito[a].porcentaje_agregado));
                 }
@@ -248,10 +243,6 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                     feedback['bandera'] = 'Bien';
                     feedback['texto1'] = 'ha sido una compra saludable';
                 }
-
-
-
-
                 callback(feedback);
             });
         };
@@ -286,7 +277,7 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
                     'imagen': 'ico_' + grupo + '_' + numProducto,
                     'seleccionado': false,
                     'pagina': pagina
-                }
+                };
 
                 productos.push(producto);
 
@@ -297,17 +288,14 @@ nf2.factory('NutricompraService', ['$http', '$cookieStore', '$rootScope', '$time
 
             }
 
-            return (productos)
+            return (productos);
         }
 
         function randomPosition(min, max) {
             var pos = Math.floor((Math.random() * max) + min);
-
             if (pos > max) {
-                pos = max
-
+                pos = max;
             }
-
             return pos;
         };
 

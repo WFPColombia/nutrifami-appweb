@@ -1,13 +1,11 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class="nutricompra">
             <div class="panel jugar">
                 <div class="header row">
                     <div class="col-md-2">
-                        <div class="btn-back-jugar">
-                            <a href ng-click="salir()">
-                                <img src="img/nutricompra/nc-btn-back-white.png"></a>
+                        <div class="btn-back-jugar" ng-click="salir()">
+                                <img src="img/nutricompra/nc-btn-back-white.png">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -20,7 +18,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="carrito" ng-click="verResumen()">
+                            <div class="carrito" ui-sref="nf.nc_cart">
                                 <img src="img/nutricompra/ico_carrito.png">
                                 <div class="carrito-cantidad">{{cantidadProductosCarrito}}</div>
                             </div>
@@ -52,6 +50,5 @@
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
     </div>
 </div>

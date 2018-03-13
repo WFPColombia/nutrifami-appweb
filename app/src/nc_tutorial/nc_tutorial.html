@@ -1,44 +1,46 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class="nutricompra">
             <div class="panel como-jugar">
-                <div class="btn-back">
-                    <a href="#/nutricompra">
-                        <img src="img/nutricompra/nc-btn-back.png"></a>
+                <div class="btn-back" ui-sref="nf.nc_home">
+                        <img src="img/nutricompra/nc-btn-back.png">
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>¿Cómo Jugar?</h2>
+                        <h2>{{'¿Cómo Jugar?' | translate }}</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Debes agregar <span>15</span> productos <br>a su carrito de compras.</h3>
+                        <h3>{{'Debe agregar 15 productos a su carrito de compras.' | translate }}</h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="paso">
                             <img src="img/nutricompra/nc-como-1.png">
-                            <p>Selecciona el producto que quieres comprar.</p>
+                            <p>{{'Seleccione el producto que quiere comprar dando clic sobre el.' | translate }}</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="paso paso-2">
                             <img src="img/nutricompra/nc-como-2.png">
-                            <p>Aquí puedes ver el resumen de los productos que has agregado al carrito de compras.</p>
+                            <p>{{'Aquí puede ver el resumen de los productos que ha agregado al carrito de compras.' | translate }}</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="paso">
                             <img src="img/nutricompra/nc-como-3.png">
-                            <p>Puedes sacar productos que no quieras dando clic en la equis blanca de fondo rojo</p>
+                            <p>{{'Puede sacar productos que no quiere dando clic en la esquina blanca de fondo rojo' | translate }}</p>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button ui-sref="nf.nc_play" class="btn btn-third center-block" role="button">{{'Jugar' | translate }}</button>
                     </div>
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
     </div>
 </div>

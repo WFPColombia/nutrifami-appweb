@@ -1,27 +1,24 @@
 <div class="bs-loading-container" bs-loading-overlay>
-    <ng-include src="'views/template/header.tpl.html'"></ng-include>
     <div class="container">
         <div class="nutricompra">
             <div class="panel jugar terminar">
                 <div class="header row">
                     <div class="col-md-2">
-                        <div class="btn-back-jugar">
-                            <a href ng-click="salir()">
-                                <img src="img/nutricompra/nc-btn-back.png">
-                            </a>
+                        <div class="btn-back-jugar" ng-click="salir()">
+                            <img src="img/nutricompra/nc-btn-back.png">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="titulo">
-                            <h2>{{feedbacks.bandera}}</h2>
+                            <h2>{{feedbacks.bandera | translate}}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>¡{{usuarioActivo.nombre}}, {{feedbacks.texto1}}!</h3>
+                        <h3>¡{{usuarioActivo.first_name}}, {{feedbacks.texto1 | translate }}!</h3>
                     </div>
                 </div>
                 <div class="row">
@@ -31,11 +28,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="feedback">{{feedbacks.feedback}}</p>
+                        <p class="feedback">{{feedbacks.feedback | translate}}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <footer ng-include="'views/template/footer.tpl.html'"></footer>
     </div>
 </div>
