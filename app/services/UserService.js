@@ -53,10 +53,6 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
      * 
      * @param {type} user
      * @returns {undefined}
-     * @param {type} username
-     * @param {type} email
-     * @param {type} password
-     * @returns {undefined}
      */
     service.signup = function (user) {
         console.log(user);
@@ -128,11 +124,9 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
     };
 
     /**
-     * @description Guard
-     * @param {type} user
-     * @returns {None}a la información de usuario en la memoria cache
-     * @param {object} user
-     * @returns {None}
+     * 
+     * @param {type} data
+     * @returns {undefined}
      */
     service.setUser = function (data) {
         var usuarioActivo = data;

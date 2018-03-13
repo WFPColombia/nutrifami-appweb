@@ -5,8 +5,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="ayuda">
-                            <button ng-click='verConsejoSaludable()' tooltip-placement="bottom" uib-tooltip="Ver un consejo saludable" class="icono tips fa fa-lightbulb-o" aria-hidden="true"></button>
-                            <button ng-click="toogleNarrador()" tooltip-placement="bottom" uib-tooltip="{{usuarioActivo.narrador? 'Silenciar Narrador':'Activar Narrador'}}" class="icono sonido glyphicon" ng-class="usuarioActivo.narrador ? 'glyphicon-volume-up':'glyphicon-volume-off apagado'" aria-hidden="true"></button>
+                            <button ng-click='verConsejoSaludable()' ng-show="tips.length"tooltip-placement="bottom" uib-tooltip="{{'Ver un consejo saludable' | translate }}" class="icono tips fa fa-lightbulb-o" aria-hidden="true"></button>
+                            <button ng-click="toogleNarrador()" tooltip-placement="bottom" uib-tooltip="{{usuarioActivo.narrador? ('Silenciar Narrador' | translate ):('Activar Narrador' | translate )}}" class="icono sonido glyphicon" ng-class="usuarioActivo.narrador ? 'glyphicon-volume-up':'glyphicon-volume-off apagado'" aria-hidden="true"></button>
                         </div>
                     </div>
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-11">

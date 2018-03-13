@@ -1,6 +1,7 @@
 <div class="calificacion">
     <div class="modal-header">
-        <span class="center-block glyphicon" ng-class="sticker == 'bad'? 'glyphicon-remove mal': 'glyphicon-ok bien'"aria-hidden="true"></span>
+        <img src="img/icons/ico-tips-bombillo.png" class="center-block" ng-show="sticker == 'tip'"/>
+        <span class="center-block glyphicon" ng-hide="sticker == 'tip'" ng-class="sticker == 'bad'? 'glyphicon-remove mal': 'glyphicon-ok bien'"aria-hidden="true"></span>
     </div>
     <div class="modal-body">
         <div>

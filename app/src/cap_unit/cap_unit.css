@@ -374,35 +374,10 @@
 }
 
 .unidad .panel-body .calificacion .feedback,
-.modal-dialog .calificacion .feedback,
-.modal-dialog .tips .tip {
+.modal-dialog .calificacion .feedback {
     color: #2f3e47;
     font-size: 13pt;
     text-align: center;
-}
-
-.modal-dialog .tips .modal-header {
-    text-align: center;
-    border-bottom: none;
-}
-
-.modal-dialog .tips .modal-footer {
-    margin-top: 35px;
-    padding-top: 30px;
-    border-top: 10px solid #e5e5e5;
-}
-
-.modal-dialog .tips .modal-footer a {
-    color: #2f3e47;
-    font-size: 22pt;
-    text-align: center;
-    text-decoration: none;
-}
-
-.modal-dialog .tips .modal-footer a .glyphicon {
-    font-size: 40px;
-    position: relative;
-    top: 10px;
 }
 
 .unidad .calificacion .activo .btn-default,

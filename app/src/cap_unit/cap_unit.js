@@ -1,13 +1,14 @@
 /*global angular*/
-nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams, bsLoadingOverlayService, $anchorScroll, $timeout, $uibModal, ngAudio, UserService, CapacitationService) {
+nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams, $sce, bsLoadingOverlayService, $anchorScroll, $timeout, $uibModal, ngAudio, UserService, CapacitationService) {
     $anchorScroll();
-    
+
     $scope.textoBoton = 'Calificar';
     $scope.usuarioActivo = UserService.getUser();
     $scope.estadoUnidad = 'espera';
     $scope.unidad = CapacitationService.getUnitFromOrder($stateParams.lesson, $stateParams.unit);
     $scope.unidad.numeroUnidad = $stateParams.unit;
     $scope.unidad.totalUnidades = CapacitationService.getUnitsActives($stateParams.lesson).length;
+    $scope.tips = CapacitationService.getTipsByLesson($stateParams.lesson);
 
     var tempOpciones = []; //Arreglo para almacenar las opciones
 
@@ -17,7 +18,7 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
             delete $scope.unidad.opciones[i];
         }
     }
-    
+
     console.log($scope.unidad);
 
     /* Validamos si la unidad actual es de parejas o de otra 
@@ -63,25 +64,8 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         unidad: $rootScope.ASSETPATH_AUDIOS + $scope.unidad.audio.url,
     };
 
-
-
-
-    if ($scope.usuarioActivo.narrador) {
-        $scope.unidad.instruccion.audio.audio.play();
-        $scope.unidad.instruccion.audio.audio.complete(function () {
-            $scope.unidad.instruccion.audio.audio.stop();
-            $scope.unidad.audio.audio.play();
-            $scope.unidad.audio.audio.complete(function () {
-                $scope.unidad.audio.audio.stop();
-            });
-        });
-    }
-
-
+    
     $scope.unidad.feedback = [];
-
-
-
 
     // Obtenemos la cantidad de respuestas correctas
     var respuestasCorrectas = 0;
@@ -319,31 +303,33 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
     };
 
     $scope.verConsejoSaludable = function () {
-        var data = {
-            leccion: $stateParams.lesson,
-            narrador: $scope.usuarioActivo.narrador
-        };
+        var nran = Math.floor((Math.random() * $scope.tips.length));
+        var tip = $scope.tips[nran];
 
-        var tipsModal = $uibModal.open({
+        var modalInstance = $uibModal.open({
             animation: true,
-            templateUrl: 'views/modals/tips.modal.html',
-            controller: 'TipsModalController',
+            templateUrl: 'modals/simple/simple.modal.html',
+            controller: 'SimpleModalCtrl',
             keyboard: false,
             size: 'lg',
+            backdrop: 'static',
             resolve: {
                 data: function () {
-                    return data;
+                    return {
+                        message: tip.texto,
+                        sticker: 'tip'
+                    };
                 }
             }
         });
-
-
+        modalInstance.result.then(function () {
+            console.log('Modal Closed');
+        });
     };
 
     $scope.toogleNarrador = function () {
         $scope.usuarioActivo.narrador = !$scope.usuarioActivo.narrador;
-        UserService.setUsuarioActivo($scope.usuarioActivo, function (response) {
-        });
+        UserService.setUser($scope.usuarioActivo);
     };
 
     $scope.playAudio = function (audio) {
@@ -351,6 +337,10 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         var audio = ngAudio.load($scope.audios[audio]);
         audio.play();
     };
+    
+    if ($scope.usuarioActivo.narrador) {
+        $scope.playAudio('instruccion');
+    }
 
     $scope.$on('avanceSaved', function (event, id) {
         bsLoadingOverlayService.stop();
@@ -395,7 +385,7 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
                 tempList.push(myList[i]);
             }
         }
-        return tempList
+        return tempList;
     }
 
     function dynamicSort(property) {
@@ -407,34 +397,6 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         return function (a, b) {
             var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
             return result * sortOrder;
-        }
+        };
     }
-});
-
-nf2.directive('reiniciarUnidad', function () {
-    return {
-        restrict: 'E',
-        scope: {
-            feedback: '='
-        },
-        templateUrl: 'views/directives/reiniciarUnidad.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.reiniciar = function () {
-                $scope.$parent.reiniciarUnidad();
-            };
-        }
-    };
-});
-
-nf2.directive('siguienteUnidad', function () {
-    return {
-        restrict: 'E',
-        scope: {},
-        templateUrl: 'views/directives/siguienteUnidad.html',
-        link: function ($scope, $element, $attrs) {
-            $scope.siguienteUnidad = function () {
-                $scope.$parent.irASiguienteUnidad();
-            };
-        }
-    };
 });
