@@ -204,5 +204,17 @@
     "Entre a Mi Perfil, complete sus datos y los de su familia. ¡Ya está listo para Aprender Jugando!": "Enter My Profile, complete your data and your family's. You are ready to Learn by Playing!",
     "¡Aprender con Nutrifami es muy divertido!": "Learning with Nutrifami is fun!",
     "Haga un recorrido por las 5 secciones de Nutrifami:": "Take a tour through the 5 sections of Nutrifami:",
-    "¡Comenzar a Aprender!": "Start Learning!"
+    "¡Comenzar a Aprender!": "Start Learning!",
+    "Yo": "Me",
+    "Aprendiz Actual": "Current Trainee",
+    "Otros Aprendices": "Other Trainees",
+    "Elegir": "Select",
+    "Aprendiz Nuevo": "New Trainee",
+    "Agregar Aprendiz": "Add Trainee",
+    "Subir Avances": "Upload Advance",
+    "Nombre": "Name",
+    "El documento ya existe": "The ID is already use",
+    "¿Está seguro de eliminar el aprendiz?":"¿Do you want to delete the trainee?",
+    "Si eliminas este aprendiz se borraran todos sus datos":"If you delete the trainee all his data will be deleted",
+    "Eliminar":"Delete"
 }
