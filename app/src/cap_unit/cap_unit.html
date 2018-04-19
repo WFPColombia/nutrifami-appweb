@@ -62,7 +62,7 @@
                     <option-pairs-drt ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}"></option-pairs-drt>
                 </div>
                 <div class="row" ng-show="unidad.tipo.id == 3 || unidad.tipo.id == 4 || unidad.tipo.id == 5">
-                    <option-drt ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}" colspan="unidad.colspan" ng-click="validar()"></option-drt>
+                    <option-drt ng-repeat="opcion in unidad.opciones" info="opcion" index="{{$index}}" ng-click="validar()"></option-drt>
                 </div>
                 <div class="row">
                     <div class="calificacion">
