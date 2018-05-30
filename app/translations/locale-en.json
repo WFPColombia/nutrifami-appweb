@@ -216,5 +216,14 @@
     "El documento ya existe": "The ID is already use",
     "¿Está seguro de eliminar el aprendiz?":"¿Do you want to delete the trainee?",
     "Si eliminas este aprendiz se borraran todos sus datos":"If you delete the trainee all his data will be deleted",
-    "Eliminar":"Delete"
+    "Eliminar":"Delete",
+    "Cédula de ciudadania / DNI":"Identification document",
+    "Pasaporte": "Passport",
+    "Otro": "Other",
+    "Ingrese la étnia a la que pertenece": "Insert your ethnic group",
+    "Los datos han sido guardado con éxito": "The data was saved successfully",
+    "Ops!! Hubo un error y los datos no fueron guardados": "Ops!! An error ocurred and the data was not saved",
+    "El correo electrónico ya se encuentra registrado": "The email is already registered",
+    "Ha ocurrido un error inesperado, inténtelo más tarde!!": "An unexpected error has occurred, try it later!",
+    "Los datos ingresados no son correctos, inténtelo nuevamente":"The data entered is not correct, try again"
 }

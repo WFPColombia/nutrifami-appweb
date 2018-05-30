@@ -24,7 +24,7 @@
                     <li ng-class=" tips ? 'active' : ''" ng-show="lang == 'es'">
                         <a ui-sref="nf.tips" tooltip-placement="bottom" uib-tooltip="{{'En esta sección encontrará consejos y recomendaciones sobre nutrición, alimentación y hábitos saludables.' | translate }}">{{'Consejos Saludables' | translate }}</a>
                     </li>
-                    <li ng-class=" nutricompra ? 'active' : ''">
+                    <li ng-class=" nutricompra ? 'active' : ''" ng-show="lang != 'fr'">
                         <a ui-sref="nf.nc_home" tooltip-placement="bottom" uib-tooltip="{{'Divertido juego para que ponga a prueba todas sus habilidades, para elegir adecuadamente los alimentos para su hogar.' | translate }}">{{'Nutricompra' | translate }}</a>
                     </li>
                     <li ng-class=" sobre ? 'active' : ''">

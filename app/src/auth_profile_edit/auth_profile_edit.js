@@ -4,40 +4,26 @@ nf2.controller('AuthProfileEditCtrl', function ($filter, $scope, UserService, $a
     $anchorScroll();
     $scope.user = UserService.getUser();
 
-    console.log($scope.user);
-
     $scope.generos = {
         availableOptions: [
-            {id: 'Femenino', name: 'Femenino'},
-            {id: 'Masculino', name: 'Masculino'}
+            {id: 'Femenino', name: $filter('translate')('Femenino')},
+            {id: 'Masculino', name: $filter('translate')('Masculino')}
         ],
         selectedOption: {id: $scope.user.genero, name: $scope.user.genero}
     };
 
-    $scope.etnias = {
-        availableOptions: [
-            {id: 'Afrocolombianos', name: 'Afrocolombianos'},
-            {id: 'Indigenas', name: 'Indigenas'},
-            {id: 'Mestizo', name: 'Mestizo'},
-            {id: 'Otros', name: 'Otros'},
-            {id: 'Ninguno', name: 'Ninguno'}
-        ],
-        selectedOption: {id: $scope.user.etnia, name: $scope.user.etnia}
-    };
-
     $scope.tipos_documento = {
         availableOptions: [
-            {id: 'Cédula de ciudadania', name: 'Cédula de ciudadania'},
-            {id: 'Cédula de extranjeria', name: 'Cédula de extranjeria'},
-            {id: 'Tarjeta de identidad', name: 'Tarjeta de identidad'},
-            {id: 'Pasaporte', name: 'Pasaporte'}
+            {id: 'Cédula de ciudadania', name: $filter('translate')('Cédula de ciudadania / DNI')},
+            {id: 'Pasaporte', name: $filter('translate')('Pasaporte')},
+            {id: 'Otro', name: $filter('translate')('Otro')}
         ],
         selectedOption: {id: $scope.user.tipo_documento, name: $scope.user.tipo_documento}
     };
 
     $scope.date = {};
-
-
+    
+    console.log($scope.user.fecha_nacimiento);
     if ($scope.user.fecha_nacimiento !== null) {
         var nacimiento = $scope.user.fecha_nacimiento;
         var n_ano = nacimiento.slice(0, 4);
@@ -100,7 +86,6 @@ nf2.controller('AuthProfileEditCtrl', function ($filter, $scope, UserService, $a
         bsLoadingOverlayService.start();
 
         $scope.user.genero = $scope.generos.selectedOption.id || '';
-        $scope.user.etnia = $scope.etnias.selectedOption.id || '';
         $scope.user.tipo_documento = $scope.tipos_documento.selectedOption.id || '';
         console.log($scope.date.fecha_nacimiento);
 
@@ -179,7 +164,7 @@ nf2.controller('AuthProfileEditCtrl', function ($filter, $scope, UserService, $a
         bsLoadingOverlayService.stop();
         $scope.mensaje = {
             estado: true,
-            texto: "Los datos han sido guardado con éxito",
+            texto: $filter('translate')('Los datos han sido guardado con éxito'),
             success: true
         };
 
@@ -191,7 +176,7 @@ nf2.controller('AuthProfileEditCtrl', function ($filter, $scope, UserService, $a
         $anchorScroll();
         $scope.mensaje = {
             estado: true,
-            texto: "Ops!! Hubo un error y los datos no fueron guardados. " + error,
+            texto: $filter('translate')('Ops!! Hubo un error y los datos no fueron guardados') + error,
             success: true
 
         };

@@ -63,7 +63,7 @@ nf2.factory('UserService', function ($rootScope, $auth, $http, $q, CapacitationS
                 .catch(function (response) {
                     console.log(response);
                     if (response.data.username) {
-                        service.failedAuth({message: "Ya existe este nombre de usuario"});
+                        service.failedAuth({message: "El documento ya existe"});
                     } else if (response.data.email) {
                         service.failedAuth({message: "El correo electrónico ya se encuentra registrado"});
                     } else if (response.data.id_antiguo) {

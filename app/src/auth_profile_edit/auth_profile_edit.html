@@ -80,7 +80,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="nacimiento">{{'Fecha de Nacimiento' | translate }}</label>
-                                    <input type="date" class="form-control" placeholder="dd-MM-yyyy" id="nacimiento" name="nacimiento" ng-model="user.fecha_nacimiento" ng-model-options="{ updateOn: 'blur' }">
+                                    <input type="date" class="form-control" placeholder="dd-MM-yyyy" id="nacimiento" name="nacimiento" ng-model="date.fecha_nacimiento" ng-model-options="{ updateOn: 'blur' }">
                                     <!--<span class="messages" ng-show="userForm.$submitted || userForm.birthdate.$touched">
                                         <span ng-show="userForm.nacimiento.$error.required">{{'El campo es obligatorio' | translate }}</span>
                                     </span>-->
@@ -146,9 +146,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="etnia">{{'Etnia' | translate }}</label>
-                                    <select class="form-control" ng-options="option.name for option in etnias.availableOptions track by option.id" ng-model="etnias.selectedOption">
-                                        <option disabled value> -- {{'Eliga una opción' | translate }} -- </option>
-                                    </select>
+                                    <input type="text" class="form-control" id="etnia" name="etnia" placeholder="{{'Ingrese la étnia a la que pertenece' | translate }}" ng-model="user.etnia" ng-model-options="{ updateOn: 'blur' }">
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">

@@ -216,5 +216,14 @@
     "El documento ya existe": "El documento ya existe",
     "¿Está seguro de eliminar el aprendiz?":"¿Está seguro de eliminar el aprendiz?",
     "Si eliminas este aprendiz se borraran todos sus datos":"Si eliminas este aprendiz se borraran todos sus datos",
-    "Eliminar":"Eliminar"
+    "Eliminar":"Eliminar",
+    "Cédula de ciudadania / DNI":"Cédula de ciudadania / DNI",
+    "Pasaporte": "Pasaporte",
+    "Otro": "Otro",
+    "Ingrese la étnia a la que pertenece": "Ingrese su etnia",
+    "Los datos han sido guardado con éxito": "Los datos han sido guardado con éxito",
+    "Ops!! Hubo un error y los datos no fueron guardados": "Ops!! Hubo un error y los datos no fueron guardados",
+    "El correo electrónico ya se encuentra registrado": "El correo electrónico ya se encuentra registrado",
+    "Ha ocurrido un error inesperado, inténtelo más tarde!!": "Ha ocurrido un error inesperado, inténtelo más tarde!!",
+    "Los datos ingresados no son correctos, inténtelo nuevamente":"Los datos ingresados no son correctos, inténtelo nuevamente"
 }
