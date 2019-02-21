@@ -102,5 +102,5 @@ gulp.task("build", function () {
 });
 
 //gulp.task("default", ["jsLint", "jsHint", "dev-server"]);
-gulp.task("default", ["dev-server"]);
+//gulp.task("default", ["dev-server"]);
 //gulp.task("compileCordova", ["compile", "cordovaDist"]);
