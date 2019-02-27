@@ -37,7 +37,7 @@ gulp.task("prod-server", function () {
             }));
 });
 
-gulp.task("build", function () {
+gulp.task("build", (done) => {
     "use strict";
 
     //copiando librerias
@@ -97,6 +97,8 @@ gulp.task("build", function () {
             .pipe(replace('VERSION', now))
             //.pipe(minifyHTML())
             .pipe(gulp.dest("www/"));
+
+    done()
 
 
 });
