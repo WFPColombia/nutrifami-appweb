@@ -19,7 +19,10 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         }
     }
 
-    console.log($scope.unidad);
+    $scope.audios = {
+        instruccion: $rootScope.ASSETPATH_AUDIOS + $scope.unidad.instruccion.audio.url,
+        unidad: $rootScope.ASSETPATH_AUDIOS + $scope.unidad.audio.url,
+    };
 
     /* Validamos si la unidad actual es de parejas o de otra 
      * if - Si es parejas ponemos las imagenes de primeras y los textos abajo
@@ -51,6 +54,7 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         $scope.unidad.opciones = tempOpciones;
 
         if ($scope.unidad.tipo.id == 1) {
+            $scope.audios.informativa = $rootScope.ASSETPATH_AUDIOS + $scope.unidad.media.url;
             $timeout(function () {
                 $scope.botonCalificar = true;
                 $scope.textoBoton = 'Continuar';
@@ -59,12 +63,6 @@ nf2.controller('CapUnitCtrl', function ($scope, $rootScope, $state, $stateParams
         }
     }
 
-    $scope.audios = {
-        instruccion: $rootScope.ASSETPATH_AUDIOS + $scope.unidad.instruccion.audio.url,
-        unidad: $rootScope.ASSETPATH_AUDIOS + $scope.unidad.audio.url,
-    };
-
-    
     $scope.unidad.feedback = [];
 
     // Obtenemos la cantidad de respuestas correctas

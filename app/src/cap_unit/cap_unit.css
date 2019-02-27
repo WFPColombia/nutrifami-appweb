@@ -124,6 +124,12 @@
     border:none;
 }
 
+.unidad .panel-header .unidad-descripcion .sonido-unidad-informativa {
+    position: absolute;
+    right: 10%;
+    font-size: 30px;
+}
+
 .unidad .panel-header .unidad-descripcion img {
     margin-top: 0px;
     border: 1px solid #dcdcdc;

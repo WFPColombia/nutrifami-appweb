@@ -30,6 +30,9 @@
                             </div>
                             <h3>{{ unidad.titulo.texto}} <button ng-click="playAudio('unidad')" class="sonido glyphicon glyphicon-volume-up" aria-hidden="true"></button></h3>
                             <img ng-src="{{ASSETPATH}}{{unidad.imagen.url}}" alt="{{ unidad.titulo.texto}}" ng-hide="{{unidad.imagen.nombre == ''}}" />
+                            <div class="sonido-unidad-informativa">
+                                <button ng-click="playAudio('informativa')" class="sonido glyphicon glyphicon-volume-up" aria-hidden="true"></button>
+                            </div>
                             <div class="unidad-informativa" ng-bind-html="unidad.texto | trust" ng-hide="unidad.texto == ''"></div>
                         </div>
                     </div>
